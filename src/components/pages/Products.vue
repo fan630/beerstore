@@ -24,10 +24,12 @@
                         <td>{{item.category}}</td>
                         <td class="text-left">{{item.title}}</td>
                         <td class="text-right">
-                            {{item.origin_price}}
+                            <!-- {{item.origin_price|currency}} -->
+                            {{item.origin_price ? (item.origin_price|currency) : '未輸入價格'}}
                         </td>
                         <td class="text-right">
-                            {{item.price}}
+                            <!-- {{item.price|currency}} -->
+                            {{item.price? (item.price|currency) : '未輸入價格'}}
                         </td>
                         <td class="text-right">
                             <span v-if="item.is_enabled > 0" class="text-success">啟用</span>
@@ -204,7 +206,6 @@ export default {
             const api = `https://vue-course-api.hexschool.io/api/fan630/admin/products?page=${page}`
             this.isLoading = true
             this.$http.get(api).then((response) => {
-                console.log(response)
                 this.isLoading = false
                 this.products = response.data.products
                 this.pagination = response.data.pagination  
