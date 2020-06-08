@@ -145,23 +145,32 @@
             </div>
             </div>
         </div>
-            <nav aria-label="Page navigation example" class="mx-auto">
-                <ul class="pagination">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+        <nav aria-label="Page navigation example" class="text-center">
+            <ul class="pagination">
+                <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+                    <a class="page-link" href="#" aria-label="Previous"
+                        @click.prevent="getProducts(pagination.current_page -1)"
+                        >
                         <span aria-hidden="true">&laquo;</span>
                     </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                </li>
+                <li class="page-item" 
+                    :class="{'active': pagination.current_page === true}"
+                    v-for="page in pagination.total_pages" :key="page"
+                    >
+                    <a class="page-link" href="#" @click.prevent="getProducts(page)">
+                        {{page}}
+                    </a>
+                </li>
+                <li class="page-item" :class="{'disabled':!pagination.has_next}">
+                    <a class="page-link" href="#" aria-label="Next"
+                        @click.prevent="getProducts(pagination.current_page +1)"
+                        >
                         <span aria-hidden="true">&raquo;</span>
                     </a>
-                    </li>
-                </ul>
-            </nav>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
@@ -186,11 +195,13 @@ export default {
     }, 
     created(){
         this.getProducts()
-        this.getProductsPage()
     }, 
+    // mounted:{
+        
+    // },
     methods:{
-        getProducts(){
-            const api = 'https://vue-course-api.hexschool.io/api/fan630/admin/products/all'
+        getProducts(page = 1){
+            const api = `https://vue-course-api.hexschool.io/api/fan630/admin/products?page=${page}`
             this.isLoading = true
             this.$http.get(api).then((response) => {
                 console.log(response)
@@ -203,18 +214,13 @@ export default {
         }, 
         // 自行添加
         // 這是另外一隻api
-        getProductsPage(){
-            const api = 'https://vue-course-api.hexschool.io/api/fan630/admin/products?page=1'
-            this.$http.get(api).then((response) => {
-                console.log(response.data.pagination)
-                this.pagination = response.data.pagination  
-            })
-            //自行添加
-            // this.tempProduct.imageUrl = ''
-        }, 
-
-
-
+        // getProductsPage(page = 1){
+        //     const api = `https://vue-course-api.hexschool.io/api/fan630/admin/products?page=${page}`
+        //     this.$http.get(api).then((response) => {
+        //         console.log(response.data.pagination)
+        //         this.pagination = response.data.pagination  
+        //     })
+        // }, 
         // isNew這份資料是新的還是舊的
         openModal(isNew, item){
             if(isNew){
