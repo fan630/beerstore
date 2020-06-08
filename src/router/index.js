@@ -5,6 +5,7 @@ import Login from '../components/pages/Login'
 import About from '../components/pages/About'
 import Products from '../components/pages/Products'
 import CustomOrder from '../components/pages/CustomOrder'
+import Home from '../components/pages/Home.vue'
 
 Vue.use(VueRouter)
   const routes = [
@@ -44,8 +45,8 @@ Vue.use(VueRouter)
     },
     {
       path: '/',
-      name: 'Dashboard',
-      component: Dashboard,
+      name: 'Home',
+      component: Home,
       children: [
         {
           path: 'custom_order',

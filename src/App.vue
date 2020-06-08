@@ -9,7 +9,8 @@
 </template>
 
 <style lang="scss">
-@import "./assets/all.scss";
+// @import "~bootstrap/scss/bootstrap";
+@import "./assets/all";
 
 #app {
   text-align: center;
