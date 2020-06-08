@@ -1,6 +1,7 @@
 <template>
   <div>
       <Navbar />
+      <AlertMessage></AlertMessage>
       <div class="container-fluid">
           <Sidebar/>
           <div class="row">
@@ -16,6 +17,7 @@
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Products from "./pages/Products.vue";
+import AlertMessage from "./AlertMessage"
 
 export default {
   name: 'Dashboard',
@@ -23,6 +25,7 @@ export default {
     Sidebar, 
     Navbar, 
     Products,  
+    AlertMessage
   }
 }
 </script>

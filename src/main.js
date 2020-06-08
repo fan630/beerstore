@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import './bus';
+
 
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
+
+Vue.component('Loading', Loading)
 
 new Vue({
   router,
@@ -35,26 +42,6 @@ router.beforeEach((to, from, next) => {
     }
 })
 
-//全境首衛
-// router.beforeEach((to, from, next) => {
-//   // 如果是true就不會放行,因此在routes裡面還有加上一行參數, 如果是false就會放行
-//   if (to.meta.requiresAuth) {
-//     //console.log('還未登入, 請重新登入')
-//     const api = 'https://vue-course-api.hexschool.io/api/user/check'
-//     axios.post(api).then((response) => {
-//       if (response.data.success) {
-//         next()
-//       } else {
-//         console.log('還未登入, 請重新登入')
-//         next({
-//           path: '/login'
-//         })  
-//       }
-//     })
-//   } else {
-//     next()
-//   }
-// })
 
 
 

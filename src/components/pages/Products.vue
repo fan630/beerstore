@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="text-right mb-2">
+        <loading :active.sync="isLoading"></loading>
+        <div class="text-right my-2">
             <button class="btn btn-info btn-sm" @click="openModal(true)">
                 建立新的產品
             </button>
@@ -12,15 +13,19 @@
                     <tr>
                         <th width="10%">分類</th>
                         <th class="text-left">名稱</th>
+                        <th width="120px" class="text-right">原價</th>
                         <th width="120px" class="text-right">售價</th>
-                        <th width="120px" class="text-right">是否啟用</th>
-                        <th width="150px" class="text-center">操作訂單</th>
+                        <th width="100px" class="text-right">是否啟用</th>
+                        <th width="120px" class="text-center">操作訂單</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item) in products" :key="item.id">
                         <td>{{item.category}}</td>
                         <td class="text-left">{{item.title}}</td>
+                        <td class="text-right">
+                            {{item.origin_price}}
+                        </td>
                         <td class="text-right">
                             {{item.price}}
                         </td>
@@ -52,22 +57,27 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+
                     <div class="col-sm-4">
                         <div class="form-group">
-                        <label for="image">輸入圖片網址</label>
-                        <input type="text" class="form-control" id="image" v-model="tempProduct.imageUrl"
-                            placeholder="請輸入圖片連結">
+                            <label for="image">輸入圖片網址</label>
+                            <input type="text" class="form-control" id="image" v-model="tempProduct.imageUrl"
+                                placeholder="請輸入圖片連結">
                         </div>
                         <div class="form-group">
-                        <label for="customFile">或 上傳圖片
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </label>
-                        <input type="file" id="customFile" class="form-control"
-                            ref="files">
+                            <label for="customFile">或 上傳圖片
+                                <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+                                <!-- <i class="fa fa-refresh fa-spin fa-3x fa-fw" ></i> -->
+                            </label>
+                            <input type="file" id="customFile" class="form-control"
+                                ref="files" @change="uploadFile">
                         </div>
-                        <img img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
-                        class="img-fluid" alt="">
+                        <img 
+                            img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
+                            :src="tempProduct.imageUrl"
+                            class="img-fluid" alt="">
                     </div>
+
                     <div class="col-sm-8">
                         <div class="form-group">
                         <label for="title">標題</label>
@@ -135,35 +145,83 @@
             </div>
             </div>
         </div>
+            <nav aria-label="Page navigation example" class="mx-auto">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
     </div>
 </template>
 
 <script>
-import $ from 'jquery'
+import $ from 'jquery';
 
 export default {
     data(){
         return{
             products:[], 
+            pagination:{
+
+            }, 
+            // 新增要送出的欄位內容
             tempProduct:{}, 
-            isNew: false
+            isNew: false, 
+            isLoading: false, 
+            status: {
+                fileUploading: false
+            }
         }
     }, 
     created(){
         this.getProducts()
+        this.getProductsPage()
     }, 
     methods:{
         getProducts(){
             const api = 'https://vue-course-api.hexschool.io/api/fan630/admin/products/all'
+            this.isLoading = true
             this.$http.get(api).then((response) => {
+                console.log(response)
+                this.isLoading = false
                 this.products = response.data.products
+                this.pagination = response.data.pagination  
             })
+            //自行添加
+            // this.tempProduct.imageUrl = ''
         }, 
+        // 自行添加
+        // 這是另外一隻api
+        getProductsPage(){
+            const api = 'https://vue-course-api.hexschool.io/api/fan630/admin/products?page=1'
+            this.$http.get(api).then((response) => {
+                console.log(response.data.pagination)
+                this.pagination = response.data.pagination  
+            })
+            //自行添加
+            // this.tempProduct.imageUrl = ''
+        }, 
+
+
+
+        // isNew這份資料是新的還是舊的
         openModal(isNew, item){
             if(isNew){
                 this.tempProduct = {}
-                this.isNew = true
+                this.isNew = true;
             }else{
+                // 因為物件傳參考的特性會是一樣, 所以用這個方法淺複製
                 this.tempProduct = Object.assign({}, item)
                 this.isNew = false
             }
@@ -175,7 +233,7 @@ export default {
 
             if(!this.isNew){
                 api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${this.tempProduct.id}`
-                console.log(this.tempProduct.id)
+                // console.log(this.tempProduct.id)
                 httpMethods = 'put'
             }
 
@@ -201,6 +259,26 @@ export default {
                     $('#productModal').modal('hide')
                     this.getProducts()
                     console.log('刪除失敗')
+                }
+            })
+        }, 
+        uploadFile(){
+            const uploadedFile = this.$refs.files.files[0];
+            const formData = new FormData();
+            formData.append('file-to-upload', uploadedFile);
+            let api = `https://vue-course-api.hexschool.io/api/fan630/admin/upload`
+            this.status.fileUploading = true
+            this.$http.post(api, formData, {
+                headers: {
+                    'Content-Type':'multipart/form-data'
+                }
+            }).then(response => {
+                console.log(response.data)
+                if(response.data.success){
+                    this.status.fileUploading = false
+                    this.$set(this.tempProduct, 'imageUrl', response.data.imageUrl )
+                }else{
+                    this.$bus.$emit('message:push', response.data.message, 'danger')
                 }
             })
         }
