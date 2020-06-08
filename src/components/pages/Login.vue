@@ -27,9 +27,12 @@ export default {
         const api = 'https://vue-course-api.hexschool.io/admin/signin'
         // const api = `${process.env.VUE_APP_API}/api/fan630/products`
         // console.log(process.e nv.VUE_APP_API)
-        const vm = this
-        this.$http.post(api, vm.user).then((response) => {
+        // const vm = this
+        this.$http.post(api, this.user).then((response) => {
             console.log(response.data)
+            if(response.data.success){
+              this.$router.push('/admin/products');
+            }
         })
     },
   },

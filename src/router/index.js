@@ -1,15 +1,35 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import HelloWorld from '../components/HelloWorld.vue'
+import Dashboard from '../components/Dashboard.vue'
 import Login from '../components/pages/Login'
+import About from '../components/pages/About'
+import Products from '../components/pages/Products'
 
 Vue.use(VueRouter)
-
   const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '*',
+    redirect: 'login',
+  },
+  // {
+  //   path: '/',
+  //   name: 'HelloWorld',
+  //   component: HelloWorld,
+  //   meta: { requiresAuth: true }
+  // },
+  {
+    path: '/admin',
+    name: 'Dashboard',
+    component: Dashboard,
+    children:[
+      {
+        path: 'products',
+        name: 'Products',
+        component: Products,
+        meta: { requiresAuth: true }
+      },
+    ]
   },
   {
     path: '/about',
@@ -17,7 +37,7 @@ Vue.use(VueRouter)
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
   }, 
   {
     path: '/login',
@@ -30,7 +50,7 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
