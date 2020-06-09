@@ -15,55 +15,46 @@
             <div class="row">
                 <!--標題列-->
                 <div class="col-md-3 mb-2">
-                    <div
-                        class="list-group sticky-top" style="top:10px"
-                        id="myList"
-                        role="tablist"
-                    >
-                        <a
-                            class="list-group-item list-group-item-action active"
-                            data-toggle="list"
-                            href="#home"
-                            role="tab"
+                    <div class="list-group sticky-top" style="top:10px">
+                        <button class="list-group-item list-group-item-action active"
+                            @click="checkList('all')"    
                         >
                             <span>所有商品</span>
-                        </a>
-                        <a
-                            class="list-group-item list-group-item-action"
-                            data-toggle="list"
-                            href="#profile"
-                            role="tab"
+                        </button>
+                        <button class="list-group-item list-group-item-action"
+                            @click="checkList('beer')"    
                         >
                             <i class="fas fa-beer mr-1">
                             </i>
-                            <span>Beer</span>
-                        </a>
-                        <a
-                            class="list-group-item list-group-item-action"
-                            data-toggle="list"
-                            href="#messages"
-                            role="tab"
-                        >Messages</a>
-                        <a
-                            class="list-group-item list-group-item-action"
-                            data-toggle="list"
-                            href="#settings"
-                            role="tab"
-                        >Settings</a>
+                            Beer
+                        </button>
+                        <button class="list-group-item list-group-item-action"
+                            @click="checkList('acc')"     
+                        >
+                            公仔
+                        </button>
+                        <button class="list-group-item list-group-item-action"
+                            @click="checkList('other')"     
+                        >
+                            其餘商品
+                        </button>
                     </div>
                 </div>
                 <!--標題列-->
                 <!--商品內容-->
                 <div class="col-md-9">
                     <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col mb-4" v-for="item in products" :key="item.id">
+                        <div class="col mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
                                 <div style="height: 350px; background-size: cover; background-position: center"
                                     :style = "{backgroundImage: `url(${item.imageUrl})`}"
                                 >
                                 </div>
                                 <div class="card-body">
-                                    <span class="badge badge-info float-left ml-2">{{item.category}}</span>
+                                    <span class="badge float-left ml-2" 
+                                          :class="[item.category == '啤酒'?'badge-info' : 'badge-warning']">
+                                        {{item.category}}
+                                    </span>
                                     <h5 class="card-title">
                                         <a href="#" class="text-dark">{{item.title}}</a>
                                     </h5>
@@ -239,13 +230,35 @@ export default {
             }, 
             isLoading: false, 
             cart:{}, 
-            coupon_code:''
+            coupon_code:'', 
+            show:'all'
         }
     }, 
     created(){
         this.getProducts()
     },
+    computed:{
+        filterProducts(){
+            switch (true) {
+                case this.show === 'beer':
+                    return this.products.filter(item => item.category === '啤酒')
+                    break;
+                case this.show === 'acc':
+                    return this.products.filter(item => item.category === '公仔')
+                    break;
+                case this.show === 'other':
+                    return this.products.filter(item => (item.category !== '公仔' && item.category !== '啤酒'))
+                    break;
+                default:
+                    return this.products
+                    break;
+            }
+        }
+    }, 
     methods:{
+        checkList(val){
+            this.show = val
+        },
         getProducts(page = 1){
             const api = `https://vue-course-api.hexschool.io/api/fan630/products?page=${page}`
             this.$http.get(api).then((response) => {
