@@ -26,9 +26,7 @@
                             href="#home"
                             role="tab"
                         >
-                            <i class="fas fa-beer mr-1">
-                            </i>
-                            <span>All you can drink</span>
+                            <span>所有商品</span>
                         </a>
                         <a
                             class="list-group-item list-group-item-action"
@@ -36,9 +34,9 @@
                             href="#profile"
                             role="tab"
                         >
-                            <i class="fas fa-wine-bottle mr-1">
-                                <span>Beer</span>
+                            <i class="fas fa-beer mr-1">
                             </i>
+                            <span>Beer</span>
                         </a>
                         <a
                             class="list-group-item list-group-item-action"
@@ -84,7 +82,7 @@
                                         查看更多
                                     </button>
                                     <button type="button" class="btn btn-outline-primary btn-sm ml-auto"
-                                        @click="addtoCart(product.id, product.num)">
+                                        @click="addtoCart(item.id)">
                                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                                         加到購物車
                                     </button>
@@ -138,7 +136,88 @@
                 </div>
                 <!--modal -->
         </div>
-        <OrderList :cart="cart" />
+        <!-- 購買商品列表 -->
+        <div class="container" v-if="Object.keys(cart).length > 1">
+            <h1 class="text-center">今朝有酒今朝醉</h1>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12">
+                        <div
+                            class="table-responsive"
+                        >
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="100">選項</th>
+                                        <th class="text-center">商品圖片</th>
+                                        <th class="text-right">商品名稱</th>
+                                        <th
+                                            width="100"
+                                            class="text-right"
+                                        >數量</th>
+                                        <th
+                                            width="80"
+                                            class="text-right"
+                                        >單價</th>
+                                        <th
+                                            width="80"
+                                            class="text-right"
+                                        >小計</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts">
+                                        <td class="align-middle text-center">
+                                            <a  @click="removeCartItem(item.id)">
+                                                <i class="fas fa-trash-alt"
+                                                    style='font-size:16px'
+                                                    aria-hidden="true"
+                                                ></i>
+                                            </a>
+                                        </td>
+                                        <td
+                                            class="align-middle bg-cover box2"
+                                            :style = "{backgroundImage: `url(${item.product.imageUrl})`}"
+                                        >
+                                        </td>
+                                        <td class="align-middle text-right"  >{{item.product.title}}</td>
+                                        <td class="align-middle text-right">{{item.qty}}</td>
+                                        <td class="align-middle text-right">${{item.product.price}}</td>
+                                        <td class="align-middle text-right">
+                                            <strong>${{item.final_total}}</strong>
+                                        </td>
+                                    </tr>
+                                    <!--<tr v-if="cart.final_total">
+                                        <td colspan="5" class="text-right">
+                                            合計
+                                        </td>
+                                        <td class="text-right">
+                                            <strong>{{ cart.final_total }}</strong>
+                                        </td>
+                                    </tr>-->
+                                </tbody>
+                                <tfoot>
+                                    <tr v-if="cart.total">
+                                        <td colspan="5" class="text-right">合計</td>
+                                        <td class="text-right">{{ cart.total }}</td>
+                                    </tr>
+                                    <tr v-if="cart.final_total !== cart.total">
+                                        <td colspan="5" class="text-right text-success">折扣價</td>
+                                        <td class="text-right text-success">{{ cart.final_total }}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div class="input-group mb-3 input-group-sm">
+                                <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                                        套用優惠碼
+                                    </button>
+                                </div>
+                            </div>
+                        </div>  
+                  </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -159,7 +238,8 @@ export default {
                 loadingItem: ''
             }, 
             isLoading: false, 
-            cart:{}
+            cart:{}, 
+            coupon_code:''
         }
     }, 
     created(){
@@ -204,9 +284,28 @@ export default {
                 this.isLoading = false
             })
         }, 
+        removeCartItem(id){
+            const api = `https://vue-course-api.hexschool.io/api/fan630/cart/${id}`
+            this.isLoading = true;
+            this.$http.delete(api).then((response) => {
+                this.getCart()
+                this.isLoading = false
+            })
+        }, 
+        addCouponCode(){
+            const api = `https://vue-course-api.hexschool.io/api/fan630/coupon`
+            let coupon = {
+                code: this.coupon_code
+            }
+            this.isLoading = true;
+            this.$http.post(api,{data: coupon}).then((response) => {
+                this.getCart()
+                this.isLoading = false
+            })
+        }, 
         created(){
-            this.getProducts()
-            this.getCart()
+            this.getProducts();
+            this.getCart();
         }
     }
 }
@@ -224,5 +323,9 @@ export default {
 
     .bg-transparented{
         background-color: rgba(255, 255, 255, .5)
+    }
+    .box2{
+        width: 160px;
+        height: 200px;
     }
 </style>
