@@ -24,12 +24,10 @@
                         <td>{{item.category}}</td>
                         <td class="text-left">{{item.title}}</td>
                         <td class="text-right">
-                            {{item.origin_price|currency}}
-                            <!-- {{item.origin_price ? (item.origin_price|currency) : '未輸入價格'}} -->
+                            {{item.origin_price ? currencyItem(item.origin_price) : '未輸入原價'}}
                         </td>
                         <td class="text-right">
-                            {{item.price|currency}}
-                            <!-- {{item.price? (item.price|currency) : '未輸入價格'}} -->
+                            {{item.price ? currencyItem(item.price) : '未輸入特價'}}
                         </td>
                         <td class="text-right">
                             <span v-if="item.is_enabled > 0" class="text-success">啟用</span>
@@ -207,8 +205,6 @@ export default {
                 this.products = response.data.products
                 this.pagination = response.data.pagination  
             })
-            //自行添加
-            // this.tempProduct.imageUrl = ''
         }, 
         // isNew這份資料是新的還是舊的
         openModal(isNew, item){
@@ -276,7 +272,14 @@ export default {
                     this.$bus.$emit('message:push', response.data.message, 'danger')
                 }
             })
-        }
+        },
+        currencyItem(num) {
+            const n = Number(num);
+            return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
+                const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
+                return currency;
+            })}`;
+        },
     }, 
     computed:{
         itemList(){
