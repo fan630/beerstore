@@ -5,6 +5,7 @@ import Login from '../components/pages/Login'
 import About from '../components/pages/About'
 import Products from '../components/pages/Products'
 import CustomOrder from '../components/pages/CustomOrder'
+import OrderList from '../components/pages/OrderList'
 import Home from '../components/pages/Home.vue'
 
 Vue.use(VueRouter)
@@ -53,7 +54,11 @@ Vue.use(VueRouter)
           name: 'CustomOrder',
           component: CustomOrder,
         },
-        // 可以在這邊新增訂單列表和優惠券
+        {
+          path: 'order_list',
+          name: 'OrderList',
+          component: OrderList,
+        },
       ]
     },
 ]
