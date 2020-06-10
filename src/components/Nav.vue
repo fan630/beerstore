@@ -3,100 +3,99 @@
         <header>
         <!-- headers -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a
-                class="navbar-brand"
-                href="#"
-            >
-                <i
-                    class="fas fa-heart text-info"
-                    aria-hidden="true"
-                ></i>
-                酒館打烊?
-            </a>
-            <router-link to="/custom_order" class="nav-link">
-                <i class="fas fa-shopping-cart">
-                    下單去
-                </i>
-            </router-link>
-            <router-link to="/custom_order/order_list" class="nav-link">
-                    我的訂單
-            </router-link>
-            <router-link to="/coupon" class="nav-link">
-                <i class="fas fa-shopping-cart">
-                    折扣優惠
-                </i>
-            </router-link>
-            <!-- 購物車內的數量 (Button 內包含 icon, 數量 badge) -->
-            <div class="dropdown ml-auto">
-                <button
-                    class="bg-transparent border-0 btn-cart"
-                    data-toggle="dropdown"
-                    data-flip="false"
+                <a
+                    class="navbar-brand"
+                    href="#"
                 >
                     <i
-                        class="fas fa-shopping-cart fa-2x"
+                        class="fas fa-heart text-info"
                         aria-hidden="true"
                     ></i>
-                    <span class="badge badge-danger">9</span>
-                    <span class="sr-only">unread messages</span>
-                </button>
-                <div
-                    class="dropdown-menu dropdown-menu-right"
-                    style="min-width: 300px"
-                    data-offset="400"
+                    酒館打烊?
+                </a>
+                <router-link to="/custom_order" class="nav-link">
+                    <i class="far fa-smile-wink"></i>
+                        商品列表
+                </router-link>
+                <button class="bg-transparent border-0 btn-cart ml-auto"
                 >
-                    <h6>已選擇商品</h6>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td class="align-middle text-center">
-                                    <a
-                                        href="#removeModal"
-                                        class="dropdown-item"
-                                        data-toggle="modal"
-                                        data-title="刪除 金牌西裝 1 件"
-                                    >
-                                        <i
-                                            class="fas fa-trash"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </a>
-                                </td>
-                                <td class="align-middle">金牌西裝</td>
-                                <td class="align-middle">1 件</td>
-                                <td class="align-middle text-left">$520</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle text-center">
-                                    <a
-                                        href="#removeModal"
-                                        class="dropdown-item"
-                                        data-toggle="modal"
-                                        data-title="刪除 金牌女裝 1 件"
-                                    >
-                                        <i
-                                            class="fas fa-trash"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </a>
-                                </td>
-                                <td class="align-middle">金牌女裝</td>
-                                <td class="align-middle">1 件</td>
-                                <td class="align-middle text-left">$480</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a
-                        href="shoppingCart-checkout.html"
-                        class="btn btn-primary btn-block"
+                    <router-link to="/order_list" class="nav-link">
+                        <i class="fas fa-shopping-cart">
+                        </i>
+                    </router-link>
+                </button>
+
+                <!-- 購物車內的數量 (Button 內包含 icon, 數量 badge) -->
+                <!--<div class="dropdown ml-auto">
+                    <button
+                        class="bg-transparent border-0 btn-cart"
+                        data-toggle="dropdown"
+                        data-flip="false"
                     >
                         <i
-                            class="fas fa-shopping-cart"
+                            class="fas fa-shopping-cart fa-2x"
                             aria-hidden="true"
-                        ></i> 結帳去
-                    </a>
-                </div>
-            </div>
+                        ></i>
+                        <span class="badge badge-danger">9</span>
+                        <span class="sr-only">unread messages</span>
+                    </button>
+                    <div
+                        class="dropdown-menu dropdown-menu-right"
+                        style="min-width: 300px"
+                        data-offset="400"
+                    >
+                        <h6>已選擇商品</h6>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle text-center">
+                                        <a
+                                            href="#removeModal"
+                                            class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-title="刪除 金牌西裝 1 件"
+                                        >
+                                            <i
+                                                class="fas fa-trash"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </a>
+                                    </td>
+                                    <td class="align-middle">金牌西裝</td>
+                                    <td class="align-middle">1 件</td>
+                                    <td class="align-middle text-left">$520</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle text-center">
+                                        <a
+                                            href="#removeModal"
+                                            class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-title="刪除 金牌女裝 1 件"
+                                        >
+                                            <i
+                                                class="fas fa-trash"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </a>
+                                    </td>
+                                    <td class="align-middle">金牌女裝</td>
+                                    <td class="align-middle">1 件</td>
+                                    <td class="align-middle text-left">$480</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a
+                            href="shoppingCart-checkout.html"
+                            class="btn btn-primary btn-block"
+                        >
+                            <i
+                                class="fas fa-shopping-cart"
+                                aria-hidden="true"
+                            ></i> 結帳去
+                        </a>
+                        </div>
+                </div>-->
             </nav>
         </header>
     </div>

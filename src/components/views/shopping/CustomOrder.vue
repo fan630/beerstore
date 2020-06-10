@@ -128,7 +128,7 @@
                 <!--modal -->
         </div>
         <!-- 購買商品列表 -->
-        <div class="container" v-if="Object.keys(cart).length > 1">
+        <!-- <div class="container" v-if="Object.keys(cart).length > 1">
             <h1 class="text-center">今朝有酒今朝醉</h1>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-12">
@@ -177,14 +177,6 @@
                                             <strong>${{item.final_total}}</strong>
                                         </td>
                                     </tr>
-                                    <!--<tr v-if="cart.final_total">
-                                        <td colspan="5" class="text-right">
-                                            合計
-                                        </td>
-                                        <td class="text-right">
-                                            <strong>{{ cart.final_total }}</strong>
-                                        </td>
-                                    </tr>-->
                                 </tbody>
                                 <tfoot>
                                     <tr v-if="cart.total">
@@ -208,19 +200,15 @@
                         </div>  
                   </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 import $ from 'jquery';
-import OrderList from "./OrderList";
 
 export default {
     name: 'CustomOrder', 
-    components:{
-        OrderList
-    }, 
     data(){
         return{
             products:[], 
@@ -230,7 +218,6 @@ export default {
             }, 
             isLoading: false, 
             cart:{}, 
-            coupon_code:'', 
             show:'all'
         }
     }, 
@@ -294,26 +281,6 @@ export default {
             this.isLoading = true;
             this.$http.get(api).then((response) => {
                 this.cart = response.data.data
-                console.log(this.cart)
-                this.isLoading = false
-            })
-        }, 
-        removeCartItem(id){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/cart/${id}`
-            this.isLoading = true;
-            this.$http.delete(api).then((response) => {
-                this.getCart()
-                this.isLoading = false
-            })
-        }, 
-        addCouponCode(){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/coupon`
-            let coupon = {
-                code: this.coupon_code
-            }
-            this.isLoading = true;
-            this.$http.post(api,{data: coupon}).then((response) => {
-                this.getCart()
                 this.isLoading = false
             })
         }, 

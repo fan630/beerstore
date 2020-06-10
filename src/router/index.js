@@ -67,13 +67,11 @@ Vue.use(VueRouter)
           path: 'custom_order',
           name: 'CustomOrder',
           component: CustomOrder,
-          children: [
-            {
-              path: 'order_list',
-              name: 'OrderList',
-              component: OrderList,
-            },
-          ]
+        },
+        {
+          path: 'order_list',
+          name: 'OrderList',
+          component: OrderList,
         },
       ]
     },
