@@ -55,7 +55,8 @@
                 <div class="modal-content border-0">
                 <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title" id="exampleModalLabel">
-                    <span>新增優惠券</span>
+                    <span v-if="isNew">新增優惠券</span>
+                    <span v-else>編輯優惠券</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -167,6 +168,7 @@ export default {
                 this.isLoading = false
                 this.coupons = response.data.coupons
                 this.pagination = response.data.pagination  
+
             })
         }, 
         // isNew這份資料是新的還是舊的
@@ -196,6 +198,7 @@ export default {
                 if(response.data.success){
                     $('#couponModal').modal('hide')
                     this.getCoupon()
+                    this.$bus.$emit('message:push', response.data.message, 'success')
                 }else{
                     $('#couponModal').modal('hide')
                     this.getCoupon()
@@ -208,12 +211,12 @@ export default {
             this.$http.delete(api).then((response) => {
                 if(response.data.success){
                     $('#couponModal').modal('hide')
-                    // window.confirm('確認刪除?')
+                    window.confirm('確認刪除?')
+                    this.$bus.$emit('message:push', response.data.message, 'danger')
                     this.getCoupon()
                 }else{
                     $('#couponModal').modal('hide')
                     this.getCoupon()
-                    console.log('刪除失敗')
                 }
             })
         }, 

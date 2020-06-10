@@ -49,7 +49,8 @@
                 <div class="modal-content border-0">
                 <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title" id="exampleModalLabel">
-                    <span>新增產品</span>
+                    <span v-if="isNew">新增產品</span>
+                    <span v-else>編輯產品</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
