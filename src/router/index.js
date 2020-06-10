@@ -8,6 +8,7 @@ import Coupon from '../components/views/admin/Coupon'
 import Orders from '../components/views/admin/Orders'
 import CustomOrder from '../components/views/shopping/CustomOrder'
 import OrderList from '../components/views/shopping/OrderList'
+import CheckOut from '../components/views/shopping/CheckOut'
 import Home from '../components/Home.vue'
 
 Vue.use(VueRouter)
@@ -15,6 +16,28 @@ Vue.use(VueRouter)
     {
       path: '*',
       redirect: 'login',
+    },
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      children: [
+        {
+          path: 'custom_order',
+          name: 'CustomOrder',
+          component: CustomOrder,
+        },
+        {
+          path: 'order_list',
+          name: 'OrderList',
+          component: OrderList,
+        },
+        {
+          path: 'checkout',
+          name: 'CheckOut',
+          component: CheckOut,
+        },
+      ]
     },
     {
       path: '/admin',
@@ -57,23 +80,6 @@ Vue.use(VueRouter)
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: Login
-    },
-    {
-      path: '/',
-      name: 'Home',
-      component: Home,
-      children: [
-        {
-          path: 'custom_order',
-          name: 'CustomOrder',
-          component: CustomOrder,
-        },
-        {
-          path: 'order_list',
-          name: 'OrderList',
-          component: OrderList,
-        },
-      ]
     },
 ]
 
