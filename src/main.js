@@ -4,13 +4,11 @@ import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap'
-
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './bus';
 import currencyFilter from './filters/currency';
-
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
@@ -18,6 +16,54 @@ axios.defaults.withCredentials = true
 
 Vue.component('Loading', Loading)
 Vue.filter('currency', currencyFilter)
+
+// Vee-validate
+import { ValidationProvider, extend } from 'vee-validate';
+import { required, email } from 'vee-validate/dist/rules'
+
+extend('required', required);
+
+// 驗證名稱
+extend('secret', {
+  validate: value => value === 'example',
+  message: '正確'
+});
+
+// 驗證email
+extend('email', {
+  ...email,
+  message: '郵件地址不正確'　//自訂的訊息
+});
+
+//驗證手機
+extend('min', {
+  validate(value, args) {
+    return value.length >= args.length
+  },
+  params: ['length'],
+  message: '長度不夠:應為10碼'
+})
+
+extend('max', {
+  validate(value, args) {
+    return value.length <= args.length
+  },
+  params: ['length'],
+  message: '長度超過:應為10碼'
+})
+
+// import VueI18n from 'vue-i18n'; Vue.use(VueI18n);
+// const i18n = new VueI18n({
+//   locale: 'zhTW'
+// });
+// Vue.use(vee-validate, {
+//   i18n,
+//   dictionary: {
+//     zhTW
+//   }
+// });
+
+Vue.component('ValidationProvider', ValidationProvider);
 
 new Vue({
   router,
