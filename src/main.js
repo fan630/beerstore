@@ -18,16 +18,16 @@ Vue.component('Loading', Loading)
 Vue.filter('currency', currencyFilter)
 
 // Vee-validate
-import { ValidationProvider, extend } from 'vee-validate';
+import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules'
 
 extend('required', required);
 
 // 驗證名稱
-extend('secret', {
-  validate: value => value === 'example',
-  message: '正確'
-});
+// extend('secret', {
+//   validate: value => value !== 'example',
+//   message: '正確'
+// });
 
 // 驗證email
 extend('email', {
@@ -52,17 +52,7 @@ extend('max', {
   message: '長度超過:應為10碼'
 })
 
-// import VueI18n from 'vue-i18n'; Vue.use(VueI18n);
-// const i18n = new VueI18n({
-//   locale: 'zhTW'
-// });
-// Vue.use(vee-validate, {
-//   i18n,
-//   dictionary: {
-//     zhTW
-//   }
-// });
-
+Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
 
 new Vue({

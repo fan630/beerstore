@@ -34,45 +34,42 @@
     <div class="container">
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-md-10">
-                <form
-                    class="needs-validation"
-                    @submit.prevent="createOrder"
-                    novalidate
-                >
+              <ValidationObserver v-slot="{ handleSubmit }">
+                <form @submit.prevent="handleSubmit(createOrder)">
                     <div class="h4 card-header text-center mb-3">
                         訂購人資訊
                     </div>
                     <div class="form-row text-left">
                         <div class="form-group col-md-4">
                             <label for="#name">姓名</label>
-                            <ValidationProvider rules="required|secret" 
-                                immediate v-slot="{ errors }"
-                              >
-                              <input
-                                  type="name"
-                                  class="form-control"
-                                  id="name"
-                                  placeholder="姓名"
-                                  required
-                                  v-model="form.user.name"
-                              >
-                            <span>{{ errors[0] }}</span>
-                            </ValidationProvider>
+                              <!-- <ValidationProvider rules="required|secret" 
+                                  immediate v-slot="{ errors }"
+                                > -->
+                                <input
+                                    type="name"
+                                    class="form-control"
+                                    id="name"
+                                    placeholder="姓名"
+                                    v-model="form.user.name"
+                                    required
+                                >
+                              <!-- <span>{{ errors[0] }}</span>
+                            </ValidationProvider> -->
                         </div>
                         <div class="form-group col-md-4">
                             <label for="#email">Email</label>
                              <ValidationProvider rules="email" 
-                                immediate v-slot="{ errors }"
-                              >
-                              <input
-                                  type="email"
-                                  class="form-control"
-                                  id="email"
-                                  placeholder="Email"
-                                  v-model="form.user.email"
-                                  required
-                              >
-                               <span>{{ errors[0]}}</span>
+                                  immediate v-slot="{ errors }"
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    placeholder="Email"
+                                    v-model="form.user.email"
+                                    required
+                                >
+                                <span>{{ errors[0]}}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-md-4">
@@ -92,47 +89,6 @@
                             </ValidationProvider>
                         </div>
                     </div>
-                    <!-- <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="#country">國家</label>
-                            <select
-                                class="form-control"
-                                id="country"
-                                required
-                            >
-                                <option
-                                    selected
-                                    disabled
-                                    value=""
-                                >Choose...</option>
-                                <option>台灣</option>
-                                <option disabled>中國</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide your country
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="#city">城市</label>
-                            <select
-                                class="form-control"
-                                id="city"
-                                required
-                            >
-                                <option
-                                    selected
-                                    disabled
-                                    value=""
-                                >Choose...</option>
-                                <option>台北市</option>
-                                <option>台南市</option>
-                                <option>高雄市</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide your city
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="form-group  text-left">
                         <label for="inputAddress">地址</label>
                         <input
@@ -158,6 +114,7 @@
                         </button>
                     </div>
                 </form>
+                </ValidationObserver>
             </div>
         </div>
     </div>
@@ -165,10 +122,14 @@
 </template>
 
 <script>
+
 export default {
   name: 'CheckOut',
   data(){
     return{
+      cart: {
+        carts: []
+      },
       form:{
         user:{
           name: "",
@@ -181,31 +142,24 @@ export default {
     }
   }, 
   methods:{
+    getCart(){
+        const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
+        this.isLoading = true;
+        this.$http.get(api).then((response) => {
+            this.cart = response.data.data
+            this.isLoading = false
+        })
+    }, 
     createOrder(){
         const api = `https://vue-course-api.hexschool.io/api/fan630/order`
         const order = this.form
-        // this.isLoading = true;
+        this.isLoading = true;
         this.$http.post(api, {data: order}).then((response) => {
-            console.log('訂單已建立',response)
-            // this.getCart()
-            // this.isLoading = false
+            this.$bus.$emit('message:push', response.data.message, 'warning')
+            this.getCart()
+            this.isLoading = false
         })
     }
-    /*createOrder () {
-      const vm = this
-      const url = `https://vue-course-api.hexschool.io/api/fan630/order`
-      this.$validator.validate().then((valid) => {
-        if (valid) {
-          this.$http.post(url, { data: vm.form }).then((response) => {
-            if (response.data.success) {
-              console.log('訂單已建立',response)
-            }
-          })
-        } else {
-          console.log('欄位不完整')
-        }
-      })
-    }*/
   }
 }
 </script>
