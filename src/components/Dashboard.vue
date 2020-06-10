@@ -16,7 +16,7 @@
 <script>
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-import Products from "./pages/Products.vue";
+import Products from "./views/admin/Products";
 import AlertMessage from "./AlertMessage"
 
 export default {

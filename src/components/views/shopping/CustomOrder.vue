@@ -286,6 +286,7 @@ export default {
                 this.status.loadingItem = ''
                 this.getCart()
                 $('#productModal').modal('hide')
+                this.$bus.$emit('message:push', response.data.message, 'success')
             })
         }, 
         getCart(){

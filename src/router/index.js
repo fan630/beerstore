@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../components/Dashboard.vue'
-import Login from '../components/pages/Login'
-import About from '../components/pages/About'
-import Products from '../components/pages/Products'
-import Coupon from '../components/pages/Coupon'
-import Orders from '../components/pages/Orders'
-import CustomOrder from '../components/pages/CustomOrder'
-import OrderList from '../components/pages/OrderList'
-import Home from '../components/pages/Home.vue'
+import Login from '../components/Login'
+import About from '../components/About'
+import Products from '../components/views/admin/Products'
+import Coupon from '../components/views/admin/Coupon'
+import Orders from '../components/views/admin/Orders'
+import CustomOrder from '../components/views/shopping/CustomOrder'
+import OrderList from '../components/views/shopping/OrderList'
+import Home from '../components/Home.vue'
 
 Vue.use(VueRouter)
   const routes = [
