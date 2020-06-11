@@ -63,23 +63,23 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth) {
-      const api = 'https://vue-course-api.hexschool.io/api/user/check'
-      axios.post(api).then(response => {
-        if(response.data.success){
-          next()
-        }else{
-          console.log('驗證錯誤, 請重新登入')
-          next({
-            path:'/login'
-          })
-        }
-      })
-    }else{
-      next()
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     if (to.meta.requiresAuth) {
+//       const api = 'https://vue-course-api.hexschool.io/api/user/check'
+//       axios.post(api).then(response => {
+//         if(response.data.success){
+//           next()
+//         }else{
+//           console.log('驗證錯誤, 請重新登入')
+//           next({
+//             path:'/login'
+//           })
+//         }
+//       })
+//     }else{
+//       next()
+//     }
+// })
 
 
 

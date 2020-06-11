@@ -60,19 +60,19 @@ Vue.use(VueRouter)
           path: 'products',
           name: 'Products',
           component: Products,
-          meta: { requiresAuth: true }
+          // meta: { requiresAuth: true }
         },
         {
           path: 'orders',
           name: 'Orders',
           component: Orders,
-          meta: { requiresAuth: true }
+          // meta: { requiresAuth: true }
         },
         {
           path: 'coupon',
           name: 'Coupon',
           component: Coupon,
-          meta: { requiresAuth: true }
+          // meta: { requiresAuth: true }
         },
         // 可以在這邊新增訂單列表和優惠券
       ]
