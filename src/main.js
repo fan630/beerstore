@@ -9,6 +9,7 @@ import router from './router'
 import store from './store'
 import './bus';
 import currencyFilter from './filters/currency';
+import dateTransfer from './filters/date';
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
@@ -16,6 +17,7 @@ axios.defaults.withCredentials = true
 
 Vue.component('Loading', Loading)
 Vue.filter('currency', currencyFilter)
+Vue.filter('date', dateTransfer)
 
 // Vee-validate
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
