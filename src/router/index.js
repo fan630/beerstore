@@ -2,16 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../components/Dashboard.vue'
 import Login from '../components/Login'
-import About from '../components/About'
-import Products from '../components/views/admin/Products'
-import Coupon from '../components/views/admin/Coupon'
-import Orders from '../components/views/admin/Orders'
-import CustomOrder from '../components/views/shopping/CustomOrder'
-import OrderList from '../components/views/shopping/OrderList'
-import CheckOut from '../components/views/shopping/CheckOut'
-import CheckOutPay from '../components/views/shopping/CheckOutPay'
-import MyOrder from '../components/views/shopping/MyOrder'
-import Home from '../components/Home.vue'
+import About from '../views/About.vue'
+import Products from '../views/admin/Products'
+import Coupon from '../views/admin/Coupon'
+import Orders from '../views/admin/Orders'
+import CustomOrder from '../views/shopping/CustomOrder'
+import OrderList from '../views/shopping/OrderList'
+import CheckOut from '../views/shopping/CheckOut'
+import CheckOutPay from '../views/shopping/CheckOutPay'
+import MyOrder from '../views/shopping/MyOrder'
+import Home from '../views/shopping/Home.vue'
+import Index from '../views/shopping/Index.vue'
 
 Vue.use(VueRouter)
   const routes = [
@@ -21,9 +22,14 @@ Vue.use(VueRouter)
     },
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name:'Index',
+      component: Index,
       children: [
+        {
+          path: '',
+          name: 'Home',
+          component: Home,
+        },
         {
           path: 'my_order',
           name: 'MyOrder',
@@ -97,7 +103,14 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   // mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes
 })
 

@@ -99,7 +99,7 @@
                         </div>
                         <!-- <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="dueDate">到期時間</label>
+                         ｀       <label for="dueDate">到期時間</label>
                                 <input type="date" class="form-control" id="dueDate" v-model="tempOrder.due_date"
                                 placeholder="請輸入到期時間">
                             </div>
@@ -181,9 +181,9 @@ export default {
     methods:{
         getOrders(page = 1){
             const api = `https://vue-course-api.hexschool.io/api/fan630/admin/orders?page=${page}`
-            // this.isLoading = true
+            this.isLoading = true
             this.$http.get(api).then((response) => {
-                // this.isLoading = false
+                this.isLoading = false
                 this.orders = response.data.orders
                 this.pagination = response.data.pagination  
             })

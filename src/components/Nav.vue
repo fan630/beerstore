@@ -3,16 +3,10 @@
         <header>
         <!-- headers -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a
-                    class="navbar-brand"
-                    href="#"
-                >
-                    <i
-                        class="fas fa-heart text-info"
-                        aria-hidden="true"
-                    ></i>
-                    酒館打烊?
-                </a>
+                <router-link to="/" class="nav-link navbar-brand">
+                    <i class="fas fa-heart text-info"></i>
+                        酒館打烊?
+                </router-link>
                 <router-link to="/custom_order" class="nav-link">
                     <i class="far fa-smile-wink"></i>
                         商品列表
@@ -21,14 +15,10 @@
                     <i class="fas fa-grin-wink"></i>
                         我的訂單
                 </router-link>
-                <button class="bg-transparent border-0 btn-cart ml-auto"
-                >
-                <router-link to="/order_list" class="nav-link">
+                <router-link to="/order_list" class="nav-link ml-auto">
                     <i class="fas fa-shopping-cart">
                     </i>
                 </router-link>
-                </button>
-
                 <!-- 購物車內的數量 (Button 內包含 icon, 數量 badge) -->
                 <!--<div class="dropdown ml-auto">
                     <button
