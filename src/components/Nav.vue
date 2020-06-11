@@ -17,12 +17,16 @@
                     <i class="far fa-smile-wink"></i>
                         商品列表
                 </router-link>
+                <router-link to="/my_order" class="nav-link">
+                    <i class="fas fa-grin-wink"></i>
+                        我的訂單
+                </router-link>
                 <button class="bg-transparent border-0 btn-cart ml-auto"
                 >
-                    <router-link to="/order_list" class="nav-link">
-                        <i class="fas fa-shopping-cart">
-                        </i>
-                    </router-link>
+                <router-link to="/order_list" class="nav-link">
+                    <i class="fas fa-shopping-cart">
+                    </i>
+                </router-link>
                 </button>
 
                 <!-- 購物車內的數量 (Button 內包含 icon, 數量 badge) -->

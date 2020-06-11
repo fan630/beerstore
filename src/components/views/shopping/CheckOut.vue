@@ -2,16 +2,16 @@
   <div>
     <div class="container my-4">
         <!-- <div class="h1 text-center">今朝有酒今朝醉</div> -->
-        <div class="row text-center">
-                <div class="col-md-4">
+        <div class="row text-center justify-content-center">
+                <div class="col-md-10">
                   <div
                       class="alert alert-success border-rounded"
                       role="alert"
                   >
-                      1.輸入訂單資料
+                      輸入訂單資料
                   </div>
                 </div>
-                <div class="col-md-4">
+                <!--<div class="col-md-4">
                   <div
                       class="alert alert-primary border-rounded"
                       role="alert"
@@ -26,7 +26,7 @@
                   >
                       3.完成
                   </div>
-                </div>
+                </div>-->
         </div>
     </div>
 
@@ -147,7 +147,7 @@ export default {
         this.isLoading = true;
         this.$http.get(api).then((response) => {
             this.cart = response.data.data
-            this.isLoading = false
+            this.isLoading = false  
         })
     }, 
     createOrder(){
@@ -156,6 +156,8 @@ export default {
         this.isLoading = true;
         this.$http.post(api, {data: order}).then((response) => {
             this.$bus.$emit('message:push', response.data.message, 'warning')
+            console.log(response.data)
+            this.$router.push(`/checkout_pay/${response.data.orderId}`)
             this.getCart()
             this.isLoading = false
         })

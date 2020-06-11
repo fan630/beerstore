@@ -9,6 +9,8 @@ import Orders from '../components/views/admin/Orders'
 import CustomOrder from '../components/views/shopping/CustomOrder'
 import OrderList from '../components/views/shopping/OrderList'
 import CheckOut from '../components/views/shopping/CheckOut'
+import CheckOutPay from '../components/views/shopping/CheckOutPay'
+import MyOrder from '../components/views/shopping/MyOrder'
 import Home from '../components/Home.vue'
 
 Vue.use(VueRouter)
@@ -23,6 +25,11 @@ Vue.use(VueRouter)
       component: Home,
       children: [
         {
+          path: 'my_order',
+          name: 'MyOrder',
+          component: MyOrder,
+        },
+        {
           path: 'custom_order',
           name: 'CustomOrder',
           component: CustomOrder,
@@ -36,6 +43,11 @@ Vue.use(VueRouter)
           path: 'checkout',
           name: 'CheckOut',
           component: CheckOut,
+        },
+        {
+          path: 'checkout_pay/:orderId',
+          name: 'CheckOutPay',
+          component: CheckOutPay,
         },
       ]
     },
