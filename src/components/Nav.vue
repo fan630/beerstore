@@ -1,97 +1,53 @@
 <template>
     <div>
-        <header>
-        <!-- headers -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <router-link to="/" class="nav-link navbar-brand">
-                    <i class="fas fa-heart text-info"></i>
-                        酒館打烊?
-                </router-link>
-                <router-link to="/custom_order" class="nav-link">
-                    <i class="far fa-smile-wink"></i>
-                        商品列表
-                </router-link>
-                <router-link to="/my_order" class="nav-link">
-                    <i class="fas fa-grin-wink"></i>
-                        我的訂單
-                </router-link>
-                <router-link to="/order_list" class="nav-link ml-auto">
-                    <i class="fas fa-shopping-cart">
-                    </i>
-                </router-link>
-                <!-- 購物車內的數量 (Button 內包含 icon, 數量 badge) -->
-                <!--<div class="dropdown ml-auto">
-                    <button
-                        class="bg-transparent border-0 btn-cart"
-                        data-toggle="dropdown"
-                        data-flip="false"
-                    >
-                        <i
-                            class="fas fa-shopping-cart fa-2x"
-                            aria-hidden="true"
-                        ></i>
-                        <span class="badge badge-danger">9</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <div
-                        class="dropdown-menu dropdown-menu-right"
-                        style="min-width: 300px"
-                        data-offset="400"
-                    >
-                        <h6>已選擇商品</h6>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="align-middle text-center">
-                                        <a
-                                            href="#removeModal"
-                                            class="dropdown-item"
-                                            data-toggle="modal"
-                                            data-title="刪除 金牌西裝 1 件"
-                                        >
-                                            <i
-                                                class="fas fa-trash"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </td>
-                                    <td class="align-middle">金牌西裝</td>
-                                    <td class="align-middle">1 件</td>
-                                    <td class="align-middle text-left">$520</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle text-center">
-                                        <a
-                                            href="#removeModal"
-                                            class="dropdown-item"
-                                            data-toggle="modal"
-                                            data-title="刪除 金牌女裝 1 件"
-                                        >
-                                            <i
-                                                class="fas fa-trash"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </td>
-                                    <td class="align-middle">金牌女裝</td>
-                                    <td class="align-middle">1 件</td>
-                                    <td class="align-middle text-left">$480</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a
-                            href="shoppingCart-checkout.html"
-                            class="btn btn-primary btn-block"
-                        >
-                            <i
-                                class="fas fa-shopping-cart"
-                                aria-hidden="true"
-                            ></i> 結帳去
-                        </a>
-                        </div>
-                </div>-->
-            </nav>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a
+                    class="navbar-brand"
+                    href="#"
+                >Navbar
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarNavDropdown"
+                >
+                    <ul class="navbar-nav">
+                        <li>
+                            <router-link to="/" class="nav-link active">
+                                <i class="fas fa-heart text-info"></i>
+                                    首頁
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link to="/custom_order" class="nav-link">
+                                <i class="far fa-smile-wink"></i>
+                                    商品列表
+                            </router-link>
+                        </li>
+                    </ul>
+                    <form class="form-inline ml-auto">
+                        <router-link to="/order_list" class="nav-link">
+                            <i class="fas fa-shopping-cart fa-2x">
+                            </i>
+                        </router-link>
+                        <router-link to="/login" class="nav-link">
+                            <i class="fas fa-cog fa-2x"></i>
+                        </router-link>
+                    </form>
+                </div>
+            </div>
+        </nav>
     </div>
 </template>
 

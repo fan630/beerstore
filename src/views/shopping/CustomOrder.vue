@@ -125,82 +125,8 @@
                         </div>
                     </div>
                 </div>
-                <!--modal -->
+            <!--modal -->
         </div>
-        <!-- 購買商品列表 -->
-        <!-- <div class="container" v-if="Object.keys(cart).length > 1">
-            <h1 class="text-center">今朝有酒今朝醉</h1>
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-12">
-                        <div
-                            class="table-responsive"
-                        >
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th width="100">選項</th>
-                                        <th class="text-center">商品圖片</th>
-                                        <th class="text-right">商品名稱</th>
-                                        <th
-                                            width="100"
-                                            class="text-right"
-                                        >數量</th>
-                                        <th
-                                            width="80"
-                                            class="text-right"
-                                        >單價</th>
-                                        <th
-                                            width="80"
-                                            class="text-right"
-                                        >小計</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts">
-                                        <td class="align-middle text-center">
-                                            <a  @click="removeCartItem(item.id)">
-                                                <i class="fas fa-trash-alt"
-                                                    style='font-size:16px'
-                                                    aria-hidden="true"
-                                                ></i>
-                                            </a>
-                                        </td>
-                                        <td
-                                            class="align-middle bg-cover box2"
-                                            :style = "{backgroundImage: `url(${item.product.imageUrl})`}"
-                                        >
-                                        </td>
-                                        <td class="align-middle text-right"  >{{item.product.title}}</td>
-                                        <td class="align-middle text-right">{{item.qty}}</td>
-                                        <td class="align-middle text-right">${{item.product.price}}</td>
-                                        <td class="align-middle text-right">
-                                            <strong>${{item.final_total}}</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr v-if="cart.total">
-                                        <td colspan="5" class="text-right">合計</td>
-                                        <td class="text-right">{{ cart.total }}</td>
-                                    </tr>
-                                    <tr v-if="cart.final_total !== cart.total">
-                                        <td colspan="5" class="text-right text-success">折扣價</td>
-                                        <td class="text-right text-success">{{ cart.final_total }}</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                            <div class="input-group mb-3 input-group-sm">
-                                <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
-                                        套用優惠碼
-                                    </button>
-                                </div>
-                            </div>
-                        </div>  
-                  </div>
-            </div>
-        </div> -->
     </div>
 </template>
 
@@ -247,8 +173,10 @@ export default {
             this.show = val
         },
         getProducts(page = 1){
+            this.isLoading = true
             const api = `https://vue-course-api.hexschool.io/api/fan630/products?page=${page}`
             this.$http.get(api).then((response) => {
+                this.isLoading = false
                 this.products = response.data.products
                 this.pagination = response.data.pagination  
             })

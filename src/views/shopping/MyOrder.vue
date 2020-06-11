@@ -65,7 +65,6 @@ export default {
             this.isLoading = false
             this.orders = response.data.orders
             this.pagination = response.data.pagination  
-            console.log(this.orders)
         })
     },
   }
