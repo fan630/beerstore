@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import Nav from "../../components/Nav";
-import AlertMessage from "../../components/AlertMessage";
-import Shop from "../shopping/Shop";
-import CheckOut from "../shopping/CheckOut";
-import Home from "../shopping/Home";
-import CheckOutPay from "../shopping/CheckOutPay";
-import Cart from "../shopping/Cart";
-import Footer from "../../components/Footer";
+import Nav from "./Nav";
+import AlertMessage from "./AlertMessage";
+import Shop from "../views/shopping/Shop.vue";
+import CheckOut from "../views/shopping/CheckOut";
+import Home from "../views/shopping/Home";
+import CheckOutPay from "../views/shopping/CheckOutPay";
+import Cart from "../views/shopping/Cart";
+import Footer from "./Footer";
 
 export default {
     name:'Index', 

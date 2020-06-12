@@ -15,7 +15,7 @@
             <div class="row">
                 <!--標題列-->
                 <div class="col-md-2 mb-2">
-                    <div class="list-group sticky-top" style="top:10px">
+                    <div class="list-group sticky-top sticky-top">
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'all'}"
                             @click="checkList('all')"    
@@ -239,5 +239,8 @@ export default {
     .box2{
         width: 160px;
         height: 200px;
+    }
+    .sticky-top {
+        top: 80px;
     }
 </style>

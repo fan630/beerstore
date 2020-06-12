@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// components
 import Dashboard from '../components/Dashboard.vue'
 import Login from '../components/Login'
-import About from '../views/About.vue'
+import Index from '../components/Index.vue'
+
+// views
+import About from '../views/shopping/About.vue'
 import Products from '../views/admin/Products'
 import Coupon from '../views/admin/Coupon'
 import Orders from '../views/admin/Orders'
@@ -12,7 +17,6 @@ import CheckOut from '../views/shopping/CheckOut'
 import CheckOutPay from '../views/shopping/CheckOutPay'
 import MyOrder from '../views/shopping/MyOrder'
 import Home from '../views/shopping/Home.vue'
-import Index from '../views/shopping/Index.vue'
 
 Vue.use(VueRouter)
   const routes = [
@@ -26,19 +30,24 @@ Vue.use(VueRouter)
       component: Index,
       children: [
         {
+          path: 'about',
+          name: 'About',
+          component: About,
+        },
+        {
           path: '',
           name: 'Home',
           component: Home,
         },
         {
-          path: 'my_order',
-          name: 'MyOrder',
-          component: MyOrder,
-        },
-        {
           path: 'shop',
           name: 'Shop',
           component: Shop,
+        },
+        {
+          path: 'my_order',
+          name: 'MyOrder',
+          component: MyOrder,
         },
         {
           path: 'cart',
@@ -102,6 +111,7 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
+  linkActiveClass: 'active',
   // mode: 'history',
   // base: process.env.BASE_URL,
   scrollBehavior(to, from, savedPosition) {

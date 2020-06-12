@@ -3,14 +3,12 @@
         <loading :active.sync="isLoading"></loading>
         <div class="table-responsive">
             <table class="table table-hover table-bordered my-4">
-                <!-- <caption>總共{{itemList}}張優惠券</caption> -->
                 <thead>
                     <tr>
                         <th width="150px">購買日期</th>
                         <th width="230px">訂單編號</th>
                         <th width="100px">留言內容</th>
                         <th width="300px">訂單內容</th>
-                        <!-- <th width="100px">總金額</th> -->
                         <th width="150px">付款狀態</th>
                         <th width="150px">操作訂單</th>
                     </tr>
@@ -23,12 +21,7 @@
                         <td>
                             <ul>
                                 <li v-for="(item, i) in item.products" :key="i">
-                                    {{item.product.num}}
                                     {{ item.product.title }} 數量：{{ item.product.num}}
-                                    <!-- <span :class="item.product.num !== item.num ? 'red': ''">
-                                        {{ item.product.num}}
-                                    </span> -->
-                                    {{ item.product.unit }} * {{item.product.origin_price}}
                                 </li>
                             </ul>
                         </td>
@@ -127,39 +120,19 @@
             </div>
             </div>
         </div>
-        <!-- <nav aria-label="Page navigation example" class="text-center">
-            <ul class="pagination">
-                <li class="page-item" :class="{'disabled':!pagination.has_pre}">
-                    <a class="page-link" href="#" aria-label="Previous"
-                        @click.prevent="getOrders(pagination.current_page -1)"
-                        >
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item" 
-                    :class="{'active': pagination.current_page === true}"
-                    v-for="page in pagination.total_pages" :key="page"
-                    >
-                    <a class="page-link" href="#" @click.prevent="getOrders(page)">
-                        {{page}}
-                    </a>
-                </li>
-                <li class="page-item" :class="{'disabled':!pagination.has_next}">
-                    <a class="page-link" href="#" aria-label="Next"
-                        @click.prevent="getOrders(pagination.current_page +1)"
-                        >
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav> -->
+        <Page :pagination="pagination" @changePage="getOrders"></Page>
     </div>
 </template>
 
 <script>
 import $ from 'jquery';
+import Page from "../../components/Page"
 
 export default {
+    name:'Orders',
+    components:{
+        Page
+    }, 
     data(){
         return{
             orders:[
@@ -171,7 +144,6 @@ export default {
                 products:{
                 }
             }, 
-            //isNew: false,
             isLoading: false, 
         }
     }, 
@@ -208,11 +180,6 @@ export default {
             })
         }, 
     }, 
-    // computed:{
-    //     itemList(){
-    //         return Object.keys(this.orders).length;
-    //     }
-    // }
 }
 </script>
 
