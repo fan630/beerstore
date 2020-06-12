@@ -34,6 +34,7 @@
                         </tbody>
                     </table>
                  </div>
+                <Page :pagination="pagination" @changePage="getOrderList"></Page>
              </div>
          </div>
      </div>
@@ -41,8 +42,13 @@
 </template>
 
 <script>
+import Page from '../../components/Page'
+
 export default {
   name: 'MyOrder',
+  components:{
+      Page
+  },
   data(){
       return{
           orders:[
@@ -72,7 +78,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    ul{
-        list-style-type: none;
-    }
+
 </style>

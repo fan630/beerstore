@@ -25,7 +25,7 @@ export default {
     Sidebar, 
     Navbar, 
     Products,  
-    AlertMessage
+    AlertMessage, 
   }
 }
 </script>
