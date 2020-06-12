@@ -14,35 +14,39 @@
         <div class="container">
             <div class="row">
                 <!--標題列-->
-                <div class="col-md-3 mb-2">
+                <div class="col-md-2 mb-2">
                     <div class="list-group sticky-top" style="top:10px">
-                        <button class="list-group-item list-group-item-action active"
+                        <a  class="list-group-item list-group-item-action"
+                            :class="{'active': show === 'all'}"
                             @click="checkList('all')"    
                         >
                             <span>所有商品</span>
-                        </button>
-                        <button class="list-group-item list-group-item-action"
+                        </a>
+                        <a  class="list-group-item list-group-item-action"
+                            :class="{'active': show === 'beer'}"
                             @click="checkList('beer')"    
                         >
                             <i class="fas fa-beer mr-1">
                             </i>
                             Beer
-                        </button>
-                        <button class="list-group-item list-group-item-action"
+                        </a>
+                        <a  class="list-group-item list-group-item-action"
+                            :class="{'active': show === 'acc'}"
                             @click="checkList('acc')"     
                         >
                             公仔
-                        </button>
-                        <button class="list-group-item list-group-item-action"
+                        </a>
+                        <a  class="list-group-item list-group-item-action"
+                            :class="{'active': show === 'other'}"
                             @click="checkList('other')"     
                         >
                             其餘商品
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!--標題列-->
                 <!--商品內容-->
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
@@ -56,7 +60,7 @@
                                         {{item.category}}
                                     </span>
                                     <h5 class="card-title">
-                                        <a href="#" class="text-dark">{{item.title}}</a>
+                                        <a class="text-dark">{{item.title}}</a>
                                     </h5>
                                     <p class="card-text text-left">{{item.content}}</p>
                                         <div class="d-flex justify-content-between align-items-baseline">
@@ -81,7 +85,6 @@
                             </div>
                         </div>
                     </div>
-                    <Page :pagination="pagination" @changePage="getProducts"></Page>
                 </div>
                 <!--商品內容-->
             </div>
@@ -133,13 +136,9 @@
 
 <script>
 import $ from 'jquery';
-import Page from '../../components/Page'
 
 export default {
     name: 'Shop',
-    components:{
-        Page
-    }, 
     data(){
         return{
             products:[], 
@@ -150,9 +149,6 @@ export default {
             isLoading: false, 
             cart:{}, 
             show:'all',
-            pagination:{
-
-            }
         }
     }, 
     created(){
@@ -180,13 +176,12 @@ export default {
         checkList(val){
             this.show = val
         },
-        getProducts(page = 1){
+        getProducts(){
             this.isLoading = true
-            const api = `https://vue-course-api.hexschool.io/api/fan630/products?page=${page}`
+            const api = `https://vue-course-api.hexschool.io/api/fan630/products/all`
             this.$http.get(api).then((response) => {
                 this.isLoading = false
                 this.products = response.data.products
-                this.pagination = response.data.pagination  
             })
         }, 
         getProduct(id){

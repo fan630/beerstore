@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
      <div class="container">
-         <h2>我的訂單列表</h2>
+         <h2 class="my-3">我的訂單列表</h2>
          <div class="row">
              <div class="col-md-12">
                  <div class="table-responsive-md">
@@ -29,7 +29,8 @@
                                     </ul>
                                 </td>
                                 <td>{{item.total}}</td>
-                                <td>{{item.is_paid ? '已付款': '尚未付款'}}</td>
+                                <td :class="item.is_paid ? 'green': 'red'"
+                                    >{{item.is_paid ? '已付款': '尚未付款'}}</td>
                             </tr>
                         </tbody>
                     </table>

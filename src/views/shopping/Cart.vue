@@ -2,15 +2,15 @@
     <div>
         <loading :active.sync="isLoading"></loading>
         <!-- <div class="container" v-if="itemList"> -->
-        <div class="container">
-            <h1 class="text-center">今朝有酒今朝醉</h1>
+        <div class="container" v-if="itemList !== 0">
+            <h3 class="text-center my-3">今朝有酒今朝醉</h3>
                 <!-- 購買商品 -->
                 <div class="row d-flex justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div
                             class="table-responsive"
                         >
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th width="100">選項</th>
@@ -68,7 +68,9 @@
                                         </tr>
                                     </tfoot>
                             </table>
+                            <div>✦ 輸入折扣碼「longtimenosee」，和 FanBeer 一同歡慶開幕吧！</div>
                             <div class="input-group mb-3 input-group-sm">
+                                
                                 <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
@@ -80,12 +82,8 @@
                   </div>
             </div>
         </div>
-        <button>
-            <router-link to="/checkout">
-                前往結帳
-            </router-link>
-        </button>
-        <!-- <div class="container" v-else>您目前沒有商品喔!</div> -->
+        <div class="h2 my-3" v-else>您目前沒有商品喔!</div>
+        <router-link to="/checkout" class="btn btn-primary text-white" href="#" role="button">前往結帳</router-link>
     </div>
 </template>
 
@@ -101,7 +99,7 @@ export default {
     }, 
     computed:{
         itemList(){
-            return Object.keys(this.cart.carts).length;
+            return this.cart.carts.length
         }
     },
     methods:{

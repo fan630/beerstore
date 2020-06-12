@@ -5,7 +5,7 @@
         <div class="row text-center justify-content-center">
                 <div class="col-md-10">
                   <div
-                      class="alert alert-success border-rounded"
+                      class="alert border-rounded"
                       role="alert"
                   >
                       輸入訂單資料
@@ -36,7 +36,7 @@
             <div class="col-md-10">
               <ValidationObserver v-slot="{ handleSubmit }">
                 <form @submit.prevent="handleSubmit(createOrder)">
-                    <div class="h4 card-header text-center mb-3">
+                    <div class="h4 text-center mb-3">
                         訂購人資訊
                     </div>
                     <div class="form-row text-left">

@@ -1,8 +1,8 @@
 <template>
     <div>
         <Nav />
-        <AlertMessage></AlertMessage>
-        <router-view></router-view>
+            <AlertMessage></AlertMessage>
+            <router-view></router-view>
         <Footer/>
     </div>
 </template>
@@ -32,3 +32,5 @@ export default {
 }
 </script>
 
+<style lang="scss">
+</style>

@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="page-item" 
-                :class="{'active': pagination.current_page === true}"
+                :class="{'active': pagination.current_page === page}"
                 v-for="page in pagination.total_pages" :key="page"
                 >
                 <a class="page-link" href="#" @click.prevent="changePage(page)">
@@ -44,5 +44,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    // .active{
+    //     background-color:#dba377;
+    // }
 </style>
