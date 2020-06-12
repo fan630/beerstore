@@ -1,0 +1,23 @@
+.h-link{
+    display: block;
+    transition: .3s;
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        height: 4px;
+        width: 0;
+        display: block;
+        right: 0;
+        bottom: -5px;
+        background-color: #dba377;
+        transition: .3s;
+    }
+    &:hover{
+        color: white;
+    }
+    &:hover:before{
+        width: 100%;
+        left: 0;
+    }
+}

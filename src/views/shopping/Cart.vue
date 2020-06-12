@@ -91,7 +91,7 @@
 
 <script>
 export default {
-    name:'OrderList', 
+    name:'Cart', 
     data(){
         return{
             cart:{},

@@ -6,8 +6,8 @@ import About from '../views/About.vue'
 import Products from '../views/admin/Products'
 import Coupon from '../views/admin/Coupon'
 import Orders from '../views/admin/Orders'
-import CustomOrder from '../views/shopping/CustomOrder'
-import OrderList from '../views/shopping/OrderList'
+import Shop from '../views/shopping/Shop'
+import Cart from '../views/shopping/Cart'
 import CheckOut from '../views/shopping/CheckOut'
 import CheckOutPay from '../views/shopping/CheckOutPay'
 import MyOrder from '../views/shopping/MyOrder'
@@ -36,14 +36,14 @@ Vue.use(VueRouter)
           component: MyOrder,
         },
         {
-          path: 'custom_order',
-          name: 'CustomOrder',
-          component: CustomOrder,
+          path: 'shop',
+          name: 'Shop',
+          component: Shop,
         },
         {
-          path: 'order_list',
-          name: 'OrderList',
-          component: OrderList,
+          path: 'cart',
+          name: 'Cart',
+          component: Cart,
         },
         {
           path: 'checkout',

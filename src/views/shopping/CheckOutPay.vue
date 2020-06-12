@@ -163,7 +163,7 @@ export default {
         })
     }, 
     backtocustomer(){
-        this.$router.push(`/custom_order`)
+        this.$router.push(`/shop`)
     }
   },
   created(){

@@ -72,5 +72,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    ul{
+        list-style-type: none;
+    }
 </style>

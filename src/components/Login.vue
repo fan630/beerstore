@@ -1,12 +1,13 @@
 <template>
   <div>
     <form class="form-signin" @submit.prevent="signin">
-      <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+      <img src="../assets/images/logo.png" alt="" srcset="">
+      <h1 class="h3 mb-3 font-weight-normal text-center pt-3">後台管理</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-control" v-model.trim="user.username" placeholder="Email address" required autofocus >
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" v-model.trim="user.password" placeholder="Password" required >
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
     </form>
   </div>
 </template>

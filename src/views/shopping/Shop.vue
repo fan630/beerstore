@@ -134,7 +134,7 @@
 import $ from 'jquery';
 
 export default {
-    name: 'CustomOrder', 
+    name: 'Shop', 
     data(){
         return{
             products:[], 
