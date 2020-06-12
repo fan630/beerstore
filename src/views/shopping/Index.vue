@@ -3,6 +3,7 @@
         <Nav />
         <AlertMessage></AlertMessage>
         <router-view></router-view>
+        <Footer/>
     </div>
 </template>
 
@@ -13,6 +14,7 @@ import CustomOrder from "../shopping/CustomOrder";
 import CheckOut from "../shopping/CheckOut";
 import Home from "../shopping/Home";
 import CheckOutPay from "../shopping/CheckOutPay";
+import Footer from "../../components/Footer";
 
 export default {
     name:'Index', 
@@ -22,7 +24,8 @@ export default {
         Home,
         CustomOrder, 
         CheckOut, 
-        CheckOutPay
+        CheckOutPay, 
+        Footer
     }
 }
 </script>
