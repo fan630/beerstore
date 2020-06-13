@@ -1,5 +1,11 @@
+$primary:#dba377;
+
 ul{
     list-style-type: none;
+}
+
+.text-gold{
+    color:$primary;
 }
 
 .h-link{
@@ -14,7 +20,7 @@ ul{
         display: block;
         right: 0;
         bottom: -5px;
-        background-color: #dba377;
+        background-color:$primary;
         transition: .3s;
     }
     &:hover{
