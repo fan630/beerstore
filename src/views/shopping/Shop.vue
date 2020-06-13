@@ -50,10 +50,13 @@
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
-                                <div style="height: 350px; background-size: cover; background-position: center"
+                                <a @click="getProduct(item.id)" style="hover{transform:scale(1.2,1.2);">
+                                    <div class="product" 
+                                        style="height: 350px; background-size: cover; background-position: center; transform:scale(1,1); transition: all 1s ease-out;}"
                                     :style = "{backgroundImage: `url(${item.imageUrl})`}"
                                 >
-                                </div>
+                                    </div>
+                                </a>
                                 <div class="card-body">
                                     <span class="badge float-left ml-2" 
                                           :class="[item.category == '啤酒'?'badge-info' : 'badge-warning']">
@@ -70,13 +73,13 @@
                                         </div>
                                 </div>
                                 <div class="card-footer d-flex">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    <!--<button type="button" class="btn btn-outline-secondary btn-sm"
                                         @click="getProduct(item.id)"
                                         >
                                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                                         查看更多
-                                    </button>
-                                    <button type="button" class="btn btn-outline-primary btn-sm ml-auto"
+                                    </button>-->
+                                    <button type="button" class="btn btn-primary btn-block ml-auto"
                                         @click="addtoCart(item.id)">
                                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                                         加到購物車
@@ -87,6 +90,7 @@
                     </div>
                 </div>
                 <!--商品內容-->
+                <GoTop/>
             </div>
             <!-- modal -->
             <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
@@ -136,9 +140,13 @@
 
 <script>
 import $ from 'jquery';
+import GoTop from "../../components/Gotop.vue";
 
 export default {
     name: 'Shop',
+    components:{
+       GoTop
+    },
     data(){
         return{
             products:[], 
@@ -242,5 +250,8 @@ export default {
     }
     .sticky-top {
         top: 80px;
+    }
+    .card-footer{
+        padding:0;
     }
 </style>
