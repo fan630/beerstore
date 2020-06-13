@@ -5,7 +5,7 @@
                 <div class="col-md-4">
                   <div
                       v-if="!order.is_paid"
-                      class="alert alert-primary border-rounded"
+                      class="alert alert-warning border-rounded"
                       role="alert"
                   >
                       付款
@@ -21,7 +21,7 @@
                 <div class="col-md-4">
                   <div
                       v-if="order.is_paid"
-                      class="alert alert-primary border-rounded"
+                      class="alert alert-warning border-rounded"
                       role="alert"
                   >
                       完成
@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="item in order.products" :key="item.id">
-                            <td style="height: 150px; background-size: cover; background-position: center"
+                            <td style="height: 150px; background-size: cover; background-position: center; padding:2px 0;"
                                 :style = "{backgroundImage: `url(${item.product.imageUrl})`}"
                             >
                             </td>

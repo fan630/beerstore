@@ -2,14 +2,14 @@
   <div>
     <div class="container my-4">
         <div class="row text-center justify-content-center">
-                <div class="col-md-10">
-                  <div
-                      class="alert border-rounded"
-                      role="alert"
-                  >
-                      輸入訂單資料
-                  </div>
-                </div>
+            <div class="col-md-10">
+              <div
+                  class="alert alert-warning border-rounded"
+                  role="alert"
+              >
+                  <h5>輸入訂單資料</h5>
+              </div>
+            </div>
         </div>
     </div>
 
@@ -22,6 +22,7 @@
                     <div class="h4 text-center mb-3">
                         訂購人資訊
                     </div>
+                    <hr>
                     <div class="form-row text-left">
                         <div class="form-group col-md-4">
                             <label for="#name">姓名</label>

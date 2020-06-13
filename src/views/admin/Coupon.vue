@@ -14,10 +14,10 @@
                         <th class="text-left">名稱</th>
                         <th width="150px" class="text-right">折扣碼</th>
                         <th width="150px" class="text-right">折扣幅度</th>
-                        <th width="150px" class="text-right">到期時間</th>
-                        <th width="100px" class="text-right">是否啟用</th>
-                        <th width="200px" class="text-center">折扣Id</th>
-                        <th width="150px" class="text-center">操作優惠券</th>
+                        <th class="text-right">到期時間</th>
+                        <th class="text-right">是否啟用</th>
+                        <th width="250px" class="text-center">折扣Id</th>
+                        <th class="text-center">操作優惠券</th>
                     </tr>
                 </thead>
                 <tbody>

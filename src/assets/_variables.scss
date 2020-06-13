@@ -99,7 +99,7 @@ $theme-color-interval:      8% !default;
 $yiq-contrasted-threshold:  150 !default;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
+$yiq-text-dark:             $white;//$gray-900 !default;
 $yiq-text-light:            $white !default;
 
 // Characters which are escaped by the escape-svg function
@@ -118,8 +118,8 @@ $escaped-characters: (
 
 $enable-caret:                                true !default;
 $enable-rounded:                              true !default;
-$enable-shadows:                              false !default;
-$enable-gradients:                            false !default;
+$enable-shadows:                              true;//false !default;
+$enable-gradients:                            true;//false !default;
 $enable-transitions:                          true !default;
 $enable-prefers-reduced-motion-media-query:   true !default;
 $enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
@@ -334,8 +334,8 @@ $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
 
-$hr-border-color:             rgba($black, .1) !default;
-$hr-border-width:             $border-width !default;
+$hr-border-color:             $white;//$primary-light;//rgba($black, .1) !default;
+$hr-border-width:             5px;//$border-width !default;
 
 $mark-padding:                .2em !default;
 
@@ -997,7 +997,7 @@ $alert-border-width:                $border-width !default;
 
 $alert-bg-level:                    -10 !default;
 $alert-border-level:                -9 !default;
-$alert-color-level:                 6 !default;
+$alert-color-level:                 10;//6 !default;
 
 
 // Progress bars

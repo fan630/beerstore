@@ -50,39 +50,34 @@
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
-                                <a @click="getProduct(item.id)" style="hover{transform:scale(1.2,1.2);">
-                                    <div class="product" 
-                                        style="height: 350px; background-size: cover; background-position: center; transform:scale(1,1); transition: all 1s ease-out;}"
+                                <a class="item-pic-wrap" @click="getProduct(item.id)">
+                                    <div class="item-pic" 
+                                    style="height: 350px; background-size: cover; background-position: center;}"
                                     :style = "{backgroundImage: `url(${item.imageUrl})`}"
                                 >
                                     </div>
                                 </a>
                                 <div class="card-body">
-                                    <span class="badge float-left ml-2" 
+                                    <span class="badge float-left" 
                                           :class="[item.category == '啤酒'?'badge-info' : 'badge-warning']">
                                         {{item.category}}
                                     </span>
-                                    <h5 class="card-title">
+                                    <div class="card-title text-center h5 mr-4">
                                         <a class="text-dark">{{item.title}}</a>
-                                    </h5>
-                                    <p class="card-text text-left">{{item.content}}</p>
-                                        <div class="d-flex justify-content-between align-items-baseline">
-                                            <!--顯示原價和特價-->
-                                            <del class="h6 text-muted">{{item.origin_price? `原價${item.origin_price}元` : '' }}</del>
-                                            <div class="h6">特價{{item.price}}元</div>
-                                        </div>
+                                    </div>
+                                    <!--<p class="card-text text-left">{{item.content}}</p>-->
+                                    <div class="d-flex justify-content-between align-items-baseline">
+                                        <!--顯示原價和特價-->
+                                        <del class="h6 text-muted">{{item.origin_price? `原價${item.origin_price}元` : '' }}</del>
+                                        <div class="h6 text-danger">特價{{item.price}}元</div>
+                                    </div>
                                 </div>
                                 <div class="card-footer d-flex">
-                                    <!--<button type="button" class="btn btn-outline-secondary btn-sm"
-                                        @click="getProduct(item.id)"
-                                        >
-                                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                                        查看更多
-                                    </button>-->
-                                    <button type="button" class="btn btn-primary btn-block ml-auto"
+                                    <button type="button" class="btn btn-primary btn-block ml-auto text-white"
                                         @click="addtoCart(item.id)">
                                         <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                                        加到購物車
+                                        <i class="fas fa-cart-plus"></i>
+                                        購物車
                                     </button>
                                 </div>
                             </div>
@@ -104,7 +99,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img :src="product.imageUrl" class="img-fluid" alt="">
+                            <img :src="product.imageUrl" class="img-fluid" alt="" style="height:250px">
                             <blockquote class="blockquote mt-3">
                             <p class="mb-0 text-left">{{ product.content }}</p>
                             <footer class="blockquote-footer text-right">{{ product.description }}</footer>
@@ -115,7 +110,7 @@
                             </div>
                             <select name="" class="form-control mt-3" v-model="product.num">
                                 <option :value="num" v-for="num in 5" :key="num">
-                                    選購 {{num}} {{product.unit}}瓶
+                                    選購 {{num}}*{{product.unit}}
                                 </option>
                             </select>
                         </div>
@@ -124,10 +119,11 @@
                                 小計 
                                 <strong>{{ product.num * product.price }}</strong> 元
                             </div>
-                            <button type="button" class="btn btn-primary"
+                            <button type="button" class="btn btn-primary text-white"
                                 @click="addtoCart(product.id, product.num)">
                                 <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
-                                加到購物車
+                                <i class="fas fa-cart-plus"></i>
+                                購物車
                             </button>
                         </div>
                     </div>
@@ -254,4 +250,17 @@ export default {
     .card-footer{
         padding:0;
     }
+    .item-pic-wrap{
+        cursor: pointer;
+    }
+    .item-pic{
+        transform: scale(1);
+        transition: .3s; 
+    }
+    .item-pic-wrap:hover{
+        .item-pic{
+            transform: scale(1.05);
+        }
+    }
+
 </style>
