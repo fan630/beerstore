@@ -30,9 +30,10 @@
                             class="d-md-none d-block"
                         >
                     </router-link>
-                    <router-link to="/cart" class="nav-link order-md-1 h-link">
-                        <i class="fas fa-shopping-cart">
+                    <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
+                        <i class="fas fa-shopping-cart fa-2x">
                         </i>
+                        <span class="badge badge-danger">3</span>
                     </router-link>
                     <div
                         class="collapse navbar-collapse"
@@ -81,7 +82,7 @@
 
 <script>
 export default {
-    name:'Nav'
+    name:'Nav', 
 }
 </script>
 
@@ -99,6 +100,15 @@ export default {
     }
     .nav-link{
         display:inline;
+    }
+    .btn-cart{
+        position: relative;
+    }
+
+    .btn-cart > .badge{
+        position: absolute; 
+        top:3px; 
+        right:10px;
     }
     
 </style>

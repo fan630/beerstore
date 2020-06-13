@@ -39,11 +39,10 @@
 
     <!-- 購買商品資訊 -->
     <div class="container">
-        <h1 class="text-muted text-center py-3">買單</h1>
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
-                <h3 class="text-center">購買資訊</h3>
-                <table class="table">
+                <h3 class="text-center my-4">購買資訊</h3>
+                <table class="table text-right">
                     <thead>
                         <th>產品</th>
                         <th>數量</th>
@@ -77,9 +76,9 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
-                <h3 class="text-center">個人資料</h3>
+                <h3 class="text-center my-3">個人資料</h3>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table text-right">
                         <tbody>
                             <tr>
                                 <th scope="row">Email</th>
@@ -108,13 +107,13 @@
                 <div class="d-flex justify-content-center my-5">
                     <button
                         v-if="!order.is_paid"
-                        class="btn btn-primary"
+                        class="btn btn-primary text-white btn-lg"
                         @click="payOrder"
                     >確認付款
                     </button>
                     <button
                         v-else
-                        class="btn btn-info mr-2"
+                        class="btn btn-outline-success mr-2 btn-lg"
                         @click="backtocustomer"
                     >繼續選購
                     </button>

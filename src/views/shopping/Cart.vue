@@ -69,11 +69,10 @@
                                     </tfoot>
                             </table>
                             <div>✦ 輸入折扣碼「longtimenosee」，和 FanBeer 一同歡慶開幕吧！</div>
-                            <div class="input-group mb-3 input-group-sm">
-                                
+                            <div class="input-group my-3">
                                 <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                                    <button class="btn btn-secondary" type="button" @click="addCouponCode">
                                         套用優惠碼
                                     </button>
                                 </div>
@@ -83,7 +82,7 @@
             </div>
         </div>
         <div class="h2 my-3" v-else>您目前沒有商品喔!</div>
-        <router-link to="/checkout" class="btn btn-primary text-white" href="#" role="button">前往結帳</router-link>
+        <router-link to="/checkout" class="btn btn-primary text-white my-3" href="#" role="button" v-if="itemList">前往結帳</router-link>
     </div>
 </template>
 

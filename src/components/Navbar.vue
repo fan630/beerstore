@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="top">
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
             <router-link to="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
-                <img src=".././assets/images/logo.png" alt="" srcset="" height="40px" width="200px">
+                <img src=".././assets/images/logo.png" alt="" srcset="" height="35px" width="200px">
             </router-link>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,8 +35,30 @@ export default {
 
 
 <style scoped lang="scss">
-    .navbar-brand{
-        padding-top:4px; 
-        padding-bottom:4px;
+    .navbar-brand {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 1rem;
+        background-color: rgba(0, 0, 0, .25);
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    }
+
+    .navbar .navbar-toggler {
+      top: .25rem;
+      right: 1rem;
+    }
+
+    .navbar .form-control {
+        padding: 2rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+    }
+    .top{
+        margin-top:-66px;
+    }
+    @media screen and (max-width:768px){
+    .top{
+        padding-top: -36px;
+     }
     }
 </style>

@@ -48,7 +48,7 @@
                 <!--商品內容-->
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col mb-4" v-for="item in filterProducts" :key="item.id">
+                        <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
                                 <div style="height: 350px; background-size: cover; background-position: center"
                                     :style = "{backgroundImage: `url(${item.imageUrl})`}"

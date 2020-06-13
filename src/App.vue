@@ -9,7 +9,15 @@
 
 #app {
   text-align: center;
-  color: #2c3e50;
+  color: white;
   padding-top: 66px;
+  position: relative;
 }
+
+@media screen and (max-width:768px){
+  #app{
+      padding-top: 56px;
+  }
+}
+
 </style>

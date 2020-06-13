@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="container my-4">
-        <!-- <div class="h1 text-center">今朝有酒今朝醉</div> -->
         <div class="row text-center justify-content-center">
                 <div class="col-md-10">
                   <div
@@ -11,22 +10,6 @@
                       輸入訂單資料
                   </div>
                 </div>
-                <!--<div class="col-md-4">
-                  <div
-                      class="alert alert-primary border-rounded"
-                      role="alert"
-                  >
-                      2.金流付款
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div
-                      class="alert alert-light border-rounded"
-                      role="alert"
-                  >
-                      3.完成
-                  </div>
-                </div>-->
         </div>
     </div>
 
@@ -106,10 +89,10 @@
                         v-model="form.message"
                       ></textarea>
                     </div>
-                    <div class="d-flex justify-content-end ">
+                    <div class="d-flex justify-content-end my-3">
                         <button
                             type="submit"
-                            class="btn btn-primary"
+                            class="btn btn-primary text-white"
                         >送出訂單
                         </button>
                     </div>

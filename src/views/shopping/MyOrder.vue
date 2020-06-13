@@ -5,21 +5,21 @@
          <h2 class="my-3">訂單列表</h2>
          <div class="row">
              <div class="col-md-12">
-                 <div class="table-responsive-md">
+                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">購買日期</th>
-                                <th scope="col">訂單編號</th>
-                                <th scope="col">訂單內容</th>
-                                <th scope="col">總金額</th>
-                                <th scope="col">付款狀態</th>
+                                <th>購買日期</th>
+                                <th class="d-md-block d-none">訂單編號</th>
+                                <th width="300px">訂單內容</th>
+                                <th class="d-md-block d-none">總金額</th>
+                                <th>付款狀態</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="item in orders" :key="item.id">
                                 <td>{{item.paid_date | date}}</td>
-                                <td>{{item.id}}</td>
+                                <td class="d-md-block d-none">{{item.id}}</td>
                                 <td>
                                     <ul>
                                         <li v-for="(product, i) in item.products" :key="i">
@@ -28,7 +28,7 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td>{{item.total}}</td>
+                                <td class="d-md-block d-none">{{item.total}}</td>
                                 <td :class="item.is_paid ? 'green': 'red'"
                                     >{{item.is_paid ? '已付款': '尚未付款'}}</td>
                             </tr>
@@ -79,5 +79,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    .table thead th{
+        border-bottom:0px;
+    }
 </style>

@@ -3,6 +3,7 @@
         <Nav />
             <AlertMessage></AlertMessage>
             <router-view></router-view>
+            <!-- <GoTop></GoTop> -->
         <Footer/>
     </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
 import Nav from "./Nav";
 import AlertMessage from "./AlertMessage";
+import GoTop from "./Gotop.vue";
 import Shop from "../views/shopping/Shop.vue";
 import CheckOut from "../views/shopping/CheckOut";
 import Home from "../views/shopping/Home";
@@ -27,7 +29,8 @@ export default {
         CheckOut, 
         CheckOutPay, 
         Footer, 
-        Cart
+        Cart, 
+        GoTop
     }
 }
 </script>
