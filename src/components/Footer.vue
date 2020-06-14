@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-primary py-2 mt-6"
+    <div class="bg-primary py-2 mt-6 footer"
         >
         <div class="container d-flex justify-content-center text-white">
             <p>資料、圖片來源皆來自網路，僅用來做為學習用途</p>
@@ -21,7 +21,7 @@ export default {
       	margin-bottom: 0;
     }
     .footer{
-      //  display: block;
+      //  display:block;
       //  position:absolute;
       //  bottom:0;
     }

@@ -10,6 +10,10 @@ import store from './store'
 import './bus';
 import currencyFilter from './filters/currency';
 import dateTransfer from './filters/date';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import animated from 'animate.css'
+
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
@@ -18,6 +22,15 @@ axios.defaults.withCredentials = true
 Vue.component('Loading', Loading)
 Vue.filter('currency', currencyFilter)
 Vue.filter('date', dateTransfer)
+// animated
+Vue.use(animated)
+
+// Aos
+AOS.init({
+  useClassNames: true,
+  initClassName: false,
+  animatedClassName: 'animate__animated'
+});
 
 // Vee-validate
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';

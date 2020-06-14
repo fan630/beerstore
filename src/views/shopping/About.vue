@@ -28,7 +28,7 @@
                       <p>成立首家直營啤酒吧</p>
                       <p class="text-gold">於台北市永康商圈開設第一家掌門精釀啤酒TAP ROOM!</p>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" data-aos="animate__bounceInLeft">
                       <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"></div>
                   </div>
               </div>
@@ -43,7 +43,7 @@
                           陸續於高雄市、台中市、台北微風松高、台北內湖與台南市成立分店，其中台中店面擁有32支龍頭，挑戰生啤選擇全台灣最多；微風松高店，搭配200坪空中花園，全信義區最吸睛!每間分店皆有不同特色!
                       </p>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" data-aos="animate__bounceInRight">
                       <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1517159906085-dd4f2277d4d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
                   </div>
               </div>
@@ -55,7 +55,7 @@
                           於香港尖沙咀設立首家海外門市，且吸引多家媒體爭相採訪。
                       </p>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" data-aos="animate__bounceInLeft" >
                       <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1554381187-1461fabe0905?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"></div>
                   </div>
               </div>
@@ -65,7 +65,7 @@
                       <p>成立第十家直營啤酒吧</p>
                       <p class="text-gold text-left">於台北微風廣場本館成立第十家直營酒吧，現場供應24種新鮮生啤，為目前全台分店數量最多之精釀酒廠品牌。</p>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" data-aos="animate__bounceInRight">
                       <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
                   </div>
               </div>

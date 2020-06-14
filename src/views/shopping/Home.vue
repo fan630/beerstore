@@ -71,6 +71,20 @@
             </a>
             </div>  
         </header>
+        <div class="container-fluid">
+            <!-- <div class="box">box1</div>
+            <div class="box" data-aos="fade-left">box2</div>
+            <div class="box" data-aos="fade-left">box3</div>
+            <div class="box" data-aos="fade-left">box4</div> -->
+            <div class="item" data-aos="animate__bounceInDown" style="height:200px">1</div>
+            <div class="item item2" data-aos="animate__fadeInDown">2</div>
+            <div class="item " data-aos="animate__backInRight">4</div>
+            <div class="item " data-aos="animate__bounceInLeft">4</div>
+            <div class="item " data-aos="animate__flipInY">4</div>
+            <div class="item " data-aos="animate__rotateInDownLeft">4</div>
+            <div class="item " data-aos="animate__rotateInDownLeft">4</div>
+            <div class="item item9" data-aos="animate__zoomIn">4</div>
+        </div>
     </div>
 </template>
 
@@ -94,6 +108,24 @@ export default {
     }
     .text-gold {
         color: #dba377;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: #cccccc;
+        line-height: 200px;
+        border:1px solid#fff;
+        margin: 20px auto;
+    }
+    .item {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        padding-top: 75px;
+        background: #ccc;
+        text-align: center;
+        color: #FFF;
+        font-size: 3em;
     }
 </style>
 

@@ -53,3 +53,20 @@ hr{
   border: 2px solid#fff;
   border-radius: 2px;  
 }
+
+[data-aos] {
+    visibility: hidden;
+}
+
+[data-aos].animate__animated {
+    visibility: visible;
+}
+/* This changes all the animations globaly */
+:root {
+  --animate-duration: 1800ms;
+  --animation-delay: 2.9s;
+}
+
+.list-group-item{
+    cursor: pointer;
+}
