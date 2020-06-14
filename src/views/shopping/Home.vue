@@ -71,19 +71,77 @@
             </a>
             </div>  
         </header>
-        <div class="container-fluid">
-            <!-- <div class="box">box1</div>
-            <div class="box" data-aos="fade-left">box2</div>
-            <div class="box" data-aos="fade-left">box3</div>
-            <div class="box" data-aos="fade-left">box4</div> -->
-            <div class="item" data-aos="animate__bounceInDown" style="height:200px">1</div>
-            <div class="item item2" data-aos="animate__fadeInDown">2</div>
-            <div class="item " data-aos="animate__backInRight">4</div>
-            <div class="item " data-aos="animate__bounceInLeft">4</div>
-            <div class="item " data-aos="animate__flipInY">4</div>
-            <div class="item " data-aos="animate__rotateInDownLeft">4</div>
-            <div class="item " data-aos="animate__rotateInDownLeft">4</div>
-            <div class="item item9" data-aos="animate__zoomIn">4</div>
+        <div class="container-fluid px-0 mb-5">
+            <div class="row justify-content-center align-items-center no-gutters">
+                <div class="offset-1"></div>
+                <div class="col-md-4 text-md-left text-center" data-aos="animate__slideInRight animate__fast">
+                    <div class="display-4">Single Speed, <br>Single Life.</div>
+                    <p>More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
+                    <button type="button" class="btn btn-primary text-white">Shop Now</button>
+                </div>
+                <div class="offset-1"></div>
+                <div class="col-md-6">
+                    <div class="box bg-cover" data-aos="animate__slideInLeft animate__fast"
+                        style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end flex-row-reverse no-gutters">
+                <div class="col-md-4 align-self-center" data-aos="animate__slideInLeft animate__fast">
+                    <p class="text-right p2">More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
+                    <div class="display-4 text-md-right text-center">One Gear, <br>Many Variations</div>
+                </div>
+                <div class="offset-1"></div>
+                <div class="col-md-6" data-aos="animate__slideInRight animate__fast">
+                    <div class="box bg-cover"
+                        style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center no-gutters">
+                <div class="offset-2"></div>
+                <div class="col-md-3 text-md-left text-center" data-aos="animate__slideInLeft">
+                    <div class="display-4">Stripped-Down, <br>Performance.</div>
+                    <p>More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
+                </div>
+                <div class="offset-1"></div>
+                <div class="col-md-6">
+                    <div class="box bg-cover" data-aos="animate__slideInRight"
+                        style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-md-left text-center">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-5" data-aos="animate__slideInUp animate__faster">
+                    <div class="h1">A collection built for regular commuters</div>
+                    <p>Riders unknown to each other commonly greet each other when on bikes. As in many subcultures, this feeling of belonging is a key factor in recruiting and retaining participants.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center" data-aos="animate__slideInUp">
+                <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 300px">
+            </div>
+            <div class="row" data-aos="animate__slideInUp animate__fast">
+                <div class="col-md-4">
+                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
+                    <h4>All who cycle are my friends</h4>
+                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
+                    <h4>All who cycle are my friends</h4>
+                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
+                    <h4>All who cycle are my friends</h4>
+                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -110,12 +168,7 @@ export default {
         color: #dba377;
     }
     .box{
-        width: 200px;
-        height: 200px;
-        background-color: #cccccc;
-        line-height: 200px;
-        border:1px solid#fff;
-        margin: 20px auto;
+        height:500px;
     }
     .item {
         width: 200px;
@@ -127,5 +180,18 @@ export default {
         color: #FFF;
         font-size: 3em;
     }
+    p{
+        font-family: 'Lato', sans-serif;
+        margin-bottom: 3rem;
+    }
+    .p2{
+        font-family: 'Lato', sans-serif;
+        margin-bottom: 10rem;
+    }
+    .display-4{
+        font-family: 'Merriweather', serif;
+        margin-bottom: 3rem;
+    }
+
 </style>
 

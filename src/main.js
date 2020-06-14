@@ -27,6 +27,7 @@ Vue.use(animated)
 
 // Aos
 AOS.init({
+  once: true, 
   useClassNames: true,
   initClassName: false,
   animatedClassName: 'animate__animated'
