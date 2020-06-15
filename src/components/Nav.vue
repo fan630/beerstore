@@ -31,7 +31,7 @@
                         >
                     </router-link>
                     <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
-                        <i class="fas fa-shopping-cart fa-2x">
+                        <i class="fas fa-shopping-cart">
                         </i>
                         <span class="badge badge-danger">3</span>
                     </router-link>
@@ -41,16 +41,16 @@
                     >
                     <div class="navbar-nav ml-auto d-md-inline-flex">
                         <router-link to="/about" class="nav-link h-link">
-                            <i class="far fa-smile-wink"></i>
-                                關於我
+                           
+                                About
                         </router-link>
                         <router-link to="/shop" class="nav-link h-link">
-                            <i class="far fa-smile-wink"></i>
-                                商品列表
+                            
+                                Shop
                         </router-link>
                         <router-link to="/my_order" class="nav-link h-link">
-                            <i class="far fa-smile-wink"></i>
-                                我的訂單
+                           
+                                Orders
                         </router-link>
                         <router-link to="/login" class="nav-link">
                             <i class="fas fa-cog"></i>
@@ -100,6 +100,8 @@ export default {
     }
     .nav-link{
         display:inline;
+        font-family: 'Merriweather', serif;
+        font-size:1.1rem;
     }
     .btn-cart{
         position: relative;

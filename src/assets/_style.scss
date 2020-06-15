@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Merriweather:ital@1&display=swap');
 
 $primary:#dba377;
+$gray:$gray-900;
+
+[data-aos] {
+    visibility: hidden;
+}
+
+[data-aos].animate__animated {
+    visibility: visible;
+}
+/* This changes all the animations globaly */
+:root {
+  --animate-duration: 1800ms;
+  --animation-delay: 2.9s;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 0px 3px 3px rgba(33, 37, 41, 0.6);
+    -moz-box-shadow: 0 0px 3px 3px rgba(33, 37, 41, 0.6);
+    box-shadow: 0 0px 3px 3px rgba(33, 37, 41, 0.6);
+}
 
 ul{
     list-style-type: none;
@@ -56,19 +76,7 @@ hr{
   border-radius: 2px;  
 }
 
-[data-aos] {
-    visibility: hidden;
-}
-
-[data-aos].animate__animated {
-    visibility: visible;
-}
-/* This changes all the animations globaly */
-:root {
-  --animate-duration: 1800ms;
-  --animation-delay: 2.9s;
-}
-
 .list-group-item{
     cursor: pointer;
 }
+

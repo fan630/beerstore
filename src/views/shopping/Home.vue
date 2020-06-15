@@ -71,31 +71,65 @@
             </a>
             </div>  
         </header>
+        <!--四欄式-->
+        <section class="bg-dark text-white my-mb-5 my-3">
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <div class="my-2" style="bac">
+                           <img src="../../assets/images/svg/svg/005-beer.svg" alt="" srcset="" class="svg-box filter-class">
+                        </div>
+                        <h3>Import</h3>
+                        <p>These cases are perfectly simple distinguish</p>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="my-2">
+                            <img src="../../assets/images/svg/svg/001-beer-bottle.svg" alt="" srcset="" class="svg-box filter-class">
+                        </div>
+                        <h3>Domestic Specialty</h3>
+                        <p>Perfectly there an simple distinguish cases.</p>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="my-2">
+                            <img src="../../assets/images/svg/svg/002-glass.svg" alt="" srcset="" class="svg-box filter-class">
+                        </div>
+                        <h3>Domestic Specialty</h3>
+                        <p>Perfectly there an simple distinguish cases.</p>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="my-2">
+                            <img src="../../assets/images/svg/svg/006-evaluate.svg" alt="" srcset="" class="svg-box filter-class">
+                        </div>
+                        <h3>Value</h3>
+                        <p>Simple distinguish these cases are perfectly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--main-->
         <div class="container-fluid px-0 mb-5">
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-1"></div>
-                <div class="col-md-4 text-md-left text-center" data-aos="animate__slideInRight animate__fast">
-                    <div class="display-4">Single Speed, <br>Single Life.</div>
-                    <p>More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
-                    <button type="button" class="btn btn-primary text-white">Shop Now</button>
+                <div class="col-md-4 text-md-left text-center">
+                    <div class="display-4 mb-5"  data-aos="animate__slideInRight animate__fast">Welcome to Our Store</div>
+                    <button type="button" class="btn btn-primary text-white my-3" @click="backtocustomer">Shop Now ></button>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6">
                     <div class="box bg-cover" data-aos="animate__slideInLeft animate__fast"
-                        style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
+                        style="background-image:url(https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"
                         >
                     </div>
                 </div>
             </div>
             <div class="row justify-content-end flex-row-reverse no-gutters">
                 <div class="col-md-4 align-self-center" data-aos="animate__slideInLeft animate__fast">
-                    <p class="text-right p2">More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
-                    <div class="display-4 text-md-right text-center">One Gear, <br>Many Variations</div>
+                    <div class="display-4 text-md-right text-center mt-md-5 my-5">Get an Extra 10% off your first order</div>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6" data-aos="animate__slideInRight animate__fast">
                     <div class="box bg-cover"
-                        style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
+                        style="background-image:url(https://images.unsplash.com/photo-1576723072484-b4d99bc3c9a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)"
                         >
                     </div>
                 </div>
@@ -103,8 +137,7 @@
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-2"></div>
                 <div class="col-md-3 text-md-left text-center" data-aos="animate__slideInLeft">
-                    <div class="display-4">Stripped-Down, <br>Performance.</div>
-                    <p>More recently thes “fixie” has become a popular alternative among mainly urban cyclists, offering the advantage of simplicity compared with the standard multi-geared bicycle.</p>
+                    <div class="display-4 mb-md-5 my-5">Legendary Brewerly, <br>Beer</div>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6">
@@ -115,42 +148,45 @@
                 </div>
             </div>
         </div>
-        <div class="container text-md-left text-center">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-5" data-aos="animate__slideInUp animate__faster">
-                    <div class="h1">A collection built for regular commuters</div>
-                    <p>Riders unknown to each other commonly greet each other when on bikes. As in many subcultures, this feeling of belonging is a key factor in recruiting and retaining participants.</p>
+        <!--訂閱-->
+        <div class="container text-center mt-5 mb-5">
+            <div class="display-4 mb-5">Subscribe</div>
+                    <div class="form-row justify-content-center align-items-center">
+                    <div class="col-md-2">
+                        <img src="../../assets/images/bottom.png" alt="" srcset="">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-left">Get The Latest News On Product Releases, Availability, And Event</h2>
+                        <div class="input-group mt-4">
+                                <input type="text" class="form-control" placeholder="Enter your email address">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">
+                                        GO!
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row justify-content-center align-items-center" data-aos="animate__slideInUp">
-                <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 300px">
-            </div>
-            <div class="row" data-aos="animate__slideInUp animate__fast">
-                <div class="col-md-4">
-                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
-                    <h4>All who cycle are my friends</h4>
-                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
-                    <h4>All who cycle are my friends</h4>
-                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="../../assets/images/shaker.jpg" alt="" srcset="" style="height: 150px">
-                    <h4>All who cycle are my friends</h4>
-                    <p>A rider from Stockholm interviewed for an article about the phenomenon notes that riding a bike imparts a feeling of freedom to the rider…</p>
-                </div>
-            </div>
-        </div>
+         <GoTop/>
     </div>
 </template>
 
 <script>
+import GoTop from "../../components/Gotop.vue";
 
 export default {
     name:'Home', 
+    components:{
+       GoTop
+    },
+    methods:{
+        backtocustomer(){
+            this.$router.push(`/shop`)
+        }
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -182,16 +218,16 @@ export default {
     }
     p{
         font-family: 'Lato', sans-serif;
-        margin-bottom: 3rem;
-    }
-    .p2{
-        font-family: 'Lato', sans-serif;
-        margin-bottom: 10rem;
     }
     .display-4{
         font-family: 'Merriweather', serif;
-        margin-bottom: 3rem;
     }
-
+    .filter-class{
+        filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%) contrast(119%);
+    }
+    .svg-box{
+        width:72px;
+        height:72px;   
+    }
 </style>
 

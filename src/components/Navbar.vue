@@ -1,8 +1,8 @@
 <template>
     <div class="top">
-        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow-lg">
             <router-link to="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
-                <img src=".././assets/images/logo.png" alt="" srcset="" height="35px" width="200px">
+                <img src=".././assets/images/logo.png" alt="" srcset="" height="35px" width="200px" style="vertical-align: middle;">
             </router-link>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,12 +35,14 @@ export default {
 
 
 <style scoped lang="scss">
+    .nav{
+        box-shadow: 0 0px 5px 2px rgba(33, 37, 41, 0.4);
+    }
     .navbar-brand {
         padding-top: 1rem;
         padding-bottom: 1rem;
         font-size: 1rem;
         background-color: rgba(0, 0, 0, .25);
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
     }
 
     .navbar .navbar-toggler {
