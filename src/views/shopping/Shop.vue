@@ -138,6 +138,7 @@
 <script>
 import $ from 'jquery';
 import GoTop from "../../components/Gotop.vue";
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
     name: 'Shop',
@@ -146,13 +147,10 @@ export default {
     },
     data(){
         return{
-            // products:[], 
             product:{},
             status:{
                 loadingItem: ''
             }, 
-            // isLoading: false, 
-            cart:{}, 
             show:'all',
         }
     }, 
@@ -160,6 +158,7 @@ export default {
         this.getProducts()
     },
     computed:{
+        ...mapGetters(['products', 'cart', 'isLoading']),
         filterProducts(){
             switch (true) {
                 case this.show === 'beer':
@@ -176,55 +175,31 @@ export default {
                     break;
             }
         }, 
-        isLoading(){
-            return this.$store.state.isLoading
-        }, 
-        products(){
-            return this.$store.state.products
-        }
     }, 
     methods:{
+       ...mapActions(['getProducts', 'getCart']), 
         checkList(val){
             this.show = val
         },
-        getProducts(){
-            this.$store.dispatch('getProducts');
-        }, 
         getProduct(id){
             const api = `https://vue-course-api.hexschool.io/api/fan630/product/${id}`
             this.status.loadingItem = id
             this.$http.get(api).then((response) => {
                 this.product = response.data.product
-                $('#productModal').modal('show')
                 this.status.loadingItem = ''
+                $('#productModal').modal('show')
             })
         },
         addtoCart(id, qty = 1){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
             this.status.loadingItem = id
-            const cart = {
-                product_id: id, 
-                qty,
-            }
-            this.$http.post(api, {data: cart}).then((response) => {
-                this.status.loadingItem = ''
-                this.getCart()
-                $('#productModal').modal('hide')
-                this.$bus.$emit('message:push', response.data.message, 'success')
-            })
-        }, 
-        getCart(){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
-            this.$store.dispatch('updateLoading', true)
-            this.$http.get(api).then((response) => {
-                this.cart = response.data.data
-                this.$store.dispatch('updateLoading', false)
-            })
-        }, 
-        created(){
-            this.getProducts();
-            this.getCart();
-        }
+            this.$store.dispatch('addtoCart', {id, qty})
+            $('#productModal').modal('hide')
+            this.status.loadingItem = ''
+        },  
+    },
+    created(){
+        this.getProducts();
+        this.getCart();
     }
 }
 </script>

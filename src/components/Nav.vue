@@ -30,21 +30,21 @@
                             class="d-md-none d-block"
                         >
                     </router-link>
-                    <!-- <div class="dropdown ml-auto">
+                    <div class="dropdown ml-auto order-md-1 ml-1">
                         <button class="btn btn-sm btn-cart" data-toggle="dropdown" data-flip="false">
-                        <i class="fa fa-shopping-cart text-dark fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-shopping-cart text-white fa-2x" aria-hidden="true"></i>
                         <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
                         <span class="sr-only">unread messages</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
                         data-offset="400">
-                        <h6>已選擇商品</h6>
-                        <table class="table table-sm">
+                        <h6>{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
+                        <table class="table table-sm text-black">
                             <tbody>
                             <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
                                 <td class="align-middle text-center">
-                                <a href="#" class="text-muted" @click.prevent="removeCart(item.id)">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <a href="#" class="text-muted" @click.prevent="removeCartItem(item.id)">
+                                    <i class="fas fa-trash-alt text-black" aria-hidden="true"></i>
                                 </a>
                                 </td>
                                 <td class="align-middle">{{ item.product.title }}</td>
@@ -53,21 +53,13 @@
                             </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-primary btn-block">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
-                        </button>
-                        <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
-                            <i class="fas fa-shopping-cart">
-                            </i>
-                            <span class="badge badge-danger">3</span>
+                        <router-link to="/cart">
+                            <button class="btn btn-primary btn-block text-white">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
+                            </button>
                         </router-link>
                         </div>
-                    </div> -->
-                    <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
-                        <i class="fas fa-shopping-cart">
-                        </i>
-                        <span class="badge badge-danger">3</span>
-                    </router-link>
+                    </div>
                     <div
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
@@ -113,8 +105,22 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
+
 export default {
     name:'Nav', 
+    computed:{
+        ...mapGetters(['cart', 'isLoading']),
+    }, 
+    methods:{
+        ...mapActions(['getCart']), 
+        removeCartItem(id){
+            this.$store.dispatch('removeCartItem', id)
+        },
+    },
+    created(){
+        this.getCart();
+    }
 }
 </script>
 
@@ -135,14 +141,44 @@ export default {
         font-family: 'Merriweather', serif;
         font-size:1.1rem;
     }
-    .btn-cart{
+    /* 購物車按鈕 */
+    .btn-cart {
+        background-color: transparent;
         position: relative;
     }
 
-    .btn-cart > .badge{
-        position: absolute; 
-        top:3px; 
-        right:10px;
+    /* 購物車按鈕定位 */
+    .btn-cart .badge {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+    }
+
+    .main-content {
+        min-height: calc(100vh - 56px - 176px)
+    }
+
+    .box-shadow {
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, .05);
+        transition: .3s linear;
+    }
+
+    .box-shadow:hover {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, .08);
+    }
+
+    .dropdown-menu-right {
+        right: 0;
+        left: auto;
+    }
+
+    .alert-rounded {
+        border-radius: 50px;
+    }
+
+    .dropdown-menu{
+        top:121%;
+        background-color:#333;
     }
     
 </style>

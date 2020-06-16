@@ -91,33 +91,23 @@ export default {
     name:'Cart', 
     data(){
         return{
-            cart:{},
-            isLoading: false, 
             coupon_code:'', 
         }
     }, 
     computed:{
+        cart(){
+            return this.$store.state.cart
+        },
         itemList(){
             return this.cart.carts.length
         }
     },
     methods:{
         removeCartItem(id){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/cart/${id}`
-            this.isLoading = true;
-            this.$http.delete(api).then((response) => {
-                this.getCart()
-                this.isLoading = false
-                this.$bus.$emit('message:push', response.data.message, 'danger')
-            })
-        }, 
+            this.$store.dispatch('removeCartItem', id)
+        },
         getCart(){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
-            this.isLoading = true;
-            this.$http.get(api).then((response) => {
-                this.cart = response.data.data
-                this.isLoading = false
-            })
+            this.$store.dispatch('getCart')
         }, 
         addCouponCode(){
             const api = `https://vue-course-api.hexschool.io/api/fan630/coupon`
