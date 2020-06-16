@@ -64,7 +64,8 @@
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
                     >
-                    <div class="navbar-nav ml-auto d-md-inline-flex">
+                    <!--桌機版導覽列-->  
+                    <div class="navbar-nav ml-auto d-none d-md-block">
                         <router-link to="/about" class="nav-link h-link">
                                 About
                         </router-link>
@@ -80,24 +81,29 @@
                             <i class="fas fa-cog"></i>
                         </router-link>
                     </div>
-                    <!-- w-50有問題 -->
-                    <!-- <div class="navbar-nav d-flex d-md-none">
-                        <router-link to="/about" class="nav-link h-link w-50">
-                            <i class="far fa-smile-wink"></i>
-                                123
-                        </router-link>
-                        <router-link to="/shop" class="nav-link h-link w-50">
-                            <i class="far fa-smile-wink"></i>
-                                456
-                        </router-link>
-                        <router-link to="/my_order" class="nav-link h-link w-50">
-                            <i class="far fa-smile-wink"></i>
-                                我的訂單
-                        </router-link>
-                        <router-link to="/login" class="nav-link w-50">
-                            <i class="fas fa-cog"></i>
-                        </router-link>
-                    </div> -->
+                    <!--手機版導覽列-->  
+                    <div class="d-flex w-100 flex-wrap d-block d-md-none">
+                        <div class="p-2 w-50 mobile-navLink">
+                            <router-link to="/shop" class="nav-link">
+                                    Shop
+                            </router-link>
+                        </div>
+                        <div class="p-2 w-50 mobile-navLink">
+                            <router-link to="/about" class="nav-link">
+                                 About
+                            </router-link>
+                        </div>
+                        <div class="p-2 w-50 mobile-navLink">
+                            <router-link to="/my_order" class="nav-link">
+                                    Orders
+                            </router-link>
+                        </div>
+                        <div class="p-2 w-50 mobile-navLink">
+                            <router-link to="/login" class="nav-link">
+                                <i class="fas fa-cog"></i>
+                            </router-link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -105,6 +111,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import {mapGetters, mapActions} from 'vuex';
 
 export default {
@@ -120,6 +127,11 @@ export default {
     },
     created(){
         this.getCart();
+    },
+    mounted() {
+        $('.mobile-navLink .nav-link').on('click', function(){
+            $('#navbarNavAltMarkup').removeClass('show')
+        });
     }
 }
 </script>
@@ -127,6 +139,7 @@ export default {
 <style lang="scss" scoped>
     $gray-700: #495057;
     $gray-300: #dee2e6;
+    $primary: #dba377;
 
     .nav{
         line-height:66px;
@@ -185,6 +198,16 @@ export default {
     }
     .text-gray{
         color:$gray-300;
+    }
+    .mobile-navLink{
+        border: 1px solid#333;
+        background-color: $gray-700;
+        &:hover{
+            background-color: darken($gray-300, 25%);
+        }
+        .nav-link{
+            color:white; 
+        }
     }
     
 </style>

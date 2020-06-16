@@ -3,6 +3,8 @@
 $primary:#dba377;
 $gray:$gray-900;
 
+html, body{ height:100%; margin:0; }
+
 [data-aos] {
     visibility: hidden;
 }

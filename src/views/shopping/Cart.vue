@@ -1,9 +1,8 @@
 <template>
-    <div>
+    <div class="cart">
         <loading :active.sync="isLoading"></loading>
-        <!-- <div class="container" v-if="itemList"> -->
         <div class="container" v-if="itemList !== 0">
-            <h3 class="text-center my-3">今朝有酒今朝醉</h3>
+            <h2 class="text-center my-3">今朝有酒今朝醉</h2>
                 <!-- 購買商品 -->
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-10">
@@ -81,8 +80,15 @@
                   </div>
             </div>
         </div>
-        <div class="h2 my-3" v-else>您目前沒有商品喔!</div>
         <router-link to="/checkout" class="btn btn-primary text-white my-3" href="#" role="button" v-if="itemList">前往結帳</router-link>
+        <div class="container" v-else>
+            <div class="h2 my-5">您目前沒有商品喔!</div>
+            <button
+                class="btn btn-outline-success mr-2"
+                @click="backtocustomer"
+            >繼續選購
+            </button>
+        </div>
     </div>
 </template>
 
@@ -112,6 +118,9 @@ export default {
             this.$store.dispatch('addCouponCode', this.couponCode)
             this.couponCode = ''
         },
+        backtocustomer(){
+            this.$router.push(`/shop`)
+        }
     }, 
     created(){
         this.getCart()
@@ -120,5 +129,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .cart{
+        min-height:76vh;
+    }
 </style>

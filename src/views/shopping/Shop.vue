@@ -109,8 +109,8 @@
                                 <del class="h6 text-muted">{{product.origin_price? `原價${product.origin_price}元` : '' }}</del>
                                 <div class="h6">特價{{product.price}}元</div>
                             </div>
-                            <select class="form-control mt-3" v-model="product.num" placeholder="{{}}">
-                                <option :selected="true">請選購商品數量</option>
+                            <select class="form-control mt-3" v-model="product.buyNum">
+                                <option value="" disabled selected>Select your option</option>
                                 <option :value="num" v-for="num in 5" :key="num">
                                     選購 {{num}}*{{product.unit}}
                                 </option>
@@ -122,7 +122,7 @@
                                 <strong>{{ product.num * product.price }}</strong> 元
                             </div>
                             <button type="button" class="btn btn-primary text-white"
-                                @click="addtoCart(product.id, product.num)">
+                                @click="addtoCart(product.id, product.buyNum)">
                                 <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
                                 <i class="fas fa-cart-plus"></i>
                                 購物車
@@ -188,6 +188,7 @@ export default {
             this.status.loadingItem = id
             this.$http.get(api).then((response) => {
                 this.product = response.data.product
+                this.$set(this.product, 'buyNum', 1)
                 this.status.loadingItem = ''
                 $('#productModal').modal('show')
             })

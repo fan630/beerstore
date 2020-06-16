@@ -113,7 +113,7 @@
                     </button>
                     <button
                         v-else
-                        class="btn btn-outline-success mr-2 btn-lg"
+                        class="btn btn-outline-success mr-2"
                         @click="backtocustomer"
                     >繼續選購
                     </button>

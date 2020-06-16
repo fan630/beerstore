@@ -3,7 +3,6 @@
         <Nav />
             <AlertMessage></AlertMessage>
             <router-view></router-view>
-            <!-- <GoTop></GoTop> -->
         <Footer/>
     </div>
 </template>
