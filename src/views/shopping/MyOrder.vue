@@ -44,7 +44,6 @@
 
 <script>
 import Page from '../../components/Page'
-
 export default {
   name: 'MyOrder',
   components:{
@@ -53,10 +52,8 @@ export default {
   data(){
       return{
           orders:[
-
           ], 
           pagination:{
-
           },
           isLoading: false, 
       }
