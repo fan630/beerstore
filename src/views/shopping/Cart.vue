@@ -13,29 +13,29 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th width="100">選項</th>
-                                        <th class="text-center">商品圖片</th>
-                                        <th class="text-center">商品名稱</th>
+                                        <th >選項</th>
+                                        <th width="150" class="text-center">商品圖片</th>
+                                        <th width="250" class="text-center">商品名稱</th>
                                         <th
-                                            width="100"
+                                            
                                             class="text-right"
                                         >數量</th>
                                         <th
-                                            width="80"
+                                            
                                             class="text-right"
                                         >單價</th>
                                         <th
-                                            width="80"
+                                            
                                             class="text-right"
                                         >小計</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts">
+                                    <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
                                         <td class="align-middle text-center">
                                             <a  @click="removeCartItem(item.id)">
                                                 <i class="fas fa-trash-alt"
-                                                    style='font-size:16px'
+                                                    style='font-size:20px'
                                                     aria-hidden="true"
                                                 ></i>
                                             </a>
@@ -70,7 +70,7 @@
                             </table>
                             <div>✦ 輸入折扣碼「longtimenosee」，和 FanBeer 一同歡慶開幕吧！</div>
                             <div class="input-group my-3">
-                                <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+                                <input type="text" class="form-control" v-model="couponCode" placeholder="請輸入優惠碼">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button" @click="addCouponCode">
                                         套用優惠碼
@@ -87,40 +87,30 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
+
 export default {
     name:'Cart', 
     data(){
         return{
-            coupon_code:'', 
+            couponCode:'', 
         }
     }, 
     computed:{
-        cart(){
-            return this.$store.state.cart
-        },
+        ...mapGetters(['cart', 'isLoading']),
         itemList(){
             return this.cart.carts.length
         }
     },
     methods:{
+        ...mapActions(['getCart']),
+
         removeCartItem(id){
             this.$store.dispatch('removeCartItem', id)
         },
-        getCart(){
-            this.$store.dispatch('getCart')
-        }, 
-        addCouponCode(){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/coupon`
-            let coupon = {
-                code: this.coupon_code
-            }
-            this.isLoading = true;
-            this.$http.post(api, {data: coupon}).then((response) => {
-                this.getCart()
-                this.isLoading = false
-                this.$bus.$emit('message:push', response.data.message, 'success')
-            })
-            this.coupon_code = ''
+        addCouponCode(couponCode){
+            this.$store.dispatch('addCouponCode', this.couponCode)
+            this.couponCode = ''
         },
     }, 
     created(){
@@ -130,12 +120,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg-cover{
-    background-position: center center; 
-    background-size: cover;
-}
-.box2{
-    width: 160px;
-    height: 200px;
-}
+
 </style>

@@ -26,9 +26,6 @@
                     <div class="form-row text-left">
                         <div class="form-group col-md-4">
                             <label for="#name">姓名</label>
-                              <!-- <ValidationProvider rules="required|secret" 
-                                  immediate v-slot="{ errors }"
-                                > -->
                                 <input
                                     type="name"
                                     class="form-control"
@@ -37,8 +34,6 @@
                                     v-model="form.user.name"
                                     required
                                 >
-                              <!-- <span>{{ errors[0] }}</span>
-                            </ValidationProvider> -->
                         </div>
                         <div class="form-group col-md-4">
                             <label for="#email">Email</label>

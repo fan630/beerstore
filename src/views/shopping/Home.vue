@@ -28,13 +28,13 @@
                 </div>
                 <div class="carousel-item header-carousel-item bg-cover active" 
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1570380888376-ff4a100975f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80)`}">                   
-                    <div class="carousel-caption d-none d-md-block px-2">
-                    </div>
+                    <!-- <div class="carousel-caption d-none d-md-block px-2">
+                    </div> -->
                 </div>
                 <div class="carousel-item header-carousel-item bg-cover" 
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`}">
-                    <div class="carousel-caption d-none d-md-block px-2">
-                    </div>
+                    <!-- <div class="carousel-caption d-none d-md-block px-2">
+                    </div> -->
                 </div>
             </div>
             <a
@@ -209,9 +209,9 @@ export default {
         font-size: 3em;
     }
     p{
-        font-family: 'Lato', sans-serif;
+       font-family: 'Lato', sans-serif;
     }
-    .display-4{
+    .display-4, h3{
         font-family: 'Merriweather', serif;
     }
     .filter-class{

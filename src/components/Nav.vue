@@ -38,7 +38,7 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
                         data-offset="400">
-                        <h6>{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
+                        <h6 class="text-gray">{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
                         <table class="table table-sm text-black">
                             <tbody>
                             <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
@@ -125,6 +125,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    $gray-700: #495057;
+    $gray-300: #dee2e6;
+
     .nav{
         line-height:66px;
     }
@@ -178,7 +181,10 @@ export default {
 
     .dropdown-menu{
         top:121%;
-        background-color:#333;
+        background-color:$gray-700;
+    }
+    .text-gray{
+        color:$gray-300;
     }
     
 </style>

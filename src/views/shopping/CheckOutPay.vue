@@ -44,14 +44,14 @@
                 <h3 class="text-center my-4">購買資訊</h3>
                 <table class="table text-right">
                     <thead>
-                        <th>產品</th>
+                        <th class="text-center">產品</th>
                         <th>數量</th>
                         <th>單價</th>
                         <th>單價</th>
                     </thead>
                     <tbody>
                         <tr v-for="item in order.products" :key="item.id">
-                            <td style="height: 150px; background-size: cover; background-position: center; padding:2px 0;"
+                            <td class="align-middle bg-cover box2"
                                 :style = "{backgroundImage: `url(${item.product.imageUrl})`}"
                             >
                             </td>

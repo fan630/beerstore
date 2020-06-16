@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-primary py-2 mt-6 footer"
+    <div class="py-3 footer mt-5"
         >
         <div class="container d-flex justify-content-center text-white">
             <p>資料、圖片來源皆來自網路，僅用來做為學習用途</p>
@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    $gray-700: #495057;
     p{
       	margin-bottom: 0;
     }
@@ -24,5 +25,6 @@ export default {
       //  display:block;
       //  position:absolute;
       //  bottom:0;
+      background-color: $gray-700;
     }
 </style>

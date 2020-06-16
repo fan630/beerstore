@@ -15,7 +15,7 @@
             <div class="row">
                 <!--標題列-->
                 <!-- <button class="btn btn-primary" @click="getProducts">重新取得資料</button> -->
-                <div class="col-md-2 mb-2">
+                <div class="col-md-2 mb-4">
                     <div class="list-group sticky-top sticky-top">
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'all'}"
@@ -109,7 +109,8 @@
                                 <del class="h6 text-muted">{{product.origin_price? `原價${product.origin_price}元` : '' }}</del>
                                 <div class="h6">特價{{product.price}}元</div>
                             </div>
-                            <select name="" class="form-control mt-3" v-model="product.num">
+                            <select class="form-control mt-3" v-model="product.num" placeholder="{{}}">
+                                <option :selected="true">請選購商品數量</option>
                                 <option :value="num" v-for="num in 5" :key="num">
                                     選購 {{num}}*{{product.unit}}
                                 </option>
@@ -152,6 +153,7 @@ export default {
                 loadingItem: ''
             }, 
             show:'all',
+            selected: "請選購商品數量"
         }
     }, 
     created(){

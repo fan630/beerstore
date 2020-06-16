@@ -7,9 +7,9 @@
                     <tr>
                         <th width="150px">購買日期</th>
                         <th width="230px">訂單編號</th>
-                        <th width="100px">留言內容</th>
                         <th width="300px">訂單內容</th>
                         <th width="150px">付款狀態</th>
+                        <th width="100px">留言內容</th>
                         <th width="150px">操作訂單</th>
                     </tr>
                 </thead>
@@ -17,7 +17,6 @@
                     <tr v-for="item in orders" :key="item.id">
                         <td>{{item.paid_date | date}}</td>
                         <td>{{item.id}}</td>
-                        <td>{{item.message}}</td>
                         <td>
                             <ul>
                                 <li v-for="(item, i) in item.products" :key="i">
@@ -30,6 +29,7 @@
                         <td :class="item.is_paid ? 'green': 'red'">
                             {{item.is_paid ? '已付款': '尚未付款'}}
                         </td>
+                        <td>{{item.message}}</td>
                         <td class="text-center">
                               <div class="btn-group btn-group-sm " role="group" aria-label="Second group">
                                 <button type="button" class="btn btn-outline-primary btn-sm" @click="openModal(item)">編輯</button>
@@ -60,7 +60,7 @@
                                 <input type="string" class="form-control" id="message" v-model="tempOrder.message"
                                 placeholder="請輸入留言">
                             </div>
-                            <div class="form-group col text-left">
+                            <!-- <div class="form-group col text-left">
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-check">
@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-row" v-for="(item) in tempOrder.products" :key="item.id">
                             <div class="form-group col text-left">
@@ -90,25 +90,6 @@
                                 placeholder="請輸入更改數量">
                             </div>
                         </div>
-                        <!-- <div class="form-row">
-                            <div class="form-group col-md-12">
-                         ｀       <label for="dueDate">到期時間</label>
-                                <input type="date" class="form-control" id="dueDate" v-model="tempOrder.due_date"
-                                placeholder="請輸入到期時間">
-                            </div>
-                        </div>                         -->
-                        <!-- <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
-                                v-model="tempOrder.is_paid"
-                                :true-value="1"
-                                :false-value="0"
-                                id="is_paid">
-                                <label class="form-check-label" for="is_paid">
-                                是否啟用
-                                </label>
-                            </div>
-                        </div> -->
                     </div>
                     </div>
                 </div>
