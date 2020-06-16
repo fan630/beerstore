@@ -14,6 +14,7 @@
         <div class="container">
             <div class="row">
                 <!--標題列-->
+                <!-- <button class="btn btn-primary" @click="getProducts">重新取得資料</button> -->
                 <div class="col-md-2 mb-2">
                     <div class="list-group sticky-top sticky-top">
                         <a  class="list-group-item list-group-item-action"
@@ -145,12 +146,12 @@ export default {
     },
     data(){
         return{
-            products:[], 
+            // products:[], 
             product:{},
             status:{
                 loadingItem: ''
             }, 
-            isLoading: false, 
+            // isLoading: false, 
             cart:{}, 
             show:'all',
         }
@@ -174,6 +175,12 @@ export default {
                     return this.products
                     break;
             }
+        }, 
+        isLoading(){
+            return this.$store.state.isLoading
+        }, 
+        products(){
+            return this.$store.state.products
         }
     }, 
     methods:{
@@ -181,12 +188,7 @@ export default {
             this.show = val
         },
         getProducts(){
-            this.isLoading = true
-            const api = `https://vue-course-api.hexschool.io/api/fan630/products/all`
-            this.$http.get(api).then((response) => {
-                this.isLoading = false
-                this.products = response.data.products
-            })
+            this.$store.dispatch('getProducts');
         }, 
         getProduct(id){
             const api = `https://vue-course-api.hexschool.io/api/fan630/product/${id}`
@@ -213,10 +215,10 @@ export default {
         }, 
         getCart(){
             const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
-            this.isLoading = true;
+            this.$store.dispatch('updateLoading', true)
             this.$http.get(api).then((response) => {
                 this.cart = response.data.data
-                this.isLoading = false
+                this.$store.dispatch('updateLoading', false)
             })
         }, 
         created(){

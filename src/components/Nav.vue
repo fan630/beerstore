@@ -30,6 +30,39 @@
                             class="d-md-none d-block"
                         >
                     </router-link>
+                    <!-- <div class="dropdown ml-auto">
+                        <button class="btn btn-sm btn-cart" data-toggle="dropdown" data-flip="false">
+                        <i class="fa fa-shopping-cart text-dark fa-2x" aria-hidden="true"></i>
+                        <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
+                        <span class="sr-only">unread messages</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
+                        data-offset="400">
+                        <h6>已選擇商品</h6>
+                        <table class="table table-sm">
+                            <tbody>
+                            <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
+                                <td class="align-middle text-center">
+                                <a href="#" class="text-muted" @click.prevent="removeCart(item.id)">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                                </td>
+                                <td class="align-middle">{{ item.product.title }}</td>
+                                <td class="align-middle">{{ item.qty }}{{item.product.unit}}</td>
+                                <td class="align-middle text-right">{{item.total}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary btn-block">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
+                        </button>
+                        <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
+                            <i class="fas fa-shopping-cart">
+                            </i>
+                            <span class="badge badge-danger">3</span>
+                        </router-link>
+                        </div>
+                    </div> -->
                     <router-link to="/cart" class="nav-link order-md-1 h-link btn-cart">
                         <i class="fas fa-shopping-cart">
                         </i>

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay';
@@ -6,15 +7,16 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap'
 import App from './App.vue'
 import router from './router'
-import store from './store'
 import './bus';
 import currencyFilter from './filters/currency';
 import dateTransfer from './filters/date';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import animated from 'animate.css'
+import animated from 'animate.css';
+import store from './store'
 
 Vue.use(VueAxios, axios);
+Vue.use(Vuex);
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
