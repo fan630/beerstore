@@ -41,7 +41,6 @@
                     >
                     <div class="navbar-nav ml-auto d-md-inline-flex">
                         <router-link to="/about" class="nav-link h-link">
-                           
                                 About
                         </router-link>
                         <router-link to="/shop" class="nav-link h-link">
