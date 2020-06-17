@@ -2,10 +2,10 @@
     <div>
         <loading :active.sync="isLoading"></loading>
         <div class="jumbotron jumbotron-fluid bg-cover jumbotron-bg d-flex
-                    justify-content-center text-left">
+                    flex-column justify-content-center text-left">
             <div class="container bg-transparented">
                 <h1 class="display-4">釀‧哲學</h1>
-                <p class="lead">
+                <p>
                     最天然的不過濾，不滅菌，不添加非天然香料
                     堅持手工釀造，堅持小批量生產，堅持自然發酵
                     自有配方，自有設備，自有釀酒師，自有酵母農場

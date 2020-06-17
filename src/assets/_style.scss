@@ -13,10 +13,10 @@ html, body{ height:100%; margin:0; }
     visibility: visible;
 }
 /* This changes all the animations globaly */
-:root {
-  --animate-duration: 1800ms;
-  --animation-delay: 2.9s;
-}
+// :root {
+//   --animate-duration: 1800ms;
+//   --animation-delay: 2.9s;
+// }
 
 .navbar {
     -webkit-box-shadow: 0 0px 3px 3px rgba(33, 37, 41, 0.6);

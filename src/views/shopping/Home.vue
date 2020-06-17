@@ -110,7 +110,7 @@
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-1"></div>
                 <div class="col-md-4 text-md-left text-center">
-                    <div class="display-4 mb-5"  data-aos="animate__slideInRight animate__fast">
+                    <div class="display-4 mb-5" data-aos="animate__slideInRight animate__faster">
                         Welcome to Our Store</div>
                     <button type="button mb-5"
                         class="btn btn-primary text-white my-3"
@@ -118,7 +118,7 @@
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6">
-                    <div class="box bg-cover" data-aos="animate__slideInLeft animate__fast"
+                    <div class="box bg-cover" data-aos="animate__slideInLeft animate__faster"
                         style="background-image:url(https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"
                         >
                     </div>
@@ -126,13 +126,13 @@
             </div>
             <div class="row justify-content-end flex-row-reverse no-gutters">
                 <div class="col-md-4 align-self-center"
-                    data-aos="animate__slideInLeft animate__fast">
+                    data-aos="animate__slideInLeft animate__faster">
                     <div class="display-4 text-md-right text-center mt-md-5 my-5">
                         Get an Extra 10% off your first order
                     </div>
                 </div>
                 <div class="offset-1"></div>
-                <div class="col-md-6" data-aos="animate__slideInRight animate__fast">
+                <div class="col-md-6" data-aos="animate__slideInRight animate__faster">
                     <div class="box bg-cover"
                         style="background-image:url(https://images.unsplash.com/photo-1576723072484-b4d99bc3c9a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)"
                         >
@@ -141,12 +141,13 @@
             </div>
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-2"></div>
-                <div class="col-md-3 text-md-left text-center" data-aos="animate__slideInLeft">
+                <div class="col-md-3 text-md-left text-center"
+                    data-aos="animate__slideInLeft animate__faster">
                     <div class="display-4 mb-md-5 my-5">Legendary Brewerly, <br>Beer</div>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6">
-                    <div class="box bg-cover" data-aos="animate__slideInRight"
+                    <div class="box bg-cover" data-aos="animate__slideInRight animate__faster"
                         style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
                         >
                     </div>
@@ -237,5 +238,10 @@ export default {
     .svg-box{
         width:72px;
         height:72px;
+    }
+    @media (max-width: 992px) {
+        .container-fluid {
+            width: 100%;
+        }
     }
 </style>
