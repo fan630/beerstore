@@ -4,6 +4,8 @@
 
 ## Demo
 
+https://fan630.github.io/beerstore/#/
+
 ## 前台
 
 ### 商品頁面
