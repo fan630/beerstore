@@ -239,7 +239,7 @@ export default {
         width:72px;
         height:72px;
     }
-    @media (max-width: 992px) {
+    @media (max-width: 768px) {
         .container-fluid {
             width: 100%;
         }
