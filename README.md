@@ -1,8 +1,10 @@
-# beerstore
+# Beer store
 
 使用 Vue CLI3 及 Vue Router 完成 SPA 互動式電商網站，涵蓋前後台，串接 API 實做出商品管理 (CRUD)、購物車、優惠券、登入/登出介面等功能，並搭配 ESLint Airbnb維持程式碼品質.
 
 ## Demo
+
+https://fan630.github.io/beerstore/#/
 
 ## 前台
 
