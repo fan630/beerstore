@@ -31,7 +31,8 @@
                         >
                     </router-link>
                     <div class="dropdown ml-auto order-md-1 ml-1">
-                        <button class="btn btn-sm btn-cart" data-toggle="dropdown" data-flip="false">
+                        <button class="btn btn-sm btn-cart" data-toggle="dropdown"
+                            data-flip="false">
                         <i class="fa fa-shopping-cart text-white fa-2x" aria-hidden="true"></i>
                         <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
                         <span class="sr-only">unread messages</span>
@@ -40,10 +41,11 @@
                         data-offset="400">
                         <h6 class="text-gray">{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
                         <table class="table table-sm text-black">
-                            <tbody>
-                            <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
+                            <tbody v-if="cart.carts.length">
+                            <tr v-for="item in cart.carts" :key="item.id">
                                 <td class="align-middle text-center">
-                                <a href="#" class="text-muted" @click.prevent="removeCartItem(item.id)">
+                                <a href="#" class="text-muted"
+                                    @click.prevent="removeCartItem(item.id)">
                                     <i class="fas fa-trash-alt text-black" aria-hidden="true"></i>
                                 </a>
                                 </td>
@@ -64,24 +66,24 @@
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
                     >
-                    <!--桌機版導覽列-->  
+                    <!--桌機版導覽列-->
                     <div class="navbar-nav ml-auto d-none d-md-block">
                         <router-link to="/about" class="nav-link h-link">
                                 About
                         </router-link>
                         <router-link to="/shop" class="nav-link h-link">
-                            
+
                                 Shop
                         </router-link>
                         <router-link to="/my_order" class="nav-link h-link">
-                           
+
                                 Orders
                         </router-link>
                         <router-link to="/login" class="nav-link">
                             <i class="fas fa-cog"></i>
                         </router-link>
                     </div>
-                    <!--手機版導覽列-->  
+                    <!--手機版導覽列-->
                     <div class="d-flex w-100 flex-wrap d-block d-md-none">
                         <div class="p-2 w-50 mobile-navLink">
                             <router-link to="/shop" class="nav-link">
@@ -111,29 +113,29 @@
 </template>
 
 <script>
-import $ from 'jquery'
-import {mapGetters, mapActions} from 'vuex';
+import $ from 'jquery';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    name:'Nav', 
-    computed:{
-        ...mapGetters(['cart', 'isLoading']),
-    }, 
-    methods:{
-        ...mapActions(['getCart']), 
-        removeCartItem(id){
-            this.$store.dispatch('removeCartItem', id)
-        },
+  name: 'Nav',
+  computed: {
+    ...mapGetters(['cart', 'isLoading']),
+  },
+  methods: {
+    ...mapActions(['getCart']),
+    removeCartItem(id) {
+      this.$store.dispatch('removeCartItem', id);
     },
-    created(){
-        this.getCart();
-    },
-    mounted() {
-        $('.mobile-navLink .nav-link').on('click', function(){
-            $('#navbarNavAltMarkup').removeClass('show')
-        });
-    }
-}
+  },
+  created() {
+    this.getCart();
+  },
+  mounted() {
+    $('.mobile-navLink .nav-link').on('click', () => {
+      $('#navbarNavAltMarkup').removeClass('show');
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -206,8 +208,8 @@ export default {
             background-color: darken($gray-300, 25%);
         }
         .nav-link{
-            color:white; 
+            color:white;
         }
     }
-    
+
 </style>

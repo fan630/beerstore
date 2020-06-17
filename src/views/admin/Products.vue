@@ -34,9 +34,17 @@
                             <span v-else>未啟用</span>
                         </td>
                         <td class="text-center">
-                              <div class="btn-group btn-group-sm " role="group" aria-label="Second group">
-                                <button type="button" class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
-                                <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteProduct(item)">刪除</button>
+                              <div class="btn-group btn-group-sm"
+                                    role="group"
+                                    aria-label="Second group">
+                                <button type="button"
+                                    class="btn btn-outline-primary btn-sm"
+                                    @click="openModal(false, item)">編輯
+                                    </button>
+                                <button type="button"
+                                    class="btn btn-outline-danger btn-sm"
+                                    @click="deleteProduct(item)">刪除
+                                    </button>
                             </div>
                         </td>
                     </tr>
@@ -62,7 +70,9 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="image">輸入圖片網址</label>
-                            <input type="text" class="form-control" id="image" v-model="tempProduct.imageUrl"
+                            <input type="text" class="form-control"
+                                id="image"
+                                v-model="tempProduct.imageUrl"
                                 placeholder="請輸入圖片連結">
                         </div>
                         <div class="form-group">
@@ -73,7 +83,7 @@
                             <input type="file" id="customFile" class="form-control"
                                 ref="files" @change="uploadFile">
                         </div>
-                        <img 
+                        <img
                             img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
                             :src="tempProduct.imageUrl"
                             class="img-fluid" alt="">
@@ -82,19 +92,25 @@
                     <div class="col-sm-8">
                         <div class="form-group">
                         <label for="title">標題</label>
-                        <input type="text" class="form-control" id="title" v-model="tempProduct.title"
+                        <input type="text" class="form-control"
+                            id="title"
+                            v-model="tempProduct.title"
                             placeholder="請輸入標題">
                         </div>
 
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="category">分類</label>
-                            <input type="text" class="form-control" id="category" v-model="tempProduct.category"
+                            <input type="text" class="form-control"
+                            id="category"
+                            v-model="tempProduct.category"
                             placeholder="請輸入分類">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="price">單位</label>
-                            <input type="unit" class="form-control" id="unit" v-model="tempProduct.unit"
+                            <input type="unit" class="form-control"
+                            id="unit"
+                            v-model="tempProduct.unit"
                             placeholder="請輸入單位">
                         </div>
                         </div>
@@ -102,25 +118,32 @@
                         <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="origin_price">原價</label>
-                            <input type="number" class="form-control" id="origin_price" v-model="tempProduct.origin_price"
-                            placeholder="請輸入原價">
+                            <input type="number" class="form-control"
+                              id="origin_price"
+                              v-model="tempProduct.origin_price"
+                              placeholder="請輸入原價">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="price">售價</label>
-                            <input type="number" class="form-control" id="price" v-model="tempProduct.price"
-                            placeholder="請輸入售價">
+                            <input type="number" class="form-control"
+                              id="price"
+                              v-model="tempProduct.price"
+                              placeholder="請輸入售價">
                         </div>
                         </div>
                         <hr>
 
                         <div class="form-group">
                         <label for="description">產品描述</label>
-                        <textarea type="text" class="form-control" id="description" v-model="tempProduct.description"
+                        <textarea type="text" class="form-control"
+                            id="description"
+                            v-model="tempProduct.description"
                             placeholder="請輸入產品描述"></textarea>
                         </div>
                         <div class="form-group">
                         <label for="content">說明內容</label>
-                        <textarea type="text" class="form-control" id="content" v-model="tempProduct.content"
+                        <textarea type="text" class="form-control" id="content"
+                            v-model="tempProduct.content"
                             placeholder="請輸入產品說明內容"></textarea>
                         </div>
                         <div class="form-group">
@@ -139,8 +162,14 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
+                    <button type="button"
+                        class="btn btn-outline-secondary"
+                        data-dismiss="modal">取消
+                        </button>
+                    <button type="button"
+                       class="btn btn-primary"
+                       @click="updateProduct">確認
+                       </button>
                 </div>
                 </div>
             </div>
@@ -152,124 +181,124 @@
 
 <script>
 import $ from 'jquery';
-import Page from "../../components/Page"
+import Page from '../../components/Page.vue';
 
 export default {
-    name:'Products',
-    components:{
-        Page
-    }, 
-    data(){
-        return{
-            products:[], 
-            pagination:{
+  name: 'Products',
+  components: {
+    Page,
+  },
+  data() {
+    return {
+      products: [],
+      pagination: {
 
-            }, 
-            // 新增要送出的欄位內容
-            tempProduct:{}, 
-            isNew: false, 
-            isLoading: false, 
-            status: {
-                fileUploading: false
-            }
+      },
+      // 新增要送出的欄位內容
+      tempProduct: {},
+      isNew: false,
+      isLoading: false,
+      status: {
+        fileUploading: false,
+      },
+    };
+  },
+  created() {
+    this.getProducts();
+  },
+  methods: {
+    getProducts(page = 1) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/admin/products?page=${page}`;
+      this.isLoading = true;
+      this.$http.get(api).then((response) => {
+        this.isLoading = false;
+        this.products = response.data.products;
+        this.pagination = response.data.pagination;
+      });
+    },
+    // isNew這份資料是新的還是舊的
+    openModal(isNew, item) {
+      if (isNew) {
+        this.tempProduct = {};
+        this.isNew = true;
+      } else {
+        // 因為物件傳參考的特性會是一樣, 所以用這個方法淺複製
+        this.tempProduct = { ...item };
+        this.isNew = false;
+      }
+      $('#productModal').modal('show');
+    },
+    updateProduct() {
+      let api = 'https://vue-course-api.hexschool.io/api/fan630/admin/product';
+      let httpMethods = 'post';
+
+      if (!this.isNew) {
+        api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${this.tempProduct.id}`;
+        // console.log(this.tempProduct.id)
+        httpMethods = 'put';
+      }
+
+      this.$http[httpMethods](api, { data: this.tempProduct }).then((response) => {
+        if (response.data.success) {
+          $('#productModal').modal('hide');
+          this.getProducts();
+        } else {
+          $('#productModal').modal('hide');
+          this.getProducts();
+          console.log('新增失敗');
         }
-    }, 
-    created(){
-        this.getProducts()
-    }, 
-    methods:{
-        getProducts(page = 1){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/admin/products?page=${page}`
-            this.isLoading = true
-            this.$http.get(api).then((response) => {
-                this.isLoading = false
-                this.products = response.data.products
-                this.pagination = response.data.pagination  
-            })
-        }, 
-        // isNew這份資料是新的還是舊的
-        openModal(isNew, item){
-            if(isNew){
-                this.tempProduct = {}
-                this.isNew = true;
-            }else{
-                // 因為物件傳參考的特性會是一樣, 所以用這個方法淺複製
-                this.tempProduct = Object.assign({}, item)
-                this.isNew = false
-            }
-            $('#productModal').modal('show')
-        }, 
-        updateProduct(){
-            let api = 'https://vue-course-api.hexschool.io/api/fan630/admin/product'
-            let httpMethods = 'post'
-
-            if(!this.isNew){
-                api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${this.tempProduct.id}`
-                // console.log(this.tempProduct.id)
-                httpMethods = 'put'
-            }
-
-            this.$http[httpMethods](api, {data: this.tempProduct}).then((response) => {
-                if(response.data.success){
-                    $('#productModal').modal('hide')
-                    this.getProducts()
-                }else{
-                    $('#productModal').modal('hide')
-                    this.getProducts()
-                    console.log('新增失敗')
-                }
-            })
-        }, 
-        deleteProduct(item){
-            let api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${item.id}`
-            this.$http.delete(api).then((response) => {
-                if(response.data.success){
-                    $('#productModal').modal('hide')
-                    // window.confirm('確認刪除?')
-                    this.getProducts()
-                }else{
-                    $('#productModal').modal('hide')
-                    this.getProducts()
-                    console.log('刪除失敗')
-                }
-            })
-        }, 
-        uploadFile(){
-            const uploadedFile = this.$refs.files.files[0];
-            const formData = new FormData();
-            formData.append('file-to-upload', uploadedFile);
-            let api = `https://vue-course-api.hexschool.io/api/fan630/admin/upload`
-            this.status.fileUploading = true
-            this.$http.post(api, formData, {
-                headers: {
-                    'Content-Type':'multipart/form-data'
-                }
-            }).then(response => {
-                console.log(response.data)
-                if(response.data.success){
-                    this.status.fileUploading = false
-                    this.$set(this.tempProduct, 'imageUrl', response.data.imageUrl )
-                }else{
-                    this.$bus.$emit('message:push', response.data.message, 'danger')
-                }
-            })
-        },
-        currencyItem(num) {
-            const n = Number(num);
-            return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
-                const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
-                return currency;
-            })}`;
-        },
-    }, 
-    computed:{
-        itemList(){
-            return Object.keys(this.products).length;
+      });
+    },
+    deleteProduct(item) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${item.id}`;
+      this.$http.delete(api).then((response) => {
+        if (response.data.success) {
+          $('#productModal').modal('hide');
+          // window.confirm('確認刪除?')
+          this.getProducts();
+        } else {
+          $('#productModal').modal('hide');
+          this.getProducts();
+          console.log('刪除失敗');
         }
-    }
-}
+      });
+    },
+    uploadFile() {
+      const uploadedFile = this.$refs.files.files[0];
+      const formData = new FormData();
+      formData.append('file-to-upload', uploadedFile);
+      const api = 'https://vue-course-api.hexschool.io/api/fan630/admin/upload';
+      this.status.fileUploading = true;
+      this.$http.post(api, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          this.status.fileUploading = false;
+          this.$set(this.tempProduct, 'imageUrl', response.data.imageUrl);
+        } else {
+          this.$bus.$emit('message:push', response.data.message, 'danger');
+        }
+      });
+    },
+    currencyItem(num) {
+      const n = Number(num);
+      return `$${n.toFixed(0).replace(/./g, (c, i, a) => {
+        const currency = (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c);
+        return currency;
+      })}`;
+    },
+  },
+  computed: {
+    itemList() {
+      return Object.keys(this.products).length;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-    
+
 </style>

@@ -14,20 +14,18 @@
 </template>
 
 <script>
-import Sidebar from "./Sidebar";
-import Navbar from "./Navbar";
-import Products from "../views/admin/Products.vue"
-import AlertMessage from "./AlertMessage"
+import Sidebar from './Sidebar.vue';
+import Navbar from './Navbar.vue';
+import AlertMessage from './AlertMessage.vue';
 
 export default {
   name: 'Dashboard',
-  components:{
-    Sidebar, 
-    Navbar, 
-    Products,  
-    AlertMessage, 
-  }
-}
+  components: {
+    Sidebar,
+    Navbar,
+    AlertMessage,
+  },
+};
 </script>
 
 <style scoped lang="scss">

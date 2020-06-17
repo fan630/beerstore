@@ -6,14 +6,17 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6 bordered px-5 py-2">
                             <h3 class="py-3">關於我們</h3>
-                            <p class="text-left">2015年，五位志趣相投、喜愛精釀啤酒的朋友決定放棄原本的生活，憑藉著熱情與夢想，投入更具挑戰的創業人生，打造來自台灣的高品質精釀啤酒。
+                            <p class="text-left">
+                                2015年，五位志趣相投、喜愛精釀啤酒的朋友決定放棄原本的生活，憑藉著熱情與夢想，
+                                投入更具挑戰的創業人生，打造來自台灣的高品質精釀啤酒。
                                 <span class="font-weight-bolder text-gold">FanBeer</span>
                                 於是誕生。
                             </p>
                             <p class="text-left">
                                 <span class="font-weight-bolder text-gold">FanBeer</span>
-                                積極參與亞洲精釀酒廠社群，共同推動「重新定義啤酒」的市場革命。為了完成這個目標，<span class="font-weight-bolder text-gold">FanBeer</span>
-                                不斷追求精進與卓越，要將最好的啤酒、最好的品飲體驗推廣給更多的消費者。</p>  
+                                積極參與亞洲精釀酒廠社群，共同推動「重新定義啤酒」的市場革命。為了完成這個目標，
+                                <span class="font-weight-bolder text-gold">FanBeer</span>
+                                不斷追求精進與卓越，要將最好的啤酒、最好的品飲體驗推廣給更多的消費者。</p>
                         </div>
                     </div>
               </div>
@@ -40,7 +43,9 @@
                           品牌在台大舉展店
                       </p>
                       <p class="text-gold text-left">
-                          陸續於高雄市、台中市、台北微風松高、台北內湖與台南市成立分店，其中台中店面擁有32支龍頭，挑戰生啤選擇全台灣最多；微風松高店，搭配200坪空中花園，全信義區最吸睛!每間分店皆有不同特色!
+                          陸續於高雄市、台中市、台北微風松高、台北內湖與台南市成立分店，
+                          其中台中店面擁有32支龍頭，挑戰生啤選擇全台灣最多；
+                          微風松高店，搭配200坪空中花園，全信義區最吸睛!每間分店皆有不同特色!
                       </p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInRight">
@@ -63,7 +68,10 @@
                   <div class="col-sm-6">
                       <h3>2019年5月</h3>
                       <p>成立第十家直營啤酒吧</p>
-                      <p class="text-gold text-left">於台北微風廣場本館成立第十家直營酒吧，現場供應24種新鮮生啤，為目前全台分店數量最多之精釀酒廠品牌。</p>
+                      <p class="text-gold text-left">
+                          於台北微風廣場本館成立第十家直營酒吧，現場供應24種新鮮生啤，
+                          為目前全台分店數量最多之精釀酒廠品牌。
+                     </p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInRight">
                       <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
@@ -80,10 +88,10 @@ import GoTop from '../../components/Gotop.vue';
 
 export default {
   name: 'About',
-  components:{
-      GoTop
-  }
-}
+  components: {
+    GoTop,
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -95,10 +103,10 @@ export default {
         position: relative;
     }
     .timeline-section::after{
-        content: ""; 
+        content: "";
         position: absolute;
-        top:0; 
-        bottom: 0; 
+        top:0;
+        bottom: 0;
         left:50%;
         transform: translateX(-50%);
         border: 2px solid#dba377;
@@ -107,12 +115,12 @@ export default {
         position: relative;
     }
     .timeline-pointer::after{
-        content: ""; 
+        content: "";
         position: absolute;
-        width: 10px; 
-        height:10px; 
-        top:0; 
-        bottom: 0; 
+        width: 10px;
+        height:10px;
+        top:0;
+        bottom: 0;
         left:50%;
         border-radius: 50%;
         transform: translateX(-50%);

@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="#email">Email</label>
-                             <ValidationProvider rules="email" 
+                             <ValidationProvider rules="email"
                                   immediate v-slot="{ errors }"
                                 >
                                 <input
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="#tel">聯繫方式</label>
-                              <ValidationProvider rules="min:10|max:10" 
+                              <ValidationProvider rules="min:10|max:10"
                                 immediate v-slot="{ errors }"
                               >
                               <input
@@ -104,45 +104,45 @@
 
 export default {
   name: 'CheckOut',
-  data(){
-    return{
+  data() {
+    return {
       cart: {
-        carts: []
+        carts: [],
       },
-      form:{
-        user:{
-          name: "",
-          email: "",
-          tel: "",
-          address: ""
-        }, 
-        message: ""
-      }
-    }
-  }, 
-  methods:{
-    getCart(){
-        const api = `https://vue-course-api.hexschool.io/api/fan630/cart`
-        this.isLoading = true;
-        this.$http.get(api).then((response) => {
-            this.cart = response.data.data
-            this.isLoading = false  
-        })
-    }, 
-    createOrder(){
-        const api = `https://vue-course-api.hexschool.io/api/fan630/order`
-        const order = this.form
-        this.isLoading = true;
-        this.$http.post(api, {data: order}).then((response) => {
-            this.$bus.$emit('message:push', response.data.message, 'warning')
-            console.log(response.data)
-            this.$router.push(`/checkout_pay/${response.data.orderId}`)
-            this.getCart()
-            this.isLoading = false
-        })
-    }
-  }
-}
+      form: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+          address: '',
+        },
+        message: '',
+      },
+    };
+  },
+  methods: {
+    getCart() {
+      const api = 'https://vue-course-api.hexschool.io/api/fan630/cart';
+      this.isLoading = true;
+      this.$http.get(api).then((response) => {
+        this.cart = response.data.data;
+        this.isLoading = false;
+      });
+    },
+    createOrder() {
+      const api = 'https://vue-course-api.hexschool.io/api/fan630/order';
+      const order = this.form;
+      this.isLoading = true;
+      this.$http.post(api, { data: order }).then((response) => {
+        this.$bus.$emit('message:push', response.data.message, 'warning');
+        console.log(response.data);
+        this.$router.push(`/checkout_pay/${response.data.orderId}`);
+        this.getCart();
+        this.isLoading = false;
+      });
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

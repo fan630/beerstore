@@ -1,7 +1,8 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
-        <div class="jumbotron jumbotron-fluid bg-cover jumbotron-bg d-flex flex-column justify-content-center text-left">
+        <div class="jumbotron jumbotron-fluid bg-cover jumbotron-bg d-flex
+                    justify-content-center text-left">
             <div class="container bg-transparented">
                 <h1 class="display-4">釀‧哲學</h1>
                 <p class="lead">
@@ -19,13 +20,13 @@
                     <div class="list-group sticky-top sticky-top">
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'all'}"
-                            @click="checkList('all')"    
+                            @click="checkList('all')"
                         >
                             <span>所有商品</span>
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'beer'}"
-                            @click="checkList('beer')"    
+                            @click="checkList('beer')"
                         >
                             <i class="fas fa-beer mr-1">
                             </i>
@@ -33,13 +34,13 @@
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'acc'}"
-                            @click="checkList('acc')"     
+                            @click="checkList('acc')"
                         >
                             公仔
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'other'}"
-                            @click="checkList('other')"     
+                            @click="checkList('other')"
                         >
                             其餘商品
                         </a>
@@ -52,33 +53,40 @@
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
                                 <a class="item-pic-wrap" @click="getProduct(item.id)">
-                                    <div class="item-pic" 
-                                    style="height: 350px; background-size: cover; background-position: center;}"
+                                    <div class="item-pic bg-cover"
+                                    style="height: 350px"
                                     :style = "{backgroundImage: `url(${item.imageUrl})`}"
                                 >
                                     </div>
                                 </a>
                                 <div class="card-body">
-                                    <span class="badge float-left" 
-                                          :class="[item.category == '啤酒'?'badge-info' : 'badge-warning']">
+                                    <span class="badge float-left"
+                                        :class=
+                                        "[item.category == '啤酒'?'badge-info' : 'badge-warning']"
+                                        >
                                         {{item.category}}
                                     </span>
                                     <div class="card-title text-center h5 mr-4">
                                         <a class="text-dark">{{item.title}}</a>
                                     </div>
                                     <!--<p class="card-text text-left">{{item.content}}</p>-->
-                                    <div class="d-flex justify-content-between align-items-baseline">
+                                    <div class="d-flex justify-content-between">
                                         <!--顯示原價和特價-->
-                                        <del class="h6 text-muted">{{item.origin_price? `原價${item.origin_price}元` : '' }}</del>
+                                        <del class="h6 text-muted">
+                                            {{item.origin_price? `原價${item.origin_price}元` : '' }}
+                                        </del>
                                         <div class="h6 text-danger">特價{{item.price}}元</div>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex">
-                                    <button type="button" class="btn btn-primary btn-block ml-auto text-white"
-                                        @click="addtoCart(item.id)">
-                                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                                        <i class="fas fa-cart-plus"></i>
-                                        購物車
+                                    <button type="button"
+                                        class="btn btn-primary btn-block ml-auto text-white"
+                                            @click="addtoCart(item.id)">
+                                            <i class="fas fa-spinner fa-spin"
+                                                v-if="status.loadingItem === item.id">
+                                            </i>
+                                            <i class="fas fa-cart-plus"></i>
+                                            購物車
                                     </button>
                                 </div>
                             </div>
@@ -95,18 +103,26 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">{{product.title}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <button type="button"
+                                class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img :src="product.imageUrl" class="img-fluid" alt="" style="height:250px">
+                            <img :src="product.imageUrl" class="img-fluid" alt=""
+                                    style="height:250px" />
                             <blockquote class="blockquote mt-3">
                             <p class="mb-0 text-left">{{ product.content }}</p>
-                            <footer class="blockquote-footer text-right">{{ product.description }}</footer>
+                            <footer
+                                class="blockquote-footer text-right"
+                                >
+                                {{ product.description }}
+                            </footer>
                             </blockquote>
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <del class="h6 text-muted">{{product.origin_price? `原價${product.origin_price}元` : '' }}</del>
+                                <del class="h6 text-muted">
+                                    {{product.origin_price? `原價${product.origin_price}元` : '' }}
+                                </del>
                                 <div class="h6">特價{{product.price}}元</div>
                             </div>
                             <select class="form-control mt-3" v-model="product.buyNum">
@@ -118,12 +134,14 @@
                         </div>
                         <div class="modal-footer">
                             <div class="text-muted text-nowrap mr-3">
-                                小計 
+                                小計
                                 <strong>{{ product.num * product.price }}</strong> 元
                             </div>
                             <button type="button" class="btn btn-primary text-white"
                                 @click="addtoCart(product.id, product.buyNum)">
-                                <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
+                                <i class="fas fa-spinner fa-spin"
+                                    v-if="product.id === status.loadingItem">
+                                </i>
                                 <i class="fas fa-cart-plus"></i>
                                 購物車
                             </button>
@@ -138,73 +156,66 @@
 
 <script>
 import $ from 'jquery';
-import GoTop from "../../components/Gotop.vue";
-import {mapGetters, mapActions} from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import GoTop from '../../components/Gotop.vue';
 
 export default {
-    name: 'Shop',
-    components:{
-       GoTop
+  name: 'Shop',
+  components: {
+    GoTop,
+  },
+  data() {
+    return {
+      product: {},
+      status: {
+        loadingItem: '',
+      },
+      show: 'all',
+      selected: '請選購商品數量',
+    };
+  },
+  computed: {
+    ...mapGetters(['products', 'cart', 'isLoading']),
+    filterProducts() {
+      switch (true) {
+        case this.show === 'beer':
+          return this.products.filter((item) => item.category === '啤酒');
+        case this.show === 'acc':
+          return this.products.filter((item) => item.category === '公仔');
+        case this.show === 'other':
+          return this.products.filter((item) => (item.category !== '公仔' && item.category !== '啤酒'));
+        default:
+          return this.products;
+      }
     },
-    data(){
-        return{
-            product:{},
-            status:{
-                loadingItem: ''
-            }, 
-            show:'all',
-            selected: "請選購商品數量"
-        }
-    }, 
-    created(){
-        this.getProducts()
+  },
+  methods: {
+    ...mapActions(['getProducts', 'getCart']),
+    checkList(val) {
+      this.show = val;
     },
-    computed:{
-        ...mapGetters(['products', 'cart', 'isLoading']),
-        filterProducts(){
-            switch (true) {
-                case this.show === 'beer':
-                    return this.products.filter(item => item.category === '啤酒')
-                    break;
-                case this.show === 'acc':
-                    return this.products.filter(item => item.category === '公仔')
-                    break;
-                case this.show === 'other':
-                    return this.products.filter(item => (item.category !== '公仔' && item.category !== '啤酒'))
-                    break;
-                default:
-                    return this.products
-                    break;
-            }
-        }, 
-    }, 
-    methods:{
-       ...mapActions(['getProducts', 'getCart']), 
-        checkList(val){
-            this.show = val
-        },
-        getProduct(id){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/product/${id}`
-            this.status.loadingItem = id
-            this.$http.get(api).then((response) => {
-                this.product = response.data.product
-                this.$set(this.product, 'buyNum', 1)
-                this.status.loadingItem = ''
-                $('#productModal').modal('show')
-            })
-        },
-        addtoCart(id, qty = 1){
-            this.status.loadingItem = id
-            this.$store.dispatch('addtoCart', {id, qty})
-            $('#productModal').modal('hide')
-            this.status.loadingItem = ''
-        },  
+    getProduct(id) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/product/${id}`;
+      this.status.loadingItem = id;
+      this.$http.get(api).then((response) => {
+        this.product = response.data.product;
+        this.$set(this.product, 'buyNum', 1);
+        this.status.loadingItem = '';
+        $('#productModal').modal('show');
+      });
     },
-    created(){
-        this.getProducts();
-        this.getCart();
-    }
-}
+    addtoCart(id, qty = 1) {
+      this.status.loadingItem = id;
+      this.$store.dispatch('addtoCart', { id, qty });
+      $('#productModal').modal('hide');
+      this.status.loadingItem = '';
+    },
+  },
+  created() {
+    this.getProducts();
+    this.getCart();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -213,7 +224,7 @@ export default {
         min-height: 400px;
     }
     .bg-cover{
-        background-position: center center; 
+        background-position: center center;
         background-size: cover;
     }
 
@@ -235,7 +246,7 @@ export default {
     }
     .item-pic{
         transform: scale(1);
-        transition: .3s; 
+        transition: .3s;
     }
     .item-pic-wrap:hover{
         .item-pic{

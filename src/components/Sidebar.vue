@@ -1,8 +1,12 @@
 <template>
     <div>
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-left">
+        <nav id="sidebarMenu"
+            class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-left">
             <div class="sidebar-sticky pt-3">
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <h6
+                    class="sidebar-heading
+                           d-flex justify-content-between align-items-center
+                           px-3 mt-4 mb-1">
                     <span>
                         <i class="fas fa-user-cog">
                             管理員
@@ -40,8 +44,8 @@
 <script>
 export default {
   name: 'Sidebar',
-  
-}
+
+};
 </script>
 
 <style scoped lang="scss">

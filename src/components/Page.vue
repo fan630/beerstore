@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="page-item" 
+            <li class="page-item"
                 :class="{'active': pagination.current_page === page}"
                 v-for="page in pagination.total_pages" :key="page"
                 >
@@ -33,14 +33,14 @@
 export default {
   name: 'Page',
   props: {
-    pagination: Object
+    pagination: Object,
   },
-  methods:{
-      changePage(page){
-          this.$emit('changePage', page)
-      }
-  }
-}
+  methods: {
+    changePage(page) {
+      this.$emit('changePage', page);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -100,7 +100,7 @@
                                 <th scope="row">付款狀態</th>
                                 <td v-if="!order.is_paid">尚未付款</td>
                                 <td v-else class="text-success">付款完成</td>
-                            </tr>       
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -128,46 +128,46 @@
 
 export default {
   name: 'CheckOutPay',
-  data(){
-    return{
-        orderId: '',
-        order:{
-            user:{}
+  data() {
+    return {
+      orderId: '',
+      order: {
+        user: {},
+      },
+    };
+  },
+  methods: {
+    getOrder() {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/order/${this.orderId}`;
+      this.isLoading = true;
+      this.$http.get(api).then((response) => {
+        if (response.data.success) {
+          this.order = response.data.order;
+        } else {
+          this.$bus.$emit('message:push', response.data.message, 'warning');
         }
-    }
-  }, 
-  methods:{
-    getOrder(){
-        const api = `https://vue-course-api.hexschool.io/api/fan630/order/${this.orderId}`
-        this.isLoading = true;
-        this.$http.get(api).then((response) => {
-            if(response.data.success){
-                this.order = response.data.order
-            }else{
-                this.$bus.$emit('message:push', response.data.message, 'warning')
-            }
-            this.isLoading = false  
-        })
-    }, 
-    payOrder(){
-        const api = `https://vue-course-api.hexschool.io/api/fan630/pay/${this.orderId}`
-        this.isLoading = true;
-        this.$http.post(api).then((response) => {
-            if(response.data.success){
-                this.getOrder()
-            }
-            this.isLoading = false  
-        })
-    }, 
-    backtocustomer(){
-        this.$router.push(`/shop`)
-    }
+        this.isLoading = false;
+      });
+    },
+    payOrder() {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/pay/${this.orderId}`;
+      this.isLoading = true;
+      this.$http.post(api).then((response) => {
+        if (response.data.success) {
+          this.getOrder();
+        }
+        this.isLoading = false;
+      });
+    },
+    backtocustomer() {
+      this.$router.push('/shop');
+    },
   },
-  created(){
+  created() {
     this.orderId = this.$route.params.orderId;
-    this.getOrder()
+    this.getOrder();
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

@@ -31,8 +31,13 @@
                         </td>
                         <td>{{item.message}}</td>
                         <td class="text-center">
-                              <div class="btn-group btn-group-sm " role="group" aria-label="Second group">
-                                <button type="button" class="btn btn-outline-primary btn-sm" @click="openModal(item)">編輯</button>
+                              <div class="btn-group btn-group-sm"
+                                   role="group"
+                                   aria-label="Second group">
+                                <button type="button"
+                                    class="btn btn-outline-primary btn-sm"
+                                    @click="openModal(item)">編輯
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -57,45 +62,34 @@
                         <div class="form-row">
                             <div class="form-group col text-left">
                                 <label for="message">留言</label>
-                                <input type="string" class="form-control" id="message" v-model="tempOrder.message"
+                                <input type="string" class="form-control"
+                                    id="message" v-model="tempOrder.message"
                                 placeholder="請輸入留言">
                             </div>
-                            <!-- <div class="form-group col text-left">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-check">
-                                        <input class="form-check-input" 
-                                            v-model="tempOrder.is_paid"
-                                            type="radio" name="gridRadios" id="gridRadios1" value="true">
-                                        <label class="form-check-label" for="gridRadios1">
-                                            已付款
-                                        </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" 
-                                                v-model="tempOrder.is_paid"
-                                                type="radio" name="gridRadios" id="gridRadios2" value="false">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                尚未付款
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="form-row" v-for="(item) in tempOrder.products" :key="item.id">
                             <div class="form-group col text-left">
                                 <label for="num">{{item.product.title}}</label>
-                                <input type="number" class="form-control" id="num" v-model="item.product.num"
-                                placeholder="請輸入更改數量">
+                                <input type="number"
+                                    class="form-control"
+                                    id="num"
+                                    v-model="item.product.num"
+                                    placeholder="請輸入更改數量"
+                                >
                             </div>
                         </div>
                     </div>
                     </div>
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" @click="updateOrder">確認</button>
+                        <button type="button"
+                            class="btn btn-outline-secondary"
+                            data-dismiss="modal">取消
+                            </button>
+                        <button type="button"
+                            class="btn btn-primary"
+                            @click="updateOrder">確認
+                            </button>
                     </div>
                 </div>
             </div>
@@ -107,61 +101,61 @@
 
 <script>
 import $ from 'jquery';
-import Page from "../../components/Page"
+import Page from '../../components/Page.vue';
 
 export default {
-    name:'Orders',
-    components:{
-        Page
-    }, 
-    data(){
-        return{
-            orders:[
-            ], 
-            pagination:{
+  name: 'Orders',
+  components: {
+    Page,
+  },
+  data() {
+    return {
+      orders: [
+      ],
+      pagination: {
 
-            }, 
-            tempOrder:{
-                products:{
-                }
-            }, 
-            isLoading: false, 
+      },
+      tempOrder: {
+        products: {
+        },
+      },
+      isLoading: false,
+    };
+  },
+  created() {
+    this.getOrders();
+  },
+  methods: {
+    getOrders(page = 1) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/admin/orders?page=${page}`;
+      this.isLoading = true;
+      this.$http.get(api).then((response) => {
+        this.isLoading = false;
+        this.orders = response.data.orders;
+        this.pagination = response.data.pagination;
+      });
+    },
+    openModal(item) {
+      this.tempOrder = JSON.parse(JSON.stringify(item));
+      $('#orderModal').modal('show');
+    },
+
+    updateOrder() {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/admin/order/${this.tempOrder.id}`;
+      this.$http.put(api, { data: this.tempOrder }).then((response) => {
+        if (response.data.success) {
+          // console.log(response.data) success
+          $('#orderModal').modal('hide');
+          this.getOrders();
+        } else {
+          $('#orderModal').modal('hide');
+          this.getOrders();
+          console.log('新增失敗');
         }
-    }, 
-    created(){
-        this.getOrders()
-    }, 
-    methods:{
-        getOrders(page = 1){
-            const api = `https://vue-course-api.hexschool.io/api/fan630/admin/orders?page=${page}`
-            this.isLoading = true
-            this.$http.get(api).then((response) => {
-                this.isLoading = false
-                this.orders = response.data.orders
-                this.pagination = response.data.pagination  
-            })
-        }, 
-        openModal(item){
-            this.tempOrder = JSON.parse(JSON.stringify(item));
-            $('#orderModal').modal('show')
-        }, 
-
-        updateOrder(){
-            let api = `https://vue-course-api.hexschool.io/api/fan630/admin/order/${this.tempOrder.id}`
-            this.$http.put(api, {data: this.tempOrder}).then((response) => {
-                if(response.data.success){
-                    // console.log(response.data) success
-                    $('#orderModal').modal('hide')
-                    this.getOrders()
-                }else{
-                    $('#orderModal').modal('hide')
-                    this.getOrders()
-                    console.log('新增失敗')
-                }
-            })
-        }, 
-    }, 
-}
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

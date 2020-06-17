@@ -16,21 +16,22 @@
                                         <th width="150" class="text-center">商品圖片</th>
                                         <th width="250" class="text-center">商品名稱</th>
                                         <th
-                                            
+
                                             class="text-right"
                                         >數量</th>
                                         <th
-                                            
+
                                             class="text-right"
                                         >單價</th>
                                         <th
-                                            
+
                                             class="text-right"
                                         >小計</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr v-for="item in cart.carts" :key="item.id" v-if="cart.carts.length">
+                                <tbody v-if="cart.carts.length">
+                                    <tr v-for="item in cart.carts" :key="item.id"
+                                        >
                                         <td class="align-middle text-center">
                                             <a  @click="removeCartItem(item.id)">
                                                 <i class="fas fa-trash-alt"
@@ -41,16 +42,20 @@
                                         </td>
                                         <td
                                             class="align-middle bg-cover box2"
-                                            :style = "{backgroundImage: `url(${item.product.imageUrl})`}"
+                                            :style="{backgroundImage:
+                                            `url(${item.product.imageUrl})`}"
                                         >
                                         </td>
-                                        <td class="align-middle text-center"  >{{item.product.title}}
+                                        <td class="align-middle text-center">
+                                            {{item.product.title}}
                                             <div class="text-success" v-if="item.coupon">
                                                 已套用優惠券
                                             </div>
                                         </td>
                                         <td class="align-middle text-right">{{item.qty}}</td>
-                                        <td class="align-middle text-right">${{item.product.price}}</td>
+                                        <td class="align-middle text-right">
+                                            ${{item.product.price}}
+                                        </td>
                                         <td class="align-middle text-right">
                                             <strong>${{item.final_total}}</strong>
                                         </td>
@@ -63,24 +68,36 @@
                                         </tr>
                                         <tr v-if="cart.final_total !== cart.total">
                                             <td colspan="5" class="text-right text-success">折扣價</td>
-                                            <td class="text-right text-success">{{ cart.final_total }}</td>
+                                            <td class="text-right text-success">
+                                                {{ cart.final_total }}
+                                            </td>
                                         </tr>
                                     </tfoot>
                             </table>
-                            <div>✦ 輸入折扣碼「longtimenosee」，和 FanBeer 一同歡慶開幕吧！</div>
+                            <div>✦ 輸入折扣碼「longtimenosee」，和
+                                <span class="font-weight-bolder text-gold">FanBeer</span>
+                                一同歡慶開幕吧！
+                            </div>
                             <div class="input-group my-3">
-                                <input type="text" class="form-control" v-model="couponCode" placeholder="請輸入優惠碼">
+                                <input type="text" class="form-control"
+                                       v-model="couponCode"
+                                       placeholder="請輸入優惠碼"
+                                />
                                 <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" @click="addCouponCode">
+                                    <button class="btn btn-secondary" type="button"
+                                        @click="addCouponCode">
                                         套用優惠碼
                                     </button>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                   </div>
             </div>
         </div>
-        <router-link to="/checkout" class="btn btn-primary text-white my-3" href="#" role="button" v-if="itemList">前往結帳</router-link>
+        <router-link to="/checkout"
+            class="btn btn-primary text-white my-3"
+            href="#" role="button" v-if="itemList">前往結帳
+        </router-link>
         <div class="container" v-else>
             <div class="h2 my-5">您目前沒有商品喔!</div>
             <button
@@ -93,39 +110,39 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    name:'Cart', 
-    data(){
-        return{
-            couponCode:'', 
-        }
-    }, 
-    computed:{
-        ...mapGetters(['cart', 'isLoading']),
-        itemList(){
-            return this.cart.carts.length
-        }
+  name: 'Cart',
+  data() {
+    return {
+      couponCode: '',
+    };
+  },
+  computed: {
+    ...mapGetters(['cart', 'isLoading']),
+    itemList() {
+      return this.cart.carts.length;
     },
-    methods:{
-        ...mapActions(['getCart']),
+  },
+  methods: {
+    ...mapActions(['getCart']),
 
-        removeCartItem(id){
-            this.$store.dispatch('removeCartItem', id)
-        },
-        addCouponCode(couponCode){
-            this.$store.dispatch('addCouponCode', this.couponCode)
-            this.couponCode = ''
-        },
-        backtocustomer(){
-            this.$router.push(`/shop`)
-        }
-    }, 
-    created(){
-        this.getCart()
-    }
-}
+    removeCartItem(id) {
+      this.$store.dispatch('removeCartItem', id);
+    },
+    addCouponCode() {
+      this.$store.dispatch('addCouponCode', this.couponCode);
+      this.couponCode = '';
+    },
+    backtocustomer() {
+      this.$router.push('/shop');
+    },
+  },
+  created() {
+    this.getCart();
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -4,9 +4,13 @@
       <img src="../assets/images/logo.png" alt="" srcset="">
       <h1 class="h3 mb-3 font-weight-normal text-center pt-3">後台管理</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" v-model.trim="user.username" placeholder="Email address" required autofocus >
+      <input type="email" id="inputEmail" class="form-control"
+            v-model.trim="user.username" placeholder="Email address" required autofocus
+      />
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" v-model.trim="user.password" placeholder="Password" required >
+      <input type="password" id="inputPassword" class="form-control"
+            v-model.trim="user.password" placeholder="Password" required
+      />
       <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
     </form>
   </div>
@@ -15,29 +19,29 @@
 <script>
 export default {
   name: 'Login',
-  data(){
-    return{
-       user:{
-         username: '', 
-         password: ''
-       }, 
-    }
-  }, 
-  methods:{
-    signin(){
-        const api = 'https://vue-course-api.hexschool.io/admin/signin'
-        // const api = `${process.env.VUE_APP_API}/api/fan630/products`
-        // console.log(process.e nv.VUE_APP_API)
-        // const vm = this
-        this.$http.post(api, this.user).then((response) => {
-            console.log(response.data)
-            if(response.data.success){
-              this.$router.push('/admin/products');
-            }
-        })
+  data() {
+    return {
+      user: {
+        username: '',
+        password: '',
+      },
+    };
+  },
+  methods: {
+    signin() {
+      const api = 'https://vue-course-api.hexschool.io/admin/signin';
+      // const api = `${process.env.VUE_APP_API}/api/fan630/products`
+      // console.log(process.e nv.VUE_APP_API)
+      // const vm = this
+      this.$http.post(api, this.user).then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          this.$router.push('/admin/products');
+        }
+      });
     },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

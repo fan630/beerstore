@@ -18,11 +18,11 @@ export default {
     return {
       messages: [
         //   {
-        //       message: '信息內容', 
-        //       status:'danger', 
+        //       message: '信息內容',
+        //       status:'danger',
         //       timestamp: 123
         //   }
-        ],
+      ],
     };
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
 <style scope>
 .message-alert {
   position: fixed;
-  max-width: 50%; 
+  max-width: 50%;
   top: 56px;
   right: 20px;
   z-index: 1100;

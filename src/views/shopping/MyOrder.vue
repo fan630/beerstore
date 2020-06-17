@@ -43,36 +43,37 @@
 </template>
 
 <script>
-import Page from '../../components/Page'
+import Page from '../../components/Page.vue';
+
 export default {
   name: 'MyOrder',
-  components:{
-      Page
+  components: {
+    Page,
   },
-  data(){
-      return{
-          orders:[
-          ], 
-          pagination:{
-          },
-          isLoading: false, 
-      }
-  }, 
-  created(){
-        this.getOrderList()
-  }, 
-  methods:{
-    getOrderList(page = 1){
-        const api = `https://vue-course-api.hexschool.io/api/fan630/orders?page=${page}`
-        this.isLoading = true
-        this.$http.get(api).then((response) => {
-            this.isLoading = false
-            this.orders = response.data.orders
-            this.pagination = response.data.pagination  
-        })
+  data() {
+    return {
+      orders: [
+      ],
+      pagination: {
+      },
+      isLoading: false,
+    };
+  },
+  created() {
+    this.getOrderList();
+  },
+  methods: {
+    getOrderList(page = 1) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/orders?page=${page}`;
+      this.isLoading = true;
+      this.$http.get(api).then((response) => {
+        this.isLoading = false;
+        this.orders = response.data.orders;
+        this.pagination = response.data.pagination;
+      });
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">

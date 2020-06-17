@@ -23,15 +23,15 @@
             </ol>
             <!-- 圖片位置 -->
             <div class="carousel-inner">
-                <div class="carousel-item header-carousel-item bg-cover" 
+                <div class="carousel-item header-carousel-item bg-cover"
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1539192009026-4163d2da8925?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80)`}">
                 </div>
-                <div class="carousel-item header-carousel-item bg-cover active" 
-                    :style="{backgroundImage: `url(https://images.unsplash.com/photo-1570380888376-ff4a100975f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80)`}">                   
+                <div class="carousel-item header-carousel-item bg-cover active"
+                    :style="{backgroundImage: `url(https://images.unsplash.com/photo-1570380888376-ff4a100975f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80)`}">
                     <!-- <div class="carousel-caption d-none d-md-block px-2">
                     </div> -->
                 </div>
-                <div class="carousel-item header-carousel-item bg-cover" 
+                <div class="carousel-item header-carousel-item bg-cover"
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`}">
                     <!-- <div class="carousel-caption d-none d-md-block px-2">
                     </div> -->
@@ -61,7 +61,7 @@
                 ></span>
                 <span class="sr-only">Next</span>
             </a>
-            </div>  
+            </div>
         </header>
         <!--四欄式-->
         <section class="bg-dark text-white my-mb-5 my-3">
@@ -69,28 +69,35 @@
                 <div class="row">
                     <div class="col-md-3 col-6">
                         <div class="my-2" style="bac">
-                           <img src="../../assets/images/svg/svg/005-beer.svg" alt="" srcset="" class="svg-box filter-class">
+                           <img src="../../assets/images/svg/svg/005-beer.svg"
+                                alt="" srcset="" class="svg-box filter-class"/>
                         </div>
                         <h3>Import</h3>
                         <p>These cases are perfectly simple distinguish</p>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="my-2">
-                            <img src="../../assets/images/svg/svg/001-beer-bottle.svg" alt="" srcset="" class="svg-box filter-class">
+                            <img src="../../assets/images/svg/svg/001-beer-bottle.svg"
+                                alt="" srcset="" class="svg-box filter-class"
+                            />
                         </div>
                         <h3>Domestic Specialty</h3>
                         <p>Perfectly there an simple distinguish cases.</p>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="my-2">
-                            <img src="../../assets/images/svg/svg/002-glass.svg" alt="" srcset="" class="svg-box filter-class">
+                            <img src="../../assets/images/svg/svg/002-glass.svg"
+                                alt="" srcset=""
+                                class="svg-box filter-class"
+                            />
                         </div>
                         <h3>Domestic Specialty</h3>
                         <p>Perfectly there an simple distinguish cases.</p>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="my-2">
-                            <img src="../../assets/images/svg/svg/006-evaluate.svg" alt="" srcset="" class="svg-box filter-class">
+                            <img src="../../assets/images/svg/svg/006-evaluate.svg"
+                                alt="" srcset="" class="svg-box filter-class" />
                         </div>
                         <h3>Value</h3>
                         <p>Simple distinguish these cases are perfectly.</p>
@@ -103,8 +110,11 @@
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-1"></div>
                 <div class="col-md-4 text-md-left text-center">
-                    <div class="display-4 mb-5"  data-aos="animate__slideInRight animate__fast">Welcome to Our Store</div>
-                    <button type="button mb-5" class="btn btn-primary text-white my-3" @click="backtocustomer">Shop Now ></button>
+                    <div class="display-4 mb-5"  data-aos="animate__slideInRight animate__fast">
+                        Welcome to Our Store</div>
+                    <button type="button mb-5"
+                        class="btn btn-primary text-white my-3"
+                        @click="backtocustomer">Shop Now ></button>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6">
@@ -115,8 +125,11 @@
                 </div>
             </div>
             <div class="row justify-content-end flex-row-reverse no-gutters">
-                <div class="col-md-4 align-self-center" data-aos="animate__slideInLeft animate__fast">
-                    <div class="display-4 text-md-right text-center mt-md-5 my-5">Get an Extra 10% off your first order</div>
+                <div class="col-md-4 align-self-center"
+                    data-aos="animate__slideInLeft animate__fast">
+                    <div class="display-4 text-md-right text-center mt-md-5 my-5">
+                        Get an Extra 10% off your first order
+                    </div>
                 </div>
                 <div class="offset-1"></div>
                 <div class="col-md-6" data-aos="animate__slideInRight animate__fast">
@@ -148,9 +161,13 @@
                         <img src="../../assets/images/bottom.png" alt="" srcset="">
                     </div>
                     <div class="col-md-6">
-                        <h2 class="text-left">Get The Latest News On Product Releases, Availability, And Event</h2>
+                        <h2 class="text-left">
+                            Get The Latest News On Product Releases, Availability, And Event
+                        </h2>
                         <div class="input-group mt-4">
-                                <input type="text" class="form-control" placeholder="Enter your email address">
+                                <input type="text"
+                                    class="form-control"
+                                    placeholder="Enter your email address">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button">
                                         GO!
@@ -165,25 +182,25 @@
 </template>
 
 <script>
-import GoTop from "../../components/Gotop.vue";
+import GoTop from '../../components/Gotop.vue';
 
 export default {
-    name:'Home', 
-    components:{
-       GoTop
+  name: 'Home',
+  components: {
+    GoTop,
+  },
+  methods: {
+    backtocustomer() {
+      this.$router.push('/shop');
     },
-    methods:{
-        backtocustomer(){
-            this.$router.push(`/shop`)
-        }
-    }
-}
+  },
+};
 
 </script>
 
 <style lang="scss" scoped>
     .bg-cover{
-        background-size:cover; 
+        background-size:cover;
         background-position: center center;
     }
     .carousel-caption{
@@ -215,11 +232,10 @@ export default {
         font-family: 'Merriweather', serif;
     }
     .filter-class{
-        filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%) contrast(119%);
+        filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%);
     }
     .svg-box{
         width:72px;
-        height:72px;   
+        height:72px;
     }
 </style>
-

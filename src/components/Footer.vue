@@ -13,20 +13,17 @@
 <script>
 export default {
   name: 'Footer',
-}
+};
 </script>
 
 <style scoped lang="scss">
     $gray-700: #495057;
+
     p{
-      	margin-bottom: 0;
+        margin-bottom: 0;
     }
+
     footer{
-      // position: fixed;
-      // bottom: 0;
-      // clear: both;
       background-color: $gray-700;
-      // width: 100%;
-      // height:50px;
     }
 </style>
