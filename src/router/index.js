@@ -9,7 +9,7 @@ import Index from '../components/Index.vue';
 // views
 import About from '../views/shopping/About.vue';
 import Products from '../views/admin/Products.vue';
-import Coupon from '../views/admin/Coupon.vue';
+import Coupon from '../views/shopping/Coupon.vue';
 import Orders from '../views/admin/Orders.vue';
 import Shop from '../views/shopping/Shop.vue';
 import SingleProduct from '../views/shopping/SingleProduct.vue';
@@ -54,6 +54,11 @@ const routes = [
         path: 'my_order',
         name: 'MyOrder',
         component: MyOrder,
+      },
+      {
+        path: 'coupon',
+        name: 'Coupon',
+        component: Coupon,
       },
       {
         path: 'cart',

@@ -238,8 +238,4 @@ export default {
     .filter-class{
         filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%);
     }
-    .svg-box{
-        width:72px;
-        height:72px;
-    }
 </style>

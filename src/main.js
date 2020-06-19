@@ -8,6 +8,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import AOS from 'aos';
 import animated from 'animate.css';
+import VueFlipcard from 'vue-flipcard'
 
 // Vee-validate
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
@@ -29,6 +30,7 @@ Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
 
 Vue.component('Loading', Loading);
+Vue.component('vue-flipcard', VueFlipcard);
 Vue.filter('currency', currencyFilter);
 Vue.filter('date', dateTransfer);
 // animated

@@ -1,6 +1,17 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
+            <div class="jumbotron jumbotron-fluid bg-cover jumbotron-bg d-flex
+                flex-column justify-content-center text-left">
+            <div class="container bg-transparented">
+                <h1 class="display-4">釀‧哲學</h1>
+                <p>
+                    最天然的不過濾，不滅菌，不添加非天然香料
+                    堅持手工釀造，堅持小批量生產，堅持自然發酵
+                    自有配方，自有設備，自有釀酒師，自有酵母農場
+                </p>
+            </div>
+        </div>
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -14,7 +25,7 @@
             <div class="form-row">
                 <div class="offset-md-1 col-md-5">
                     <img :src="product.imageUrl" class="img-fluid rounded" alt=""
-                    style="height:450px" />
+                    style="height:350px; width:250px" />
                 </div>
                 <div class="col-md-6 text-md-left text-center">
                     <h3>{{product.title}}</h3>
@@ -42,120 +53,108 @@
                             選購 {{num}}{{product.unit}}
                         </option>
                     </select>
-                        <div class="h4 text-right my-3 text-gold">
+                        <div class="h4 text-right my-3">
                             小計
                             <strong>{{ product.buyNum * product.price }}</strong>元
                         </div>
                         <button type="button" class="btn btn-primary text-white my-3"
                             @click="addtoCart(product.id, product.buyNum)">
-                            <i class="fas fa-spinner fa-spin"
-                                v-if="product.id === status.loadingItem">
-                            </i>
                             <i class="fas fa-cart-plus"></i>
                             購物車
                         </button>
+                </div>
+            </div>
+            <h3 class="text-left" v-if="this.relatedProduct.length > 2">相關產品</h3>
+            <h3 class="text-left" v-else>沒有相關產品</h3>
+            <hr>
+        </div>      
+        <div class="container-fluid my-3">
+            <div class="row">
+                <div class="offset-md-1 col-md-10">
+                    <div class="form-row" v-if="this.relatedProduct.length > 2">
+                        <div class="col-md mb-4 col-4" v-for="item in relatedProduct" :key="item.id">
+                            <div class="card border-0 shadow h-100">
+                                <div class="u-item-img bg-cover"
+                                    style="height:250px"
+                                    :style="{backgroundImage: `url(${item.imageUrl})`}"
+                                    >
+                                    <a class="u-item-cover" @click="getProduct(item.id)"
+                                >
+                                        <div class="u-item-btn">See more</div>
+                                    </a>
+                                </div>
+                                <!-- <div class="card-body">
+                                    <span class="badge float-left"
+                                        :class=
+                                        "[item.category == '啤酒'?'badge-info' : 'badge-warning']"
+                                        >
+                                        {{item.category}}
+                                    </span>
+                                    <div class="card-title text-center h5 mr-4">
+                                        <a class="text-dark">{{item.title}}</a>
+                                    </div>
+                                    <p class="card-text text-left">{{item.content}}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <del class="h6 text-muted">
+                                            {{item.origin_price? `原價${item.origin_price}元` : '' }}
+                                        </del>
+                                        <div class="h6 text-danger">特價{{item.price}}元</div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" v-else>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{product.title}}</h5>
-                        <button type="button"
-                            class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img :src="product.imageUrl" class="img-fluid" alt=""
-                                style="height:250px" />
-                        <blockquote class="blockquote mt-3">
-                        <p class="mb-0 text-left">{{ product.content }}</p>
-                        <footer
-                            class="blockquote-footer text-right"
-                            >
-                            {{ product.description }}
-                        </footer>
-                        </blockquote>
-                        <div class="d-flex justify-content-between align-items-baseline">
-                            <del class="h6 text-muted">
-                                {{product.origin_price? `原價${product.origin_price}元` : '' }}
-                            </del>
-                            <div class="h6">特價{{product.price}}元</div>
-                        </div>
-                        <select class="form-control mt-3" v-model="product.buyNum">
-                            <option value="" disabled selected>Select your option</option>
-                            <option :value="num" v-for="num in 5" :key="num">
-                                選購 {{num}}*{{product.unit}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="text-muted text-nowrap mr-3">
-                            小計
-                            <strong>{{ product.num * product.price }}</strong> 元
-                        </div>
-                        <button type="button" class="btn btn-primary text-white"
-                            @click="addtoCart(product.id, product.buyNum)">
-                            <i class="fas fa-spinner fa-spin"
-                                v-if="product.id === status.loadingItem">
-                            </i>
-                            <i class="fas fa-cart-plus"></i>
-                            購物車
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        <GoTop/>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import GoTop from '../../components/Gotop.vue';
 
 export default {
     name: 'SingleProduct',
+    components: {
+        GoTop,
+    },
     data(){
         return {
             product: {},
-            status: {
-                loadingItem: '',
-            },
             productId: '',
             selected: '請選購商品數量',
         }
     }, 
     computed: {
-        ...mapGetters(['cart', 'isLoading']),
+        ...mapGetters(['products','cart', 'isLoading']),
+        relatedProduct(){
+            return this.products.filter(item => item.category === this.product.category)
+        }
     },
     methods:{
-        ...mapActions(['getCart']),
+        ...mapActions(['getProducts','getCart']),
         getProduct(productId) {
             const api = `https://vue-course-api.hexschool.io/api/fan630/product/${productId}`;
-            this.status.loadingItem = productId;
             this.$http.get(api).then((response) => {
                 if(response.data.success){
                     this.product = response.data.product;
                     this.$set(this.product, 'buyNum', 1);
-                    this.status.loadingItem = '';
-                    // $('#productModal').modal('show');
-                    // this.$router.push(`/shop/${response.data.product.id}`)
                 }
             });
         },
         addtoCart(id, qty = 1) {
-            this.status.loadingItem = id;
             this.$store.dispatch('addtoCart', { id, qty });
-            //$('#productModal').modal('hide');
-            this.status.loadingItem = '';
         },
     },
     created(){
         this.productId = this.$route.params.productId
         this.getProduct(this.productId);
         this.getCart();
+        this.getProducts()
     }
 };
 </script>
@@ -163,6 +162,9 @@ export default {
 <style lang="scss" scoped>
     .breadcrumb{
         background-color: transparent;
+    }
+    .u-item-btn{
+        top: 50%;
     }
 
 </style>

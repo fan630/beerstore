@@ -164,19 +164,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    // $primary:#dba377;
-    .jumbotron-bg{
-        background-image:url(https://images.unsplash.com/photo-1554624158-c0d08d8dc6df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
-        min-height: 400px;
-    }
-    .bg-cover{
-        background-position: center center;
-        background-size: cover;
-    }
-
-    .bg-transparented{
-        background-color: rgba(255, 255, 255, .5)
-    }
     .box2{
         width: 160px;
         height: 200px;
@@ -186,39 +173,6 @@ export default {
     }
     .card-footer{
         padding:0;
-    }
-    .u-item-img{
-        height:350px;
-    }
-    .u-item-cover{
-        background-color: rgba(0,0,0,1.5);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        opacity: 0;
-        transition: all .2s;
-    }
-    .u-item-cover:hover{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        opacity: 0.5;
-    }
-    .u-item-btn {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        padding: 5px 10px;
-        border: 3px solid;
-        color: #fff;
-        text-decoration: none;
     }
 
 </style>

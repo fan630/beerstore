@@ -79,6 +79,9 @@
 
                                 Orders
                         </router-link>
+                        <router-link to="/coupon" class="nav-link h-link">
+                                Coupon
+                        </router-link>
                         <router-link to="/login" class="nav-link">
                             <i class="fas fa-cog"></i>
                         </router-link>
