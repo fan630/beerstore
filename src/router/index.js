@@ -12,6 +12,7 @@ import Products from '../views/admin/Products.vue';
 import Coupon from '../views/admin/Coupon.vue';
 import Orders from '../views/admin/Orders.vue';
 import Shop from '../views/shopping/Shop.vue';
+import SingleProduct from '../views/shopping/SingleProduct.vue';
 import Cart from '../views/shopping/Cart.vue';
 import CheckOut from '../views/shopping/CheckOut.vue';
 import CheckOutPay from '../views/shopping/CheckOutPay.vue';
@@ -43,6 +44,11 @@ const routes = [
         path: 'shop',
         name: 'Shop',
         component: Shop,
+      },
+      {
+        path: 'shop/:productId',
+        name: 'SingleProduct',
+        component: SingleProduct,
       },
       {
         path: 'my_order',
