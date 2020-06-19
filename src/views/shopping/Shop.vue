@@ -51,13 +51,12 @@
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
-                                <a class="item-pic-wrap" @click="getProduct(item.id)">
-                                    <div class="item-pic bg-cover"
-                                    style="height: 350px"
-                                    :style = "{backgroundImage: `url(${item.imageUrl})`}"
+                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
+                                    <a class="u-item-cover" @click="getProduct(item.id)"
                                 >
-                                    </div>
-                                </a>
+                                        <div class="u-item-btn">See more</div>
+                                    </a>
+                                </div>
                                 <div class="card-body">
                                     <span class="badge float-left"
                                         :class=
@@ -165,6 +164,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    // $primary:#dba377;
     .jumbotron-bg{
         background-image:url(https://images.unsplash.com/photo-1554624158-c0d08d8dc6df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
         min-height: 400px;
@@ -187,17 +187,38 @@ export default {
     .card-footer{
         padding:0;
     }
-    .item-pic-wrap{
+    .u-item-img{
+        height:350px;
+    }
+    .u-item-cover{
+        background-color: rgba(0,0,0,1.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         cursor: pointer;
+        opacity: 0;
+        transition: all .2s;
     }
-    .item-pic{
-        transform: scale(1);
-        transition: .3s;
+    .u-item-cover:hover{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        opacity: 0.5;
     }
-    .item-pic-wrap:hover{
-        .item-pic{
-            transform: scale(1.05);
-        }
+    .u-item-btn {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 5px 10px;
+        border: 3px solid;
+        color: #fff;
+        text-decoration: none;
     }
 
 </style>
