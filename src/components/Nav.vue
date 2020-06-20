@@ -72,7 +72,6 @@
                                 About
                         </router-link>
                         <router-link to="/shop" class="nav-link h-link">
-
                                 Shop
                         </router-link>
                         <router-link to="/my_order" class="nav-link h-link">
