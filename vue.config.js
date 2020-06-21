@@ -14,7 +14,7 @@ module.exports = {
     ,
     devServer: {
         before(app) {
-            app.get('/coupon', (req, res) => {
+            app.get('/api/data', (req, res) => {
                 res.json({
                     errno: 0,   // 这里是你的json内容
                     data: data
