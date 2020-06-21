@@ -30,7 +30,8 @@
                             class="d-md-none d-block"
                         >
                     </router-link>
-                    <div class="dropdown ml-auto order-md-1 ml-1">
+                    <!-- <div class="ml-auto d-flex"> -->
+                    <div class="dropdown order-md-1 ml-1">
                         <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                             data-flip="false">
                         <i class="fa fa-shopping-cart text-white fa-2x" aria-hidden="true"></i>
@@ -62,6 +63,7 @@
                         </router-link>
                         </div>
                     </div>
+                    <!-- </div> -->
                     <div
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
@@ -74,12 +76,11 @@
                         <router-link to="/shop" class="nav-link h-link">
                                 Shop
                         </router-link>
-                        <router-link to="/my_order" class="nav-link h-link">
-
-                                Orders
-                        </router-link>
                         <router-link to="/coupon" class="nav-link h-link">
                                 Coupon
+                        </router-link>
+                        <router-link to="/my_order" class="nav-link h-link">
+                                Orders
                         </router-link>
                         <router-link to="/login" class="nav-link">
                             <i class="fas fa-cog"></i>
@@ -103,8 +104,8 @@
                             </router-link>
                         </div>
                         <div class="p-2 w-50 mobile-navLink">
-                            <router-link to="/login" class="nav-link">
-                                <i class="fas fa-cog"></i>
+                            <router-link to="/coupon" class="nav-link">
+                                    Coupon
                             </router-link>
                         </div>
                     </div>

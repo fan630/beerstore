@@ -8,7 +8,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import AOS from 'aos';
 import animated from 'animate.css';
-import VueFlipcard from 'vue-flipcard'
+import VueFlipcard from 'vue-flipcard';
 
 // Vee-validate
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
@@ -18,6 +18,7 @@ import App from './App.vue';
 
 import router from './router';
 import './bus';
+export const eventBus = new Vue();
 import currencyFilter from './filters/currency';
 import dateTransfer from './filters/date';
 import 'aos/dist/aos.css';

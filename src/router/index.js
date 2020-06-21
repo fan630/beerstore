@@ -7,10 +7,9 @@ import Login from '../components/Login.vue';
 import Index from '../components/Index.vue';
 
 // views
+// shopping 
 import About from '../views/shopping/About.vue';
-import Products from '../views/admin/Products.vue';
 import Coupon from '../views/shopping/Coupon.vue';
-import Orders from '../views/admin/Orders.vue';
 import Shop from '../views/shopping/Shop.vue';
 import SingleProduct from '../views/shopping/SingleProduct.vue';
 import Cart from '../views/shopping/Cart.vue';
@@ -18,6 +17,11 @@ import CheckOut from '../views/shopping/CheckOut.vue';
 import CheckOutPay from '../views/shopping/CheckOutPay.vue';
 import MyOrder from '../views/shopping/MyOrder.vue';
 import Home from '../views/shopping/Home.vue';
+
+// admin
+import Products from '../views/admin/Products.vue';
+import CouponManage from '../views/admin/CouponManage.vue';
+import Orders from '../views/admin/Orders.vue';
 
 Vue.use(VueRouter);
 const routes = [
@@ -96,8 +100,8 @@ const routes = [
       },
       {
         path: 'coupon',
-        name: 'Coupon',
-        component: Coupon,
+        name: 'CouponManage',
+        component: CouponManage,
         // meta: { requiresAuth: true }
       },
       // 可以在這邊新增訂單列表和優惠券

@@ -1,0 +1,119 @@
+<template>
+  <div class="vue-flipcard" @mouseenter="onMouseEnter"
+      :class="[direction, { 'back': back }]" 
+      :style="{ 'width': width + 'px', 'height': height + 'px' }">
+      <div class="vue-flipcard__front" :style="{ 'transform-origin': 'center center ' + zoffset + 'px' }">
+          <slot name="front"></slot>
+      </div>
+      <div class="vue-flipcard__back" :style="{ 'transform-origin': 'center center ' + zoffset + 'px' }">
+          <slot name="back"></slot>
+      </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'VueFlipcard',
+  data () {
+    return {
+      back: false,
+    }
+  },
+  props: {
+    width: {
+      type: Number,
+      default: 300
+    },
+    height: {
+      type: Number,
+      default: 300
+    },
+    direction: {
+      type: String,
+      default: 'horizontal'
+    },
+    zoffset: {
+      type: Number,
+      default: 20
+    },
+    disable: {
+      type: Boolean,
+      default: false
+    }, 
+    isShake: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    flip () {
+      this.back = !this.back
+      this.$emit('flip')
+    },
+    onMouseEnter() {
+      // !this.disable && this.flip()
+    },
+    onMouseLeave () {
+      // !this.disable && this.flip()
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.vue-flipcard {
+  position: relative;
+  
+  &__front,
+  &__back {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(173, 173, 173, 0.2);
+    perspective: 1000;
+    transform-style: preserve-3d;
+    transition: transform .6s;
+    backface-visibility: hidden; /* backface-visibility 属性指定当元素背面朝向观察者时是否可见。元素的背面总是透明的，当其朝向观察者时，显示正面的镜像 */
+  }
+  &__shake{
+    animation: shake 0.5s;
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+  }
+  &__front {
+    z-index: 2;
+  }
+  &.horizontal &__back {
+    transform: rotate3d(0, 1, 0, -180deg);
+  }
+  &.horizontal.back &__front {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+  &.horizontal.back &__back {
+    transform: rotate3d(0, 1, 0, 0);
+  }
+  &.vertical &__back {
+    transform: rotate3d(1, 0, 0, -180deg);
+  }
+  &.vertical.back &__front {
+    transform: rotate3d(1, 0, 0, 180deg);
+  }
+  &.vertical.back &__back {
+    transform: rotate3d(1, 0, 0, 0);
+  }
+}
+</style>

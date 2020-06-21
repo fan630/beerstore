@@ -16,15 +16,13 @@
                                         <th width="150" class="text-center">商品圖片</th>
                                         <th width="250" class="text-center">商品名稱</th>
                                         <th
-
                                             class="text-right"
                                         >數量</th>
                                         <th
-
+                                            width="180"
                                             class="text-right"
-                                        >單價</th>
+                                        >價錢</th>
                                         <th
-
                                             class="text-right"
                                         >小計</th>
                                     </tr>
@@ -48,28 +46,34 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             {{item.product.title}}
-                                            <div class="text-success" v-if="item.coupon">
-                                                已套用優惠券
-                                            </div>
                                         </td>
                                         <td class="align-middle text-right">{{item.qty}}</td>
                                         <td class="align-middle text-right">
-                                            ${{item.product.price}}
+                                            <ul>
+                                                <li class="text-muted" v-if="item.product.origin_price"><del>原價:{{item.product.origin_price}}</del></li>
+                                                <li class="red">特價:{{item.product.price}}</li>
+                                            </ul>
                                         </td>
                                         <td class="align-middle text-right">
-                                            <strong>${{item.final_total}}</strong>
+                                            <strong>${{item.qty * item.product.price}}</strong>
                                         </td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr v-if="cart.total">
                                             <td colspan="5" class="text-right">合計</td>
-                                            <td class="text-right">{{ cart.total }}</td>
+                                            <td class="text-right">${{ cart.total }}
+                                                <!-- {{Math.round((cart.final_total / cart.total)/ cart.total * 10000)*10}} -->
+                                            </td>
                                         </tr>
                                         <tr v-if="cart.final_total !== cart.total">
-                                            <td colspan="5" class="text-right text-success">折扣價</td>
-                                            <td class="text-right text-success">
-                                                {{ cart.final_total }}
+                                            <td colspan="5" class="text-right text-success">
+                                                <strong>
+                                                    套用優惠券
+                                                </strong>
+                                            </td>
+                                            <td class="text-right text-gold">
+                                                <h4>${{ cart.final_total }}</h4>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -111,9 +115,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { eventBus } from "../../main";
 
 export default {
   name: 'Cart',
+  props: {
+     couponItem: String
+  }, 
   data() {
     return {
       couponCode: '',
@@ -141,6 +149,10 @@ export default {
   },
   created() {
     this.getCart();
+    eventBus.$on('getCouponed', (couponNumber) => {
+        console.log(couponNumber);
+        this.couponCode = couponNumber;
+    });
   },
 };
 </script>

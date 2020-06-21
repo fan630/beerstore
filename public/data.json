@@ -36,7 +36,7 @@
         "img": "https://source.unsplash.com/250x250/?doll",
         "coupon": {
             "couponCode": "doll",
-            "discount": "5"
+            "discount": "50"
         }
     },
     {
@@ -44,7 +44,7 @@
         "img": "https://source.unsplash.com/250x250/?poker",
         "coupon": {
             "couponCode": "game",
-            "discount": "3"
+            "discount": "30"
         }
     },
     {

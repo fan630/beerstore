@@ -11,9 +11,10 @@
                 <caption>總共{{itemList}}張優惠券</caption>
                 <thead>
                     <tr>
-                        <th class="text-left">名稱</th>
+                        <th width="150px" class="text-left">名稱</th>
                         <th width="150px" class="text-right">折扣碼</th>
-                        <th width="150px" class="text-right">折扣幅度</th>
+                        <th width="170px" class="text-right">原價打幾折?</th>
+                        <th class="text-right">折數</th>
                         <th class="text-right">到期時間</th>
                         <th class="text-right">是否啟用</th>
                         <th width="250px" class="text-center">折扣Id</th>
@@ -28,6 +29,9 @@
                         </td>
                         <td class="text-right">
                             {{item.percent}}
+                        </td>
+                        <td class="text-right">
+                            {{(item.percent)/10}}折
                         </td>
                         <td class="text-right">
                             {{item.due_date}}
@@ -81,7 +85,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                            <label for="percent">折扣</label>
+                            <label for="percent">原價打幾折</label>
                                 <input type="number" class="form-control"
                                 id="percent" v-model="tempCoupon.percent"
                                 placeholder="請輸入折扣幅度">
@@ -144,7 +148,7 @@ import $ from 'jquery';
 import Page from '../../components/Page.vue';
 
 export default {
-  name: 'Coupon',
+  name: 'CouponManage',
   components: {
     Page,
   },
@@ -155,7 +159,9 @@ export default {
 
       },
       // 新增要送出的欄位內容
-      tempCoupon: {},
+      tempCoupon: {
+        percent: 100,
+      },
       isNew: false,
       isLoading: false,
     };

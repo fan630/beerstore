@@ -4,52 +4,63 @@
             <div class="title my-5">Click one and get for your coupon</div>
                 <div class="row">
                     <div class="col-md-4 mb-4" v-for="item in collection" :key="item.id">
-                    <div class="card">
-                        <vue-flipcard
-                            :width="343"
-                            ref="flipcard"
-                            disable="disable" direction="vertical">
-                            <div class="card-body front bg-cover" slot="front" @click="onManualFlip(item.id, isFlip, item.coupon.couponCode)"
-                                style="height:100%; width:100%"
-                                :style="{backgroundImage: `url(${item.img})`}"
-                                >
-                            </div>
-                            <div class="card-body content back" slot="back" @click="onManualFlip(item.id)"
-                                style="height:100%; width:100%"
-                                >
-                                <div class="card-title text-center">
+                    <div class="card"
+                        >
+                            <vue-flipcard
+                                :width="343"
+                                ref="flipcard"
+                                disable="disable" direction="vertical">
+                                <div class="card-body front bg-cover" slot="front" 
+                                    @click="onManualFlip(item.id, isFlip, item.coupon.couponCode)"
+                                    style="height:100%; width:100%"
+                                    :style="{backgroundImage: `url(${item.img})`}"
+                                    >
+                                </div>
+                                <div class="card-body back" slot="back" 
+                                    @click="onManualFlip(item.id)"
+                                    style="height:100%; width:100%"
+                                    >
+                                    <div class="card-text text-center">
                                         <h1>恭喜你！</h1>
                                         <p>您的coupon優惠碼為:{{item.coupon.couponCode}}</p>
                                         <strong :class="[ Number(item.coupon.discount) > 25 ? 'red': '']">折扣幅度:{{item.coupon.discount}}%</strong>
-                                        <div>
-                                            <button
-                                                class="btn btn-outline-success mr-2"
-                                                @click="backtocustomer"
-                                            >我要使用優惠券
+                                        <div class="mt-3">                             
+                                            <button class="btn btn-outline-success mr-2" @click.stop ="backtocustomer"
+                                                >我要使用優惠券
                                             </button>
                                         </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </vue-flipcard>
-                    </div>
+                            </vue-flipcard>
+                        </div>
                     </div>
                 </div>
         </div>
     </div>
-
 </template>
 
 <script>
 import axios from 'axios';
+import { eventBus } from "../../main.js";
+// import  VueFlipcard from '../../components/FlipCard.vue';
+// import Cart from './Cart.vue';
 
 export default {
   name: 'Coupon',
+  components:{
+    // Cart,
+    // VueFlipcard
+  }, 
+//   props: {
+//      couponCode: String
+//   }, 
+  props: ['couponItem'],
   data(){
       return{
           collection:[], 
           lists:[], 
           isFlip: false, 
-          couponCode:''
+          couponCode:'',
       }
   }, 
   computed:{
@@ -62,27 +73,28 @@ export default {
       }
   }, 
   methods: {
-    onManualFlip (index, isFlip, couponItem) {
+    onManualFlip (index, isFlip, getcouponItem) {
       if(this.isFlip === false){
           this.$refs.flipcard[index -1].flip()
           this.isFlip = true
-          this.couponCode = couponItem
+          this.couponCode = getcouponItem
+          this.getCouponCode()
       }else{
-          alert('已經抽過一次囉~')
+          this.$bus.$emit('message:push', '已經抽過一次囉~', 'danger');
           return
       }
+    },
+    getCouponCode(){
+        eventBus.$emit('getCouponed', this.couponCode) // 第三種方法：eventBus傳值
     },
     getCollection(){
         axios.get('/data.json').then(res => {
           this.collection = res.data
       })
     }, 
-    checkVal(val){
-        this.couponCode = val
-    }, 
     backtocustomer(){
         this.$router.push('/cart');
-    }
+    },
   }, 
   created(){
       this.getCollection()
@@ -90,7 +102,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .title {
     font-size: 32px;
     text-align: center;
@@ -103,15 +115,26 @@ export default {
     text-align: center;
     margin-bottom: 30px;
   }
-  .content {
-    padding: 10px 10px;
-    text-align: left;
-  }
-
   @media screen and (max-width:768px){
       .vue-flipcard{
           width:100% !important;
       }
   }
-
+  .card:hover{
+     animation: shake 0.5s;
+  }
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+  
 </style>
