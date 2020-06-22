@@ -2,38 +2,50 @@
   <div>
     <div class="container my-4">
         <div class="row text-center justify-content-center">
-                <div class="col-md-4">
-                  <div
-                      v-if="!order.is_paid"
-                      class="alert alert-warning border-rounded"
-                      role="alert"
-                  >
-                      付款
+              <div class="col-md-8 mb-3 md-mb-0">
+                  <div class="row">
+                        <div class="col-md-4">
+                        <div
+                          class="alert alert-light border-rounded"
+                          role="alert"
+                      >
+                          輸入訂單資料
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div
+                          v-if="!order.is_paid"
+                          class="alert alert-warning border-rounded"
+                          role="alert"
+                      >
+                          付款
+                      </div>
+                      <div
+                          v-else
+                          class="alert alert-light border-rounded"
+                          role="alert"
+                      >
+                          付款
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div
+                          v-if="order.is_paid"
+                          class="alert alert-warning border-rounded"
+                          role="alert"
+                      >
+                          完成
+                      </div>
+                      <div
+                          v-else
+                          class="alert alert-light border-rounded"
+                          role="alert"
+                      >
+                          完成
+                      </div>
+                    </div>
                   </div>
-                  <div
-                      v-else
-                      class="alert alert-light border-rounded"
-                      role="alert"
-                  >
-                      付款
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div
-                      v-if="order.is_paid"
-                      class="alert alert-warning border-rounded"
-                      role="alert"
-                  >
-                      完成
-                  </div>
-                  <div
-                      v-else
-                      class="alert alert-light border-rounded"
-                      role="alert"
-                  >
-                      完成
-                  </div>
-                </div>
+              </div>
         </div>
     </div>
 

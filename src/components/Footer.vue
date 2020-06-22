@@ -18,12 +18,7 @@ export default {
 
 <style scoped lang="scss">
     $gray-700: #495057;
-
     p{
-        margin-bottom: 0;
-    }
-
-    footer{
-      background-color: $gray-700;
+       margin-bottom: 0;
     }
 </style>

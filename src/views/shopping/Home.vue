@@ -106,7 +106,7 @@
             </div>
         </section>
         <!--main-->
-        <div class="container-fluid px-0 mb-5">
+        <div class="container-fluid px-0">
             <div class="row justify-content-center align-items-center no-gutters">
                 <div class="offset-md-1"></div>
                 <div class="col-md-4 text-md-left text-center">
@@ -158,24 +158,26 @@
             </div>
         </div>
         <!--訂閱-->
-        <div class="container text-center mt-5 mb-5">
-            <div class="display-4 mb-5">Subscribe</div>
+        <div class="container-fluid mb-5 subscribe">
+            <div class="subscribe-item">
+                    <div class="display-4 text-center">Subscribe</div>
                     <div class="form-row justify-content-center align-items-center">
-                    <div class="col-md-2 mb-5 mb-md-0">
-                        <img src="../../assets/images/bottom.png" alt="" srcset="">
-                    </div>
-                    <div class="col-md-6">
-                        <h2 class="text-center">
-                            Get The Latest News On Product Releases, Availability, And Event
-                        </h2>
-                        <div class="input-group mt-4">
-                                <input type="text"
-                                    class="form-control"
-                                    placeholder="Enter your email address">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button">
-                                        GO!
-                                    </button>
+                        <div class="col-md-2 mb-5 mb-md-0">
+                            <img src="../../assets/images/bottom.png" alt="" srcset="">
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="text-left">
+                                Get The Latest News On Product Releases
+                            </h2>
+                            <div class="input-group mt-4">
+                                    <input type="text"
+                                        class="form-control"
+                                        placeholder="Enter your email address">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="button">
+                                            GO!
+                                        </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,5 +239,17 @@ export default {
     }
     .filter-class{
         filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%);
+    }
+    .subscribe{
+      background-image: url('https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      padding:40px 0;
+      filter: grayscale(100%);
+    }
+    .subscribe-item{
+        padding:30px 0;
+        background-color: rgba(0,0,0,0.2);
     }
 </style>

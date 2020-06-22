@@ -78,9 +78,10 @@
                                         </tr>
                                     </tfoot>
                             </table>
-                            <div>✦ 輸入折扣碼「longtimenosee」，和
-                                <span class="font-weight-bolder text-gold">FanBeer</span>
-                                一同歡慶開幕吧！
+                            <div>
+                                <span class="font-weight-bolder">
+                                    <router-link to="/coupon">✦ 還沒有Couponcode? 來玩玩吧!!</router-link>
+                                </span>
                             </div>
                             <div class="input-group my-3">
                                 <input type="text" class="form-control"

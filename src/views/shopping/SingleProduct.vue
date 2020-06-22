@@ -47,12 +47,14 @@
                         </del>
                         <div class="h5">特價{{product.price}}元</div>
                     </div>
-                    <select class="form-control mt-3" v-model="product.buyNum">
-                        <option value="" disabled selected>Select your option</option>
-                        <option :value="num" v-for="num in 5" :key="num">
-                            選購 {{num}}{{product.unit}}
-                        </option>
-                    </select>
+
+                        <select class="form-control mt-3" v-model="product.buyNum">
+                            <option value="" disabled selected>Select your option</option>
+                            <option :value="num" v-for="num in 5" :key="num">
+                                選購 {{num}}{{product.unit}}
+                            </option>
+                        </select>
+
                         <div class="h4 text-right my-3">
                             小計
                             <strong>{{ product.buyNum * product.price }}</strong>元
@@ -60,7 +62,12 @@
                         <button type="button" class="btn btn-primary text-white my-3"
                             @click="addtoCart(product.id, product.buyNum)">
                             <i class="fas fa-cart-plus"></i>
-                            購物車
+                            加入購物車
+                        </button>
+                        <button type="button" class="btn btn-info text-white my-3 ml-1"
+                            @click="addtoLove(product)">
+                            <i class="fas fa-heart"></i>
+                            加入我的最愛
                         </button>
                 </div>
             </div>
@@ -149,6 +156,9 @@ export default {
         addtoCart(id, qty = 1) {
             this.$store.dispatch('addtoCart', { id, qty });
         },
+        addtoLove(singleProduct){
+            console.log(singleProduct)
+        }
     },
     created(){
         this.productId = this.$route.params.productId

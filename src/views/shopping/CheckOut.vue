@@ -2,21 +2,73 @@
   <div>
     <div class="container my-4">
         <div class="row text-center justify-content-center">
-            <div class="col-md-10">
-              <div
-                  class="alert alert-warning border-rounded"
-                  role="alert"
-              >
-                  <h5>輸入訂單資料</h5>
-              </div>
-            </div>
-        </div>
+                <div class="col-md-8 mb-3 md-mb-0">
+                    <div class="row">
+                          <div class="col-md-4">
+                          <div
+                            class="alert alert-warning border-rounded"
+                            role="alert"
+                        >
+                            輸入訂單資料
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div
+                            class="alert alert-light border-rounded"
+                            role="alert"
+                        >
+                            付款
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div
+                            class="alert alert-light border-rounded"
+                            role="alert"
+                        >
+                            完成
+                        </div>
+                      </div>
+                    </div>
+                </div>
+          </div>
     </div>
-
-    <!-- 訂購人資訊 -->
     <div class="container">
-        <div class="row d-flex justify-content-center mt-3">
-            <div class="col-md-10">
+        <div class="row d-flex justify-content-center mt-3 flex-row-reverse">
+            <!-- 訂單摘要 -->
+            <div class="col-md-4 mb-5 md-mb-0">
+                <div class="card">
+                    <div class="card-body text-white">
+                        <div class="cart-title h4">訂單摘要</div>
+                          <table class="table table-sm">
+                            <tbody v-for="item in cart.carts" :key="item.id">
+                              <tr>
+                                  <td class="align-middle text-center">
+                                  <a href="#"
+                                      @click.prevent="removeCartItem(item.id)">
+                                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                  </a>
+                                  </td>
+                                  <td class="align-middle">{{ item.product.title }}</td>
+                                  <td class="align-middle">{{ item.qty }}{{item.product.unit}}</td>
+                                  <td class="align-middle text-right">{{item.total}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="card-footer">
+                          <div class="d-flex justify-content-between mr-1">
+                              <span>小計</span>
+                              <span>{{cart.total}}</span>
+                          </div>
+                          <div class="d-flex justify-content-between mr-1 text-success">
+                              <span>折扣後優惠</span>
+                              <span>{{cart.final_total}}</span>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 訂購人資訊 -->
+            <div class="col-md-8">
               <ValidationObserver v-slot="{ handleSubmit }">
                 <form @submit.prevent="handleSubmit(createOrder)">
                     <div class="h4 text-center mb-3">
@@ -85,7 +137,7 @@
                         v-model="form.message"
                       ></textarea>
                     </div>
-                    <div class="d-flex justify-content-end my-3">
+                    <div class="d-flex justify-content-center my-3">
                         <button
                             type="submit"
                             class="btn btn-primary text-white"
@@ -101,14 +153,12 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'CheckOut',
   data() {
     return {
-      cart: {
-        carts: [],
-      },
       form: {
         user: {
           name: '',
@@ -120,14 +170,13 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(['cart', 'isLoading']),
+  },
   methods: {
-    getCart() {
-      const api = 'https://vue-course-api.hexschool.io/api/fan630/cart';
-      this.isLoading = true;
-      this.$http.get(api).then((response) => {
-        this.cart = response.data.data;
-        this.isLoading = false;
-      });
+    ...mapActions(['getCart']),
+    removeCartItem(id) {
+      this.$store.dispatch('removeCartItem', id);
     },
     createOrder() {
       const api = 'https://vue-course-api.hexschool.io/api/fan630/order';
@@ -142,9 +191,21 @@ export default {
       });
     },
   },
+  created() {
+    this.getCart();
+  },
 };
 </script>
 
 <style scoped lang="scss">
-
+    $gray-700: #495057;
+    .card{
+      background-color:$gray-700;
+    }
+    .card-body{
+      padding-bottom: 0rem;
+    }
+    .card-footer{
+      padding: 0.5rem 1.25rem;
+    }
 </style>
