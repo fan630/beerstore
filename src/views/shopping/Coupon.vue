@@ -57,7 +57,80 @@ export default {
   props: ['couponItem'],
   data(){
       return{
-          collection:[], 
+          collection:[
+                {
+                    "id": 1, 
+                    "img": "https://source.unsplash.com/250x250/?beer",
+                    "coupon":{
+                        "couponCode": "beer", 
+                        "discount": "10"
+                    }
+                }, 
+                {
+                    "id": 2,
+                    "img": "https://source.unsplash.com/250x250/?bottle",
+                    "coupon": {
+                        "couponCode": "bottle",
+                        "discount": "30"
+                    }
+                },
+                {
+                    "id": 3,
+                    "img": "https://source.unsplash.com/250x250/?pub",
+                    "coupon": {
+                        "couponCode": "longtimenosee",
+                        "discount": "40"
+                    }
+                },
+                {
+                    "id": 4,
+                    "img": "https://source.unsplash.com/250x250/?brewery",
+                    "coupon": {
+                        "couponCode": "brewery",
+                        "discount": "30"
+                    }
+                },
+                {
+                    "id": 5,
+                    "img": "https://source.unsplash.com/250x250/?doll",
+                    "coupon": {
+                        "couponCode": "doll",
+                        "discount": "50"
+                    }
+                },
+                {
+                    "id": 6,
+                    "img": "https://source.unsplash.com/250x250/?poker",
+                    "coupon": {
+                        "couponCode": "game",
+                        "discount": "30"
+                    }
+                },
+                {
+                    "id": 7,
+                    "img": "https://source.unsplash.com/250x250/?movie",
+                    "coupon": {
+                        "couponCode": "movie",
+                        "discount": "20"
+                    }
+                },
+                {
+                    "id": 8,
+                    "img": "https://source.unsplash.com/250x250/?taipei",
+                    "coupon": {
+                        "couponCode": "taipei",
+                        "discount": "30"
+                    }
+                },
+                {
+                    "id": 9,
+                    "img": "https://source.unsplash.com/250x250/?basketball",
+                    "coupon": {
+                        "couponCode": "fanbeer",
+                        "discount": "50"
+                    }
+                }
+          ],
           lists:[], 
           isFlip: false, 
           couponCode:'',
@@ -87,12 +160,12 @@ export default {
     getCouponCode(){
         eventBus.$emit('getCouponed', this.couponCode) // 第三種方法：eventBus傳值
     },
-    getCollection(){
-        axios.get('/data.json').then(res => {
-          this.collection = res.data
-          console.log(this.collection)
-      })
-    }, 
+    // getCollection(){
+    //     axios.get('/data.json').then(res => {
+    //       this.collection = res.data
+    //       console.log(this.collection)
+    //   })
+    // }, 
     // getCollection(){
     //     axios.get('/api/data').then(res => {
     //     this.collection = res.data.data
@@ -102,9 +175,9 @@ export default {
         this.$router.push('/cart');
     },
   }, 
-  created(){
-      this.getCollection()
-  },
+//   created(){
+//       this.getCollection()
+//   },
 }
 </script>
 
