@@ -63,38 +63,6 @@
                         </router-link>
                         </div>
                     </div>
-                    <!-- <div class="dropdown order-md-1 ml-1">
-                        <button class="btn btn-sm btn-cart" data-toggle="dropdown"
-                            data-flip="false">
-                        <i class="fas fa-heart text-white fa-2x" aria-hidden="true"></i>
-                        <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
-                        data-offset="400">
-                        <h6 class="text-gray">{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
-                        <table class="table table-sm text-black">
-                            <tbody v-if="cart.carts.length">
-                            <tr v-for="item in cart.carts" :key="item.id">
-                                <td class="align-middle text-center">
-                                <a href="#" class="text-muted"
-                                    @click.prevent="removeCartItem(item.id)">
-                                    <i class="fas fa-trash-alt text-black" aria-hidden="true"></i>
-                                </a>
-                                </td>
-                                <td class="align-middle">{{ item.product.title }}</td>
-                                <td class="align-middle">{{ item.qty }}{{item.product.unit}}</td>
-                                <td class="align-middle text-right">{{item.total}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <router-link to="/cart">
-                            <button class="btn btn-primary btn-block text-white">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
-                            </button>
-                        </router-link>
-                        </div>
-                    </div> -->
-                    <!-- </div> -->
                     <div
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"

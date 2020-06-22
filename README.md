@@ -11,6 +11,12 @@ https://fan630.github.io/beerstore/#/
 ### 商品頁面
 ![](./src/assets/images/readme/beerstore.png)
 
+### 優惠券卡片翻排
+點選優惠券後會自動套用
+
+![](./src/assets/images/readme/coupon.png)
+
+
 ## 後台
 ![](./src/assets/images/readme/admin.png)
 
