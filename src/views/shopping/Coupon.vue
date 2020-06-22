@@ -87,17 +87,17 @@ export default {
     getCouponCode(){
         eventBus.$emit('getCouponed', this.couponCode) // 第三種方法：eventBus傳值
     },
-    // getCollection(){
-    //     axios.get('/data.json').then(res => {
-    //       this.collection = res.data
-    //       console.log(this.collection)
-    //   })
-    // }, 
     getCollection(){
-        axios.get('/api/data').then(res => {
-        this.collection = res.data.data
+        axios.get('/data.json').then(res => {
+          this.collection = res.data
+          console.log(this.collection)
       })
     }, 
+    // getCollection(){
+    //     axios.get('/api/data').then(res => {
+    //     this.collection = res.data.data
+    //   })
+    // }, 
     backtocustomer(){
         this.$router.push('/cart');
     },

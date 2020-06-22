@@ -22,10 +22,11 @@
                     <li class="breadcrumb-item active" aria-current="page">{{product.title}}</li>
                 </ol>
             </nav>
-            <div class="form-row">
+            <div class="row">
                 <div class="offset-md-1 col-md-5">
                     <img :src="product.imageUrl" class="img-fluid rounded" alt=""
-                    style="height:350px; width:250px" />
+                    style="height:80%; width:80%" 
+                    />
                 </div>
                 <div class="col-md-6 text-md-left text-center">
                     <h3>{{product.title}}</h3>
@@ -134,6 +135,7 @@ export default {
             product: {},
             productId: '',
             selected: '請選購商品數量',
+            // myLove:[]
         }
     }, 
     computed: {
@@ -156,9 +158,15 @@ export default {
         addtoCart(id, qty = 1) {
             this.$store.dispatch('addtoCart', { id, qty });
         },
-        addtoLove(singleProduct){
-            console.log(singleProduct)
-        }
+        addtoFavorite(singleProduct){
+            this.$store.dispatch('favorite/addtoFavorite',  singleProduct);
+            // this.myLove.push(singleProduct)
+            // this.getProducts()
+        },
+        removeFavorite(productItem, delall) {
+            this.$store.dispatch('favorite/removeFavorite', { favoriteItem: productItem, delall });
+            this.isFavorite = false;
+        },
     },
     created(){
         this.productId = this.$route.params.productId
