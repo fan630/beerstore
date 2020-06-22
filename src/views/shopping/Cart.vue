@@ -86,12 +86,13 @@
                             <div class="input-group my-3">
                                 <input type="text" class="form-control"
                                        v-model="couponCode"
+                                       @input="addCouponCode"
                                        placeholder="請輸入優惠碼"
                                 />
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button"
                                         @click="addCouponCode">
-                                        套用優惠碼
+                                        輸入優惠碼
                                     </button>
                                 </div>
                             </div>
@@ -115,17 +116,15 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import { eventBus } from "../../main";
 
 export default {
   name: 'Cart',
-  props: {
-     couponItem: String
-  }, 
   data() {
     return {
-      couponCode: '',
+        couponCode: '',
     };
   },
   computed: {
@@ -151,9 +150,13 @@ export default {
   created() {
     this.getCart();
     eventBus.$on('getCouponed', (couponNumber) => {
-        console.log(couponNumber);
-        this.couponCode = couponNumber;
+         console.log(couponNumber);
+         this.couponCode = couponNumber;
+         this.$bus.$emit('message:push', '已經套用優惠碼', 'success');
     });
+  },
+  beforeDestroy() {
+      eventBus.$off('getCouponed')
   },
 };
 </script>

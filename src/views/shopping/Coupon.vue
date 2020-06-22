@@ -51,10 +51,6 @@ export default {
     // Cart,
     // VueFlipcard
   }, 
-//   props: {
-//      couponCode: String
-//   }, 
-  props: ['couponItem'],
   data(){
       return{
           collection:[
@@ -151,33 +147,18 @@ export default {
           this.$refs.flipcard[index -1].flip()
           this.isFlip = true
           this.couponCode = getcouponItem
-          this.getCouponCode()
       }else{
           this.$bus.$emit('message:push', '已經抽過一次囉~', 'danger');
           return
       }
     },
-    getCouponCode(){
-        eventBus.$emit('getCouponed', this.couponCode) // 第三種方法：eventBus傳值
-    },
-    // getCollection(){
-    //     axios.get('/data.json').then(res => {
-    //       this.collection = res.data
-    //       console.log(this.collection)
-    //   })
-    // }, 
-    // getCollection(){
-    //     axios.get('/api/data').then(res => {
-    //     this.collection = res.data.data
-    //   })
-    // }, 
     backtocustomer(){
+        setTimeout(() => {
+            eventBus.$emit('getCouponed', this.couponCode)
+        }, 1000);
         this.$router.push('/cart');
     },
-  }, 
-//   created(){
-//       this.getCollection()
-//   },
+  },
 }
 </script>
 

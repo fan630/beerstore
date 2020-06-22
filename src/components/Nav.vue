@@ -63,7 +63,7 @@
                         </router-link>
                         </div>
                     </div>
-                    <div class="dropdown order-md-1 ml-1">
+                    <!-- <div class="dropdown order-md-1 ml-1">
                         <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                             data-flip="false">
                         <i class="fas fa-heart text-white fa-2x" aria-hidden="true"></i>
@@ -93,7 +93,7 @@
                             </button>
                         </router-link>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- </div> -->
                     <div
                         class="collapse navbar-collapse"
