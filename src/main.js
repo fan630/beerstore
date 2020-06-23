@@ -30,6 +30,11 @@ Vue.use(Vuex);
 Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
+
 Vue.component('Loading', Loading);
 Vue.component('vue-flipcard', VueFlipcard);
 Vue.filter('currency', currencyFilter);

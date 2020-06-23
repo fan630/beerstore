@@ -80,7 +80,8 @@
             <div class="row">
                 <div class="offset-md-1 col-md-10">
                     <div class="form-row" v-if="this.relatedProduct.length > 2">
-                        <div class="col-md mb-4 col-4" v-for="item in relatedProduct" :key="item.id">
+                        <div class="col-md mb-4 col-4" style="padding: 0 1px"
+                            v-for="item in relatedProduct" :key="item.id">
                             <div class="card border-0 shadow h-100">
                                 <div class="u-item-img bg-cover"
                                     style="height:250px"
@@ -183,6 +184,9 @@ export default {
     }
     .u-item-btn{
         top: 50%;
+    }
+    .form-row > .col {
+        padding: 0 1px; 
     }
 
 </style>

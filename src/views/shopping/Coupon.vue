@@ -180,6 +180,12 @@ export default {
           width:100% !important;
       }
   }
+  @media (min-width: 768px) and (max-width: 1200px) { 
+      .vue-flipcard{
+          width:100% !important;
+      }
+  }
+
   .card:hover{
      animation: shake 0.5s;
   }
