@@ -65,11 +65,11 @@
                             <i class="fas fa-cart-plus"></i>
                             加入購物車
                         </button>
-                        <button type="button" class="btn btn-info text-white my-3 ml-1"
+                        <!--<button type="button" class="btn btn-info text-white my-3 ml-1"
                             @click="addtoLove(product)">
                             <i class="fas fa-heart"></i>
                             加入我的最愛
-                        </button>
+                        </button>-->
                 </div>
             </div>
             <h3 class="text-left" v-if="this.relatedProduct.length > 2">相關產品</h3>
@@ -158,6 +158,9 @@ export default {
         },
         addtoCart(id, qty = 1) {
             this.$store.dispatch('addtoCart', { id, qty });
+            setTimeout(() => {
+                this.$router.push('/cart');
+            }, 1500);
         },
         addtoFavorite(singleProduct){
             this.$store.dispatch('favorite/addtoFavorite',  singleProduct);

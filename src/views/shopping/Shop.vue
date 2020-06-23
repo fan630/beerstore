@@ -51,7 +51,7 @@
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
-                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
+                                <div class="u-item-img bg-cover " :style="{backgroundImage: `url(${item.imageUrl})`}">
                                     <a class="u-item-cover" @click="getProduct(item.id)"
                                 >
                                         <div class="u-item-btn">See more</div>

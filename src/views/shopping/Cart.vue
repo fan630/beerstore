@@ -152,7 +152,11 @@ export default {
     eventBus.$on('getCouponed', (couponNumber) => {
          console.log(couponNumber);
          this.couponCode = couponNumber;
-         this.$bus.$emit('message:push', '已經套用優惠碼', 'success');
+         if(this.cart.carts.length){
+             this.$bus.$emit('message:push', '優惠碼已填入, 請點選輸入優惠碼', 'success');
+         }else{
+             this.$bus.$emit('message:push', '請先選購商品', 'warning');
+         }  
     });
   },
   beforeDestroy() {

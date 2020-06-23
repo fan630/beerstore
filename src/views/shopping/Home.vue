@@ -244,6 +244,12 @@ export default {
                         vm.getSingleProductBtn(productId)
                     }
                 }, 
+                breakpoints: {
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    }
+                },
                 loopFillGroupWithBlank: true,
                 pagination: {
                     el: '.swiper-pagination',
