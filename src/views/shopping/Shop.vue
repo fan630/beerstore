@@ -94,10 +94,10 @@
                                 >
                                         <div class="u-item-btn">See more</div>
                                     </a> -->
-                                    <span class="heart" @click="addtoFavorite" v-if="!favorite">
+                                    <span class="heart" @click="addtoFavorite(item)" v-if="status.isFavorite !== item.id">
                                         <i class="far fa-heart fa-2x"></i>
                                     </span>
-                                    <span class="heart" @click="addtoFavorite" v-else>
+                                    <span class="heart" @click="removeFavorite(item)" v-else>
                                         <i class="fas fa-heart fa-2x"></i>
                                     </span>
                                 </div>
@@ -121,14 +121,14 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex">
-                                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
-                                        <label class="btn btn-secondary active">
-                                            <input type="radio" name="options" id="option1" @click="getProduct(item.id)">查看更多
+                                    <div class="btn-group btn-group-toggle btn-block">
+                                        <label class="btn btn-secondary active" @click="getProduct(item.id)">
+                                                <i class="fas fa-spinner fa-spin"
+                                                    v-if="status.loadingItem === item.id">
+                                                </i>
+                                            查看更多
                                         </label>
                                         <label class="btn btn-primary text-white" @click="addtoCart(item.id)">
-                                            <i class="fas fa-spinner fa-spin"
-                                                v-if="status.loadingItem === item.id">
-                                            </i>
                                             <i class="fas fa-cart-plus"></i>
                                             購物車
                                         </label>
@@ -169,14 +169,14 @@ export default {
       product: {},
       status: {
         loadingItem: '',
+        isFavorite:''
       },
       show: 'all',
       selected: '請選購商品數量',
-      favorite: false
     };
   },
   computed: {
-    ...mapGetters(['products', 'cart', 'isLoading']),
+    ...mapGetters(['favorites','products', 'cart', 'isLoading']),
     filterProducts() {
       switch (true) {
         case this.show === 'beer':
@@ -191,7 +191,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['getProducts', 'getCart']),
+    ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite','getProducts', 'getCart']),
     checkList(val) {
       this.show = val;
     },
@@ -202,6 +202,9 @@ export default {
         if(response.data.success){
             this.product = response.data.product;
             this.$set(this.product, 'buyNum', 1);
+
+
+
             this.status.loadingItem = '';
             this.$router.push(`/shop/${response.data.product.id}`)
         }
@@ -212,13 +215,21 @@ export default {
       this.$store.dispatch('addtoCart', { id, qty });
       this.status.loadingItem = '';
     },
-    addtoFavorite(){
-        this.favorite =! this.favorite;
-    }
+    addtoFavorite(item){
+        this.status.isFavorite = item.id;
+        this.$store.dispatch('addtoFavorite',  item);
+        // if(this.favorites.filter(target => target.id.includes(item.id))){
+        //     console.log(this.favorites)
+        // }
+    },
+    removeFavorite(item) {
+        this.$store.dispatch('removeFavorite', item);
+        this.status.isFavorite = '';
+    },
   },
   created() {
-    this.getProducts();
     this.getCart();
+    this.getFavorite();
   },
 };
 </script>
@@ -244,7 +255,8 @@ export default {
         position: absolute;
         top:1%; 
         right: 1%;
-        z-index: 999;
+        color:red;
+        font-size: 16px;
     }
 
 </style>
