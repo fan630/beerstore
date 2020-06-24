@@ -233,7 +233,6 @@ export default {
     },
     data(){
         return{
-            vm: null,
             swiperOption: {
                 slidesPerView: 3,
                 spaceBetween: 30,
@@ -241,7 +240,7 @@ export default {
                 loop: true,
                 on:{
                     click:function(){
-                        vm.getSingleProductBtn(productId)
+                        this.getSingleProductBtn(productId)
                     }
                 }, 
                 breakpoints: {
@@ -271,12 +270,10 @@ export default {
     methods: {
         ...mapActions(['getProducts','getCart']),
         getSingleProductBtn(productId) {
-            console.log(productId)
             this.$router.push({ path: `/shop/${productId}` });
         },
     },
     created(){
-        this.vm = this;
         this.getProducts()
     },
 };

@@ -1,7 +1,7 @@
 <template>
     <div class="coupon">
         <div class="container">
-            <div class="title my-5">Click one and get for your coupon</div>
+            <div class="title my-5">Click one and get your coupon</div>
                 <div class="row">
                     <div class="col-md-4 mb-4" v-for="item in collection" :key="item.id">
                     <div class="card"

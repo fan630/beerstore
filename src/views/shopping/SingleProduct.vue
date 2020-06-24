@@ -65,11 +65,16 @@
                             <i class="fas fa-cart-plus"></i>
                             加入購物車
                         </button>
-                        <!--<button type="button" class="btn btn-info text-white my-3 ml-1"
-                            @click="addtoLove(product)">
+                        <button type="button" class="btn btn-info text-white my-3 ml-1"
+                            @click="addtoFavorite(product)" v-if="isFavorite != true">
                             <i class="fas fa-heart"></i>
                             加入我的最愛
-                        </button>-->
+                        </button>
+                        <button type="button" class="btn btn-danger my-3 ml-1"
+                            @click="removeFavorite(product)" v-else>
+                            <i class="fas fa-heart"></i>
+                            取消我的最愛
+                        </button>
                 </div>
             </div>
             <h3 class="text-left" v-if="this.relatedProduct.length > 2">相關產品</h3>
@@ -92,24 +97,6 @@
                                         <div class="u-item-btn">See more</div>
                                     </a>
                                 </div>
-                                <!-- <div class="card-body">
-                                    <span class="badge float-left"
-                                        :class=
-                                        "[item.category == '啤酒'?'badge-info' : 'badge-warning']"
-                                        >
-                                        {{item.category}}
-                                    </span>
-                                    <div class="card-title text-center h5 mr-4">
-                                        <a class="text-dark">{{item.title}}</a>
-                                    </div>
-                                    <p class="card-text text-left">{{item.content}}</p>
-                                    <div class="d-flex justify-content-between">
-                                        <del class="h6 text-muted">
-                                            {{item.origin_price? `原價${item.origin_price}元` : '' }}
-                                        </del>
-                                        <div class="h6 text-danger">特價{{item.price}}元</div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -136,17 +123,17 @@ export default {
             product: {},
             productId: '',
             selected: '請選購商品數量',
-            // myLove:[]
+            isFavorite: false
         }
     }, 
     computed: {
-        ...mapGetters(['products','cart', 'isLoading']),
+        ...mapGetters(['favorites','products','cart', 'isLoading']),
         relatedProduct(){
             return this.products.filter(item => item.category === this.product.category)
         }
     },
     methods:{
-        ...mapActions(['getProducts','getCart']),
+        ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite' ,'getProducts','getCart']),
         getProduct(productId) {
             const api = `https://vue-course-api.hexschool.io/api/fan630/product/${productId}`;
             this.$http.get(api).then((response) => {
@@ -162,13 +149,12 @@ export default {
                 this.$router.push('/cart');
             }, 1500);
         },
-        addtoFavorite(singleProduct){
-            this.$store.dispatch('favorite/addtoFavorite',  singleProduct);
-            // this.myLove.push(singleProduct)
-            // this.getProducts()
+        addtoFavorite(favorite){
+            this.isFavorite = true
+            this.$store.dispatch('addtoFavorite',  favorite);
         },
-        removeFavorite(productItem, delall) {
-            this.$store.dispatch('favorite/removeFavorite', { favoriteItem: productItem, delall });
+        removeFavorite(favorite) {
+            this.$store.dispatch('removeFavorite', favorite);
             this.isFavorite = false;
         },
     },
@@ -176,7 +162,8 @@ export default {
         this.productId = this.$route.params.productId
         this.getProduct(this.productId);
         this.getCart();
-        this.getProducts()
+        this.getProducts();
+        this.getFavorite();
     }
 };
 </script>

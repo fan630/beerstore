@@ -31,6 +31,7 @@
                         >
                     </router-link>
                     <!-- <div class="ml-auto d-flex"> -->
+                    <!--購物車-->
                     <div class="dropdown order-md-1 ml-1">
                         <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                             data-flip="false">
@@ -59,6 +60,43 @@
                         <router-link to="/cart">
                             <button class="btn btn-primary btn-block text-white">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
+                            </button>
+                        </router-link>
+                        </div>
+                    </div>
+                    <!--我的最愛-->  
+                    <div class="dropdown order-md-1 ml-1">
+                        <button class="btn btn-sm btn-cart" data-toggle="dropdown"
+                            data-flip="false">
+                        <i class="fas fa-heart text-white fa-2x" aria-hidden="true"></i>
+                        <span class="badge badge-pill badge-danger">{{favorites.length}}</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
+                        data-offset="400">
+                        <h6 class="text-gray">{{favorites.length ? '已選擇商品': '您目前沒有喜歡的商品'}}</h6>
+                        <table class="table table-sm text-black">
+                            <tbody v-if="favorites.length">
+                            <tr v-for="item in favorites" :key="item.id">
+                                <td class="align-middle text-center">
+                                    <a href="#" class="text-muted"
+                                        @click.prevent="removeFavorite(item)">
+                                        <i class="far fa-heart text-black" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                                <td class="align-middle">
+                                     {{ item.title }}
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm text-white" @click="addtoCart(item, item.id)">
+                                        一鍵下訂
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <router-link to="/shop">
+                            <button class="btn btn-outline-primary btn-block text-white">
+                                <i class="fas fa-shopping-bag"></i> 繼續逛逛
                             </button>
                         </router-link>
                         </div>
@@ -121,16 +159,27 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Nav',
   computed: {
-    ...mapGetters(['cart', 'isLoading']),
+    ...mapGetters(['favorites','cart', 'isLoading']),
   },
   methods: {
-    ...mapActions(['getCart']),
+    ...mapActions(['getFavorite','removeFavorite','getCart']),
+    
     removeCartItem(id) {
       this.$store.dispatch('removeCartItem', id);
+    },
+
+    removeFavorite(favorite) {
+        this.$store.dispatch('removeFavorite', favorite);
+    },
+
+    addtoCart(item, id, qty = 1) {
+        this.$store.dispatch('addtoCart', { id, qty });
+        this.removeFavorite(item)
     },
   },
   created() {
     this.getCart();
+    this.getFavorite();
   },
   mounted() {
     $('.mobile-navLink .nav-link').on('click', () => {

@@ -16,7 +16,6 @@ https://fan630.github.io/beerstore/#/
 
 ![](./src/assets/images/readme/coupon.png)
 
-
 ## 後台
 ![](./src/assets/images/readme/admin.png)
 
@@ -37,7 +36,7 @@ https://fan630.github.io/beerstore/#/
 - Vue-axios
 - Vue-loading-overlay
 - Vue-router
-- clipboard.js
+- vue-awesome-swiper
 - fontawesome
 - AOS
 - amimate.css

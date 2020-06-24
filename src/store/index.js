@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import productsModules from './products';
 import cartModules from './cart';
+import favoriteModules from './favorite';
 
 Vue.use(Vuex);
 
@@ -26,5 +27,6 @@ export default new Vuex.Store({
   modules: {
     productsModules,
     cartModules,
+    favoriteModules
   },
 });

@@ -46,16 +46,60 @@
                     </div>
                 </div>
                 <!--標題列-->
+                <!-- <div class="col-md-12 my-3 sticky-top">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                            :class="{'active': show === 'all'}"
+                            @click="checkList('all')"
+                        >
+                                <span>所有商品</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link"
+                                :class="{'active': show === 'beer'}"
+                                @click="checkList('beer')"
+                            >
+                                <i class="fas fa-beer mr-1">
+                                </i>
+                                Beer
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link"
+                                :class="{'active': show === 'acc'}"
+                                @click="checkList('acc')"
+                            >
+                                公仔
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link"
+                                :class="{'active': show === 'other'}"
+                                @click="checkList('other')"
+                            >
+                                其餘商品
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
                 <!--商品內容-->
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
-                                <div class="u-item-img bg-cover " :style="{backgroundImage: `url(${item.imageUrl})`}">
-                                    <a class="u-item-cover" @click="getProduct(item.id)"
+                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
+                                    <!-- <a class="u-item-cover" @click="getProduct(item.id)"
                                 >
                                         <div class="u-item-btn">See more</div>
-                                    </a>
+                                    </a> -->
+                                    <span class="heart" @click="addtoFavorite" v-if="!favorite">
+                                        <i class="far fa-heart fa-2x"></i>
+                                    </span>
+                                    <span class="heart" @click="addtoFavorite" v-else>
+                                        <i class="fas fa-heart fa-2x"></i>
+                                    </span>
                                 </div>
                                 <div class="card-body">
                                     <span class="badge float-left"
@@ -77,7 +121,19 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex">
-                                    <button type="button"
+                                    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+                                        <label class="btn btn-secondary active">
+                                            <input type="radio" name="options" id="option1" @click="getProduct(item.id)">查看更多
+                                        </label>
+                                        <label class="btn btn-primary text-white" @click="addtoCart(item.id)">
+                                            <i class="fas fa-spinner fa-spin"
+                                                v-if="status.loadingItem === item.id">
+                                            </i>
+                                            <i class="fas fa-cart-plus"></i>
+                                            購物車
+                                        </label>
+                                    </div>
+                                    <!-- <button type="button"
                                         class="btn btn-primary btn-block ml-auto text-white"
                                             @click="addtoCart(item.id)">
                                             <i class="fas fa-spinner fa-spin"
@@ -85,7 +141,7 @@
                                             </i>
                                             <i class="fas fa-cart-plus"></i>
                                             購物車
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                         </div>
@@ -116,6 +172,7 @@ export default {
       },
       show: 'all',
       selected: '請選購商品數量',
+      favorite: false
     };
   },
   computed: {
@@ -155,6 +212,9 @@ export default {
       this.$store.dispatch('addtoCart', { id, qty });
       this.status.loadingItem = '';
     },
+    addtoFavorite(){
+        this.favorite =! this.favorite;
+    }
   },
   created() {
     this.getProducts();
@@ -173,6 +233,18 @@ export default {
     }
     .card-footer{
         padding:0;
+    }
+    .nav-link.active{
+        color:#dba377;
+    }
+    // .nav-tabs{
+    //     border: 2px solid #dee2e6;
+    // }
+    .heart{
+        position: absolute;
+        top:1%; 
+        right: 1%;
+        z-index: 999;
     }
 
 </style>

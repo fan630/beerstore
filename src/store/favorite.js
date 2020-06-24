@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 export default {
     state: {
-        favorites: {},
+        favorites: [],
         favoritesLength: 0,
     },
     actions: {
@@ -10,28 +10,24 @@ export default {
             const favoriteData = JSON.parse(localStorage.getItem('favoriteData')) || [];
             context.commit('FAVORITES', favoriteData);
             context.commit('FAVORITES_LENGTH', favoriteData.length);
-            context.dispatch('products/getProducts')
+            context.dispatch('getProducts')
         },
-        removeFavorite(context, { favoriteItem, delall }) {
-            if (delall) {
-                localStorage.removeItem('favoriteData');
-            } else {
-                context.commit('REMOVE_FAVORITE', favoriteItem);
-                localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
-            }
-            context.dispatch('getFavorite');
-            context.dispatch('alertMessageModules/updateMessage', { message: '已刪除我的最愛', status: 'warning' }, { root: true });
-        },
-        addtoFavorite(context, singleProduct) {
+        addtoFavorite(context, favorite) {
             const favoriteData = {
-                id: singleProduct.id,
-                title: singleProduct.title
+                id: favorite.id,
+                title: favorite.title
             };
             context.commit('PUSH_FAVORITE', favoriteData);
             localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
             context.dispatch('getFavorite');
             new Vue().$bus.$emit('message:push', '已加入我的最愛', 'success');
-        }
+        },
+        removeFavorite(context, favorite) {
+            context.commit('REMOVE_FAVORITE', favorite);
+            localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
+            context.dispatch('getFavorite');
+            new Vue().$bus.$emit('message:push', '已刪除我的最愛', 'danger');
+        },
     },
     mutations: {
         FAVORITES(state, payload) {

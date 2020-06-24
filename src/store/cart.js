@@ -6,7 +6,6 @@ export default {
     cart: {
       carts: [],
     },
-    myLove:[]
   },
   actions: {
     getCart(context) {
