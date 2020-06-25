@@ -123,11 +123,11 @@
                                                 <i class="fas fa-spinner fa-spin"
                                                     v-if="status.loadingItem === product.id">
                                                 </i>
-                                           <router-link :to="`/shop/${product.id}`">查看更多</router-link>
+                                           <router-link :to="`/shop/${product.id}`" class="routerLink">查看更多</router-link>
                                         </label>
                                         <label class="btn btn-primary text-white" @click="addtoCart(product.id)">
                                             <i class="fas fa-cart-plus"></i>
-                                            <span>購物車</span>
+                                            <span> 購物車</span>
                                         </label>
                                     </div>
                                     <!-- <button type="button"
@@ -240,6 +240,10 @@ export default {
         .btn-group label{
             font-size:14px;
         }
+    }
+    .routerLink{
+        color:white;
+        text-decoration:none;
     }
 
 </style>
