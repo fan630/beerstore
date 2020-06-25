@@ -75,9 +75,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-    .table thead th{
-        border-bottom:0px;
-    }
-</style>

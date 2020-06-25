@@ -44,7 +44,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    // .active{
-    //     background-color:#dba377;
-    // }
+
 </style>

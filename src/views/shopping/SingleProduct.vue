@@ -169,14 +169,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .breadcrumb{
-        background-color: transparent;
-    }
-    .u-item-btn{
-        top: 50%;
-    }
     .form-row > .col {
         padding: 0 1px; 
     }
-
 </style>

@@ -21,9 +21,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-     .arrow{
-         position: absolute;
-         bottom:60px;
-         right: 10px;
-     }
+    .arrow{
+        position: absolute;
+        bottom:60px;
+        right: 10px;
+    }
 </style>

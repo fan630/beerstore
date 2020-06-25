@@ -184,7 +184,6 @@ export default {
       this.isLoading = true;
       this.$http.post(api, { data: order }).then((response) => {
         this.$bus.$emit('message:push', response.data.message, 'warning');
-        console.log(response.data);
         this.$router.push(`/checkout_pay/${response.data.orderId}`);
         this.getCart();
         this.isLoading = false;

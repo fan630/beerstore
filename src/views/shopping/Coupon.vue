@@ -21,9 +21,11 @@
                                     style="height:100%; width:100%"
                                     >
                                     <div class="card-text text-center">
-                                        <h1>恭喜你！</h1>
+                                        <div class="title">恭喜你！</div>
                                         <p>您的coupon優惠碼為:{{item.coupon.couponCode}}</p>
-                                        <strong :class="[ Number(item.coupon.discount) > 25 ? 'red': '']">折扣幅度:{{item.coupon.discount}}%</strong>
+                                        <span>
+                                            <strong :class="[ Number(item.coupon.discount) > 25 ? 'red': '']">折扣幅度:{{item.coupon.discount}}%</strong>
+                                        </span>
                                         <div class="mt-3">                             
                                             <button class="btn btn-outline-success mr-2" @click.stop ="backtocustomer"
                                                 >我要使用優惠券
@@ -42,15 +44,9 @@
 <script>
 import axios from 'axios';
 import { eventBus } from "../../main.js";
-// import  VueFlipcard from '../../components/FlipCard.vue';
-// import Cart from './Cart.vue';
 
 export default {
   name: 'Coupon',
-  components:{
-    // Cart,
-    // VueFlipcard
-  }, 
   data(){
       return{
           collection:[
@@ -137,7 +133,6 @@ export default {
             this.collection.forEach(item => {
                 return this.lists.push(item.coupon)
             })
-            // console.log(this.lists.sort(() => Math.random() - 0.5))
             return this.lists.sort(() => Math.random() - 0.5)
       }
   }, 
@@ -163,18 +158,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .title {
-    font-size: 32px;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Merriweather', serif;
-  }
-  .desc {
-    font-size: 16px;
-    color: #555;
-    text-align: center;
-    margin-bottom: 30px;
-  }
   @media screen and (max-width:768px){
       .vue-flipcard{
           width:100% !important;
@@ -185,7 +168,9 @@ export default {
           width:100% !important;
       }
   }
-
+  .card-text{
+      padding-top:50px;
+  }
   .card:hover{
      animation: shake 0.5s;
   }

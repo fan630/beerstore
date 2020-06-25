@@ -148,7 +148,6 @@
                     </div>
                 </div>
                 <!--商品內容-->
-                <MyCart/>
                 <GoTop/>
             </div>
         </div>
@@ -159,13 +158,11 @@
 import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import GoTop from '../../components/Gotop.vue';
-import MyCart from '../../components/MyCart.vue';
 
 export default {
   name: 'Shop',
   components: {
     GoTop,
-    MyCart
   },
   data() {
     return {
@@ -238,22 +235,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .box2{
-        width: 160px;
-        height: 200px;
-    }
-    .sticky-top {
-        top: 80px;
-    }
     .card-footer{
         padding:0;
     }
-    .nav-link.active{
-        color:#dba377;
-    }
-    // .nav-tabs{
-    //     border: 2px solid #dee2e6;
-    // }
     .heart{
         position: absolute;
         top:1%; 

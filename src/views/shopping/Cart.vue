@@ -79,9 +79,7 @@
                                     </tfoot>
                             </table>
                             <div>
-                                <span class="font-weight-bolder">
-                                    <router-link to="/coupon">✦ 還沒有Couponcode? 來玩玩吧!!</router-link>
-                                </span>
+                                <router-link to="/coupon" class="routerLink font-weight-bolder h5">✦ 還沒有優惠碼? 來玩玩吧!!</router-link>
                             </div>
                             <div class="input-group my-3">
                                 <input type="text" class="form-control"
@@ -100,8 +98,8 @@
                   </div>
             </div>
         </div>
-        <router-link to="/checkout"
-            class="btn btn-primary text-white my-3"
+        <router-link to="/checkout" 
+            class="btn btn-primary text-white my-3 routerLink"
             href="#" role="button" v-if="itemList">前往結帳
         </router-link>
         <div class="container" v-else>
@@ -150,7 +148,6 @@ export default {
   created() {
     this.getCart();
     eventBus.$on('getCouponed', (couponNumber) => {
-         console.log(couponNumber);
          this.couponCode = couponNumber;
          if(this.cart.carts.length){
              this.$bus.$emit('message:push', '優惠碼已填入, 請點選輸入優惠碼', 'success');
@@ -167,6 +164,6 @@ export default {
 
 <style lang="scss" scoped>
     .cart{
-        min-height:76vh;
+        min-height:100vh;
     }
 </style>

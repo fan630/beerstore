@@ -32,7 +32,7 @@
                       <p class="text-gold">於台北市永康商圈開設第一家掌門精釀啤酒TAP ROOM!</p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInLeft">
-                      <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"></div>
+                      <div class="timeline-box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"></div>
                   </div>
               </div>
               <div class="row my-3 timeline-pointer d-flex flex-sm-row-reverse">
@@ -49,7 +49,7 @@
                       </p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInRight">
-                      <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1517159906085-dd4f2277d4d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
+                      <div class="timeline-box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1517159906085-dd4f2277d4d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
                   </div>
               </div>
               <div class="row my-3 timeline-pointer">
@@ -61,7 +61,7 @@
                       </p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInLeft" >
-                      <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1554381187-1461fabe0905?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"></div>
+                      <div class="timeline-box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1554381187-1461fabe0905?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"></div>
                   </div>
               </div>
               <div class="row my-3 timeline-pointer d-flex flex-sm-row-reverse">
@@ -74,7 +74,7 @@
                      </p>
                   </div>
                   <div class="col-sm-6" data-aos="animate__bounceInRight">
-                      <div class="box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
+                      <div class="timeline-box shadow bg-cover" style="background-image:url(https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"></div>
                   </div>
               </div>
           </div>
@@ -95,10 +95,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .box {
-        width: 100%;
-        height: 300px;
-    }
     .timeline-section{
         position: relative;
     }

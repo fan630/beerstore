@@ -28,13 +28,9 @@
                 </div>
                 <div class="carousel-item header-carousel-item bg-cover active"
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1570380888376-ff4a100975f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80)`}">
-                    <!-- <div class="carousel-caption d-none d-md-block px-2">
-                    </div> -->
                 </div>
                 <div class="carousel-item header-carousel-item bg-cover"
                     :style="{backgroundImage: `url(https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`}">
-                    <!-- <div class="carousel-caption d-none d-md-block px-2">
-                    </div> -->
                 </div>
             </div>
             <a
@@ -166,7 +162,7 @@
         <div class="container-fluid">
             <div class="form-row justify-content-center align-items-center">
                 <div class="col-md-10">
-                    <div class="subscribe">
+                    <div class="subscribe bg-cover">
                         <div class="subscribe-item d-flex justify-content-center align-items-center flex-column my-3">
                             <div class="col-md-2">
                                 <h3>Subscribe</h3>
@@ -187,30 +183,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="subscribe-item">
-                    <div class="display-4 text-center">Subscribe</div>
-                    <div class="form-row justify-content-center align-items-center">
-                        <div class="col-md-2 mb-5 mb-md-0">
-                            <img src="../../assets/images/bottom.png" alt="" srcset="">
-                        </div>
-                        <div class="col-md-6">
-                            <h2 class="text-left">
-                                Get The Latest News On Product Releases
-                            </h2>
-                            <div class="input-group mt-4">
-                                    <input type="text"
-                                        class="form-control"
-                                        placeholder="Enter your email address">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary" type="button">
-                                            GO!
-                                        </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             </div>
          <GoTop/>
     </div>
@@ -280,66 +252,8 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
-    $primary: #dba377;
+<style lang="scss">
     $gray-700:#495057;
-
-    .bd-highlight{
-        background-color: $gray-700;
-        color:white;
-        border-radius: 5px; 
-        // border: 1px solid;
-    }
-
-    .coupon-box{
-        padding: 10px 0; 
-        background: $primary;
-    }
-
-    .carousel-caption{
-        background-color: rgba(0, 0, 0, 0.6);
-    }
-    .header-carousel-item{
-        height:500px;
-    }
-    .text-gold {
-        color: $primary;
-    }
-    .box{
-        height:250px;
-        margin-bottom:15px;
-    }
-    .item {
-        width: 200px;
-        height: 200px;
-        margin: 50px auto;
-        padding-top: 75px;
-        background: #ccc;
-        text-align: center;
-        color: #FFF;
-        font-size: 3em;
-    }
-    p{
-       font-family: 'Lato', sans-serif;
-    }
-    .display-4, h3{
-        font-family: 'Merriweather', serif;
-    }
-    .filter-class{
-        filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(86deg) brightness(118%);
-    }
-    .subscribe{
-      background-image: url('https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
-      padding:50px 0;
-      filter: grayscale(100%);
-    }
-    .subscribe-item{
-        padding:30px 0;
-        background-color: rgba(128, 128, 128, 0.3);
-    }
 
     .innerbox {
         width: 100%;
@@ -348,7 +262,6 @@ export default {
         position: relative;
         text-align: center;
         cursor: pointer;
-        // border: 1px solid #ccc;
         border-radius: 5px;
         box-shadow:1px 2px 1px 1px $gray-700;
     }
@@ -372,12 +285,6 @@ export default {
         transform: scale(1);
     }
 
-    .box:hover{
-        filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
-        filter: brightness(0.7);
-        -webkit-filter: brightness(0.65);
-    }
-
     .innerbox h2 {
         text-transform: uppercase;
         text-align: center;
@@ -386,7 +293,6 @@ export default {
         background-color: transparent;
         color:#fff;
         line-height:200px;
-        // padding: 1em 0;
         opacity: 0;
         filter: alpha(opacity=0);
         -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -397,7 +303,6 @@ export default {
 
     .innerbox a, .innerbox p {
         color: #fff;
-        // padding: 1em 0;
         line-height:200px;
         opacity: 0;
         filter: alpha(opacity=0);
@@ -413,13 +318,6 @@ export default {
         filter: alpha(opacity=100);
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
-    }
-    .u-item-img{
-        height:450px;
-    }
-    .u-item-button{
-        position: absolute;
-        top: 50%;
     }
 </style>
 

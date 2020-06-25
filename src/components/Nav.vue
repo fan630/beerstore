@@ -194,17 +194,6 @@ export default {
     $gray-300: #dee2e6;
     $primary: #dba377;
 
-    .nav{
-        line-height:66px;
-    }
-    .navbar-brand{
-        background-color: transparent;
-        box-shadow:none;
-    }
-    .navbar{
-        padding-top:0;
-        padding-bottom:0;
-    }
     .nav-link{
         display:inline;
         font-family: 'Merriweather', serif;
@@ -223,44 +212,12 @@ export default {
         right: 1px;
     }
 
-    .main-content {
-        min-height: calc(100vh - 56px - 176px)
-    }
-
-    .box-shadow {
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, .05);
-        transition: .3s linear;
-    }
-
-    .box-shadow:hover {
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, .08);
-    }
-
     .dropdown-menu-right {
         right: 0;
         left: auto;
     }
-
-    .alert-rounded {
-        border-radius: 50px;
-    }
-
     .dropdown-menu{
         top:121%;
         background-color:$gray-700;
     }
-    .text-gray{
-        color:$gray-300;
-    }
-    .mobile-navLink{
-        border: 1px solid#333;
-        background-color: $gray-700;
-        &:hover{
-            background-color: darken($gray-300, 25%);
-        }
-        .nav-link{
-            color:white;
-        }
-    }
-
 </style>
