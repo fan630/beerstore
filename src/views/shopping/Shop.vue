@@ -1,3 +1,4 @@
+  
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
@@ -87,51 +88,51 @@
                 <!--商品內容-->
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
+                        <div class="col col-6 mb-4" v-for="product in filterProducts" :key="product.id">
                             <div class="card border-0 shadow h-100">
-                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
-                                    <span class="heart" @click="addtoFavorite(item)" v-if="status.isFavorite !== item.id">
-                                        <i class="far fa-heart fa-2x"></i>
+                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${product.imageUrl})`}">
+                                    <!-- <span class="heart" @click="addtoFavorite(product)"  v-if="status.isFavorite !== product.id">
+                                        <i class="far fa-heart fa-2x"></i>                                        
                                     </span>
-                                    <span class="heart" @click="removeFavorite(item)" v-else>
+                                    <span class="heart" @click="removeFavorite(product)" v-else>
                                         <i class="fas fa-heart fa-2x"></i>
-                                    </span>
+                                    </span> -->
                                 </div>
                                 <div class="card-body">
                                     <span class="badge float-left"
                                         :class=
-                                        "[item.category == '啤酒'?'badge-info' : 'badge-warning']"
+                                        "[product.category == '啤酒'?'badge-info' : 'badge-warning']"
                                         >
-                                        {{item.category}}
+                                        {{product.category}}
                                     </span>
                                     <div class="card-title text-center h5 mr-4">
-                                        <a class="text-dark">{{item.title}}</a>
+                                        <a class="text-dark">{{product.title}}</a>
                                     </div>
-                                    <!--<p class="card-text text-left">{{item.content}}</p>-->
+                                    <!--<p class="card-text text-left">{{product.content}}</p>-->
                                     <div class="d-flex justify-content-between">
                                         <!--顯示原價和特價-->
                                         <del class="h6 text-muted">
-                                            {{item.origin_price? `原價${item.origin_price}元` : '' }}
+                                            {{product.origin_price? `原價${product.origin_price}元` : '' }}
                                         </del>
-                                        <div class="h6 text-danger">特價{{item.price}}元</div>
+                                        <div class="h6 text-danger">特價{{product.price}}元</div>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex">
                                     <div class="btn-group btn-group-toggle btn-block">
-                                        <label class="btn btn-secondary active" @click="getProduct(item.id)">
+                                        <label class="btn btn-secondary active">
                                                 <i class="fas fa-spinner fa-spin"
-                                                    v-if="status.loadingItem === item.id">
+                                                    v-if="status.loadingItem === product.id">
                                                 </i>
-                                            <span>查看更多</span>
+                                           <router-link :to="`/shop/${product.id}`">查看更多</router-link>
                                         </label>
-                                        <label class="btn btn-primary text-white" @click="addtoCart(item.id)">
+                                        <label class="btn btn-primary text-white" @click="addtoCart(product.id)">
                                             <i class="fas fa-cart-plus"></i>
                                             <span>購物車</span>
                                         </label>
                                     </div>
                                     <!-- <button type="button"
                                         class="btn btn-primary btn-block ml-auto text-white"
-                                            @click="addtoCart(item.id)">
+                                            @click="addtoCart(product.id)">
                                             <i class="fas fa-spinner fa-spin"
                                                 v-if="status.loadingItem === item.id">
                                             </i>
@@ -162,14 +163,15 @@ export default {
   },
   data() {
     return {
-      product: {},
       status: {
         loadingItem: '',
-        isFavorite:''
+        isFavorite: ''
       },
       show: 'all',
       selected: '請選購商品數量',
-    };
+      isFavoriteList: [], 
+      isFavoriteLists: []
+    };    
   },
   computed: {
     ...mapGetters(['favorites','products', 'cart', 'isLoading']),
@@ -191,41 +193,34 @@ export default {
     checkList(val) {
       this.show = val;
     },
-    getProduct(id) {
-      const api = `https://vue-course-api.hexschool.io/api/fan630/product/${id}`;
-      this.status.loadingItem = id;
-      this.$http.get(api).then((response) => {
-        if(response.data.success){
-            this.product = response.data.product;
-            this.$set(this.product, 'buyNum', 1);
+    getProducts() {
+        this.$store.dispatch('getProducts');
+        // id比對
+        // this.favorites.forEach(item => {
+        //     return this.isFavoriteList.push(item.id)
+        // })
 
+        // this.isFavoriteLists = this.isFavoriteList.filter(item => this.products.includes(item.id))
 
-
-            this.status.loadingItem = '';
-            this.$router.push(`/shop/${response.data.product.id}`)
-        }
-      });
     },
     addtoCart(id, qty = 1) {
       this.status.loadingItem = id;
       this.$store.dispatch('addtoCart', { id, qty });
       this.status.loadingItem = '';
     },
-    addtoFavorite(item){
-        this.status.isFavorite = item.id;
-        this.$store.dispatch('addtoFavorite',  item);
-        // if(this.favorites.filter(target => target.id.includes(item.id))){
-        //     console.log(this.favorites)
-        // }
+    addtoFavorite(product){
+        // this.status.isFavorite = product.id
+        this.$store.dispatch('addtoFavorite',  product);
     },
-    removeFavorite(item) {
-        this.$store.dispatch('removeFavorite', item);
-        this.status.isFavorite = '';
+    removeFavorite(product) {
+        // this.status.isFavorite = ''
+        this.$store.dispatch('removeFavorite', product);    
     },
   },
   created() {
     this.getCart();
     this.getFavorite();
+    this.getProducts()
   },
 };
 </script>

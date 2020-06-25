@@ -66,7 +66,7 @@
                             加入購物車
                         </button>
                         <button type="button" class="btn btn-info text-white my-3 ml-1"
-                            @click="addtoFavorite(product)" v-if="isFavorite != true">
+                            @click="addtoFavorite(product)" v-if="product.is_favorite == false">
                             <i class="fas fa-heart"></i>
                             加入我的最愛
                         </button>
@@ -140,6 +140,12 @@ export default {
                 if(response.data.success){
                     this.product = response.data.product;
                     this.$set(this.product, 'buyNum', 1);
+                    this.$set(this.product, 'is_favorite', false)
+                    this.favorites.forEach((item) => {
+                        if (this.productId === item.id) {
+                            this.product.is_favorite = true;
+                        }
+                    });
                 }
             });
         },
@@ -149,21 +155,18 @@ export default {
                 this.$router.push('/cart');
             }, 1500);
         },
-        addtoFavorite(favorite){
-            this.isFavorite = true
-            this.$store.dispatch('addtoFavorite',  favorite);
+        addtoFavorite(product){
+            this.product.is_favorite = true;
+            this.$store.dispatch('addtoFavorite',  product);
         },
-        removeFavorite(favorite) {
-            this.$store.dispatch('removeFavorite', favorite);
-            this.isFavorite = false;
+        removeFavorite(product) {
+            this.$store.dispatch('removeFavorite', product);
+            this.product.is_favorite = false;
         },
     },
     created(){
         this.productId = this.$route.params.productId
         this.getProduct(this.productId);
-        this.getCart();
-        this.getProducts();
-        this.getFavorite();
     }
 };
 </script>

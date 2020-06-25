@@ -207,9 +207,14 @@ export default {
         return{
             swiperOption: {
                 slidesPerView: 3,
+                // slidesPerColumn: 2,
                 spaceBetween: 30,
                 slidesPerGroup: 3,
                 loop: true,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false
+                },
                 on:{
                     click:function(){
                         this.getSingleProductBtn(productId)
