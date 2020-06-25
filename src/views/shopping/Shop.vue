@@ -90,10 +90,6 @@
                         <div class="col col-6 mb-4" v-for="item in filterProducts" :key="item.id">
                             <div class="card border-0 shadow h-100">
                                 <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
-                                    <!-- <a class="u-item-cover" @click="getProduct(item.id)"
-                                >
-                                        <div class="u-item-btn">See more</div>
-                                    </a> -->
                                     <span class="heart" @click="addtoFavorite(item)" v-if="status.isFavorite !== item.id">
                                         <i class="far fa-heart fa-2x"></i>
                                     </span>
@@ -126,11 +122,11 @@
                                                 <i class="fas fa-spinner fa-spin"
                                                     v-if="status.loadingItem === item.id">
                                                 </i>
-                                            查看更多
+                                            <span>查看更多</span>
                                         </label>
                                         <label class="btn btn-primary text-white" @click="addtoCart(item.id)">
                                             <i class="fas fa-cart-plus"></i>
-                                            購物車
+                                            <span>購物車</span>
                                         </label>
                                     </div>
                                     <!-- <button type="button"
@@ -244,6 +240,11 @@ export default {
         right: 1%;
         color:red;
         font-size: 16px;
+    }
+    @media (max-width:767px){
+        .btn-group label{
+            font-size:14px;
+        }
     }
 
 </style>

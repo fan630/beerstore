@@ -37,7 +37,6 @@ hr{
 /*顏色設定*/
 
 $primary:#dba377;
-$gray:$gray-900;
 $gray-700:#495057;
 $gray-300: #dee2e6;
 
@@ -135,10 +134,10 @@ p{
 
 .subscribe{
     background-image: url('https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-attachment: fixed;
     padding:50px 0;
     filter: grayscale(100%);
 }
-
 .subscribe-item{
     padding:30px 0;
     background-color: rgba(128, 128, 128, 0.3);
@@ -215,6 +214,7 @@ p{
     height: 300px;
 }
 
+// 圖片hover設定
 .u-item-img{
     height:450px;
 }

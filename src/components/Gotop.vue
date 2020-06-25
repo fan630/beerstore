@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
     .arrow{
         position: absolute;
-        bottom:60px;
+        bottom:70px;
         right: 10px;
     }
 </style>

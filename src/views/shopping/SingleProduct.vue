@@ -56,7 +56,7 @@
                             </option>
                         </select>
 
-                        <div class="h4 text-right my-3">
+                        <div class="h4 text-right mt-3 mb-5">
                             小計
                             <strong>{{ product.buyNum * product.price }}</strong>元
                         </div>

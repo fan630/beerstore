@@ -255,6 +255,11 @@ export default {
 <style lang="scss">
     $gray-700:#495057;
 
+    .bd-highlight{
+        background-color: $gray-700;
+        border-radius: 5px; 
+    }
+
     .innerbox {
         width: 100%;
         height: 100%;
