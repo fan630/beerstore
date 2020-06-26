@@ -10,13 +10,15 @@
                                 :width="343"
                                 ref="flipcard"
                                 disable="disable" direction="vertical">
-                                <div class="card-body front bg-cover" slot="front" 
-                                    @click="onManualFlip(item.id, isFlip, item.coupon.couponCode)"
+                                <div class="card-body front bg-cover"
+                                    slot="front"
+                                    @click=
+                                    "onManualFlip(item.id, isFlip, item.coupon.couponCode)"
                                     style="height:100%; width:100%"
                                     :style="{backgroundImage: `url(${item.img})`}"
                                     >
                                 </div>
-                                <div class="card-body back" slot="back" 
+                                <div class="card-body back" slot="back"
                                     @click="onManualFlip(item.id)"
                                     style="height:100%; width:100%"
                                     >
@@ -24,10 +26,16 @@
                                         <div class="title">恭喜你！</div>
                                         <p>您的coupon優惠碼為:{{item.coupon.couponCode}}</p>
                                         <span>
-                                            <strong :class="[ Number(item.coupon.discount) > 25 ? 'red': '']">折扣幅度:{{item.coupon.discount}}%</strong>
+                                            <strong
+                                                :class=
+                                                "[ Number(item.coupon.discount) > 25 ? 'red': '']">
+                                                折扣幅度
+                                                :{{item.coupon.discount}}%
+                                                </strong>
                                         </span>
-                                        <div class="mt-3">                             
-                                            <button class="btn btn-outline-success mr-2" @click.stop ="backtocustomer"
+                                        <div class="mt-3">
+                                            <button class="btn btn-outline-success mr-2"
+                                                @click.stop ="backtocustomer"
                                                 >我要使用優惠券
                                             </button>
                                         </div>
@@ -42,119 +50,109 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { eventBus } from "../../main.js";
+import { eventBus } from '../../main';
 
 export default {
   name: 'Coupon',
-  data(){
-      return{
-          collection:[
-                {
-                    "id": 1, 
-                    "img": "https://source.unsplash.com/250x250/?beer",
-                    "coupon":{
-                        "couponCode": "beer", 
-                        "discount": "10"
-                    }
-                }, 
-                {
-                    "id": 2,
-                    "img": "https://source.unsplash.com/250x250/?bottle",
-                    "coupon": {
-                        "couponCode": "bottle",
-                        "discount": "30"
-                    }
-                },
-                {
-                    "id": 3,
-                    "img": "https://source.unsplash.com/250x250/?pub",
-                    "coupon": {
-                        "couponCode": "longtimenosee",
-                        "discount": "40"
-                    }
-                },
-                {
-                    "id": 4,
-                    "img": "https://source.unsplash.com/250x250/?brewery",
-                    "coupon": {
-                        "couponCode": "brewery",
-                        "discount": "30"
-                    }
-                },
-                {
-                    "id": 5,
-                    "img": "https://source.unsplash.com/250x250/?doll",
-                    "coupon": {
-                        "couponCode": "doll",
-                        "discount": "50"
-                    }
-                },
-                {
-                    "id": 6,
-                    "img": "https://source.unsplash.com/250x250/?poker",
-                    "coupon": {
-                        "couponCode": "game",
-                        "discount": "30"
-                    }
-                },
-                {
-                    "id": 7,
-                    "img": "https://source.unsplash.com/250x250/?movie",
-                    "coupon": {
-                        "couponCode": "movie",
-                        "discount": "20"
-                    }
-                },
-                {
-                    "id": 8,
-                    "img": "https://source.unsplash.com/250x250/?taipei",
-                    "coupon": {
-                        "couponCode": "taipei",
-                        "discount": "30"
-                    }
-                },
-                {
-                    "id": 9,
-                    "img": "https://source.unsplash.com/250x250/?basketball",
-                    "coupon": {
-                        "couponCode": "fanbeer",
-                        "discount": "50"
-                    }
-                }
-          ],
-          lists:[], 
-          isFlip: false, 
-          couponCode:'',
-      }
-  }, 
-  computed:{
-      couponList(){
-            this.collection.forEach(item => {
-                return this.lists.push(item.coupon)
-            })
-            return this.lists.sort(() => Math.random() - 0.5)
-      }
-  }, 
+  data() {
+    return {
+      collection: [
+        {
+          id: 1,
+          img: 'https://source.unsplash.com/250x250/?beer',
+          coupon: {
+            couponCode: 'beer',
+            discount: '10',
+          },
+        },
+        {
+          id: 2,
+          img: 'https://source.unsplash.com/250x250/?bottle',
+          coupon: {
+            couponCode: 'bottle',
+            discount: '30',
+          },
+        },
+        {
+          id: 3,
+          img: 'https://source.unsplash.com/250x250/?pub',
+          coupon: {
+            couponCode: 'longtimenosee',
+            discount: '40',
+          },
+        },
+        {
+          id: 4,
+          img: 'https://source.unsplash.com/250x250/?brewery',
+          coupon: {
+            couponCode: 'brewery',
+            discount: '30',
+          },
+        },
+        {
+          id: 5,
+          img: 'https://source.unsplash.com/250x250/?doll',
+          coupon: {
+            couponCode: 'doll',
+            discount: '50',
+          },
+        },
+        {
+          id: 6,
+          img: 'https://source.unsplash.com/250x250/?poker',
+          coupon: {
+            couponCode: 'game',
+            discount: '30',
+          },
+        },
+        {
+          id: 7,
+          img: 'https://source.unsplash.com/250x250/?movie',
+          coupon: {
+            couponCode: 'movie',
+            discount: '20',
+          },
+        },
+        {
+          id: 8,
+          img: 'https://source.unsplash.com/250x250/?taipei',
+          coupon: {
+            couponCode: 'taipei',
+            discount: '30',
+          },
+        },
+        {
+          id: 9,
+          img: 'https://source.unsplash.com/250x250/?basketball',
+          coupon: {
+            couponCode: 'fanbeer',
+            discount: '50',
+          },
+        },
+      ],
+      lists: [],
+      isFlip: false,
+      couponCode: '',
+    };
+  },
   methods: {
-    onManualFlip (index, isFlip, getcouponItem) {
-      if(this.isFlip === false){
-          this.$refs.flipcard[index -1].flip()
-          this.isFlip = true
-          this.couponCode = getcouponItem
-      }else{
-          this.$bus.$emit('message:push', '已經抽過一次囉~', 'danger');
-          return
+    onManualFlip(index, isFlip, getcouponItem) {
+      if (this.isFlip === false) {
+        this.$refs.flipcard[index - 1].flip();
+        this.isFlip = true;
+        this.couponCode = getcouponItem;
+      } else {
+        this.$bus.$emit('message:push', '已經抽過一次囉~', 'danger');
       }
     },
-    backtocustomer(){
-        setTimeout(() => {
-            eventBus.$emit('getCouponed', this.couponCode)
-        }, 1000);
-        this.$router.push('/cart');
+    backtocustomer() {
+      setTimeout(() => {
+        eventBus.$emit('getCouponed', this.couponCode);
+      }, 1000);
+      this.$router.push('/cart');
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -163,7 +161,7 @@ export default {
           width:100% !important;
       }
   }
-  @media (min-width: 768px) and (max-width: 1200px) { 
+  @media (min-width: 768px) and (max-width: 1200px) {
       .vue-flipcard{
           width:100% !important;
       }
@@ -187,5 +185,4 @@ export default {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-  
 </style>

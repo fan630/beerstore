@@ -1,4 +1,3 @@
-  
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
@@ -90,13 +89,8 @@
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col mb-4" v-for="product in filterProducts" :key="product.id">
                             <div class="card border-0 shadow h-100">
-                                <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${product.imageUrl})`}">
-                                    <!-- <span class="heart" @click="addtoFavorite(product)"  v-if="status.isFavorite !== product.id">
-                                        <i class="far fa-heart fa-2x"></i>                                        
-                                    </span>
-                                    <span class="heart" @click="removeFavorite(product)" v-else>
-                                        <i class="fas fa-heart fa-2x"></i>
-                                    </span> -->
+                                <div class="u-item-img bg-cover"
+                                    :style="{backgroundImage: `url(${product.imageUrl})`}">
                                 </div>
                                 <div class="card-body">
                                     <span class="badge float-left"
@@ -112,7 +106,7 @@
                                     <div class="d-flex justify-content-between">
                                         <!--顯示原價和特價-->
                                         <del class="h6 text-muted">
-                                            {{product.origin_price? `原價${product.origin_price}元` : '' }}
+                                            {{product.origin_price?`原價${product.origin_price}元`:''}}
                                         </del>
                                         <div class="h6 text-danger">特價{{product.price}}元</div>
                                     </div>
@@ -123,9 +117,13 @@
                                                 <i class="fas fa-spinner fa-spin"
                                                     v-if="status.loadingItem === product.id">
                                                 </i>
-                                           <router-link :to="`/shop/${product.id}`" class="routerLink">查看更多</router-link>
+                                           <router-link :to="`/shop/${product.id}`"
+                                                class="routerLink">
+                                                查看更多
+                                            </router-link>
                                         </label>
-                                        <label class="btn btn-primary text-white" @click="addtoCart(product.id)">
+                                        <label class="btn btn-primary text-white"
+                                            @click="addtoCart(product.id)">
                                             <i class="fas fa-cart-plus"></i>
                                             <span> 購物車</span>
                                         </label>
@@ -152,7 +150,6 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
 import GoTop from '../../components/Gotop.vue';
 
@@ -165,14 +162,14 @@ export default {
     return {
       status: {
         loadingItem: '',
-        isFavorite: ''
+        isFavorite: '',
       },
       show: 'all',
       selected: '請選購商品數量',
-    };    
+    };
   },
   computed: {
-    ...mapGetters(['favorites','products', 'cart', 'isLoading']),
+    ...mapGetters(['favorites', 'products', 'cart', 'isLoading']),
     filterProducts() {
       switch (true) {
         case this.show === 'beer':
@@ -187,38 +184,29 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite','getProducts', 'getCart']),
+    ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite', 'getProducts', 'getCart']),
     checkList(val) {
       this.show = val;
     },
     getProducts() {
-        this.$store.dispatch('getProducts');
-        // id比對
-        // this.favorites.forEach(item => {
-        //     return this.isFavoriteList.push(item.id)
-        // })
-
-        // this.isFavoriteLists = this.isFavoriteList.filter(item => this.products.includes(item.id))
-
+      this.$store.dispatch('getProducts');
     },
     addtoCart(id, qty = 1) {
       this.status.loadingItem = id;
       this.$store.dispatch('addtoCart', { id, qty });
       this.status.loadingItem = '';
     },
-    addtoFavorite(product){
-        // this.status.isFavorite = product.id
-        this.$store.dispatch('addtoFavorite',  product);
+    addtoFavorite(product) {
+      this.$store.dispatch('addtoFavorite', product);
     },
     removeFavorite(product) {
-        // this.status.isFavorite = ''
-        this.$store.dispatch('removeFavorite', product);    
+      this.$store.dispatch('removeFavorite', product);
     },
   },
   created() {
     this.getCart();
     this.getFavorite();
-    this.getProducts()
+    this.getProducts();
   },
 };
 </script>
@@ -229,7 +217,7 @@ export default {
     }
     .heart{
         position: absolute;
-        top:1%; 
+        top:1%;
         right: 1%;
         color:red;
         font-size: 16px;

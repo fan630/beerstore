@@ -7,7 +7,7 @@ import Login from '../components/Login.vue';
 import Index from '../components/Index.vue';
 
 // views
-// shopping 
+// shopping
 import About from '../views/shopping/About.vue';
 import Coupon from '../views/shopping/Coupon.vue';
 import Shop from '../views/shopping/Shop.vue';

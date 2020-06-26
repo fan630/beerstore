@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import Vue from 'vue';
 import $ from 'jquery';
 import Vuex from 'vuex';
@@ -9,31 +10,29 @@ import 'bootstrap';
 import AOS from 'aos';
 import animated from 'animate.css';
 import VueFlipcard from 'vue-flipcard';
-
-// Vee-validate
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css';
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules';
+import store from './store';
+import dateTransfer from './filters/date';
+import currencyFilter from './filters/currency';
+import 'aos/dist/aos.css';
 
+// Vee-validate
 import App from './App.vue';
 
 import router from './router';
 import './bus';
+
 export const eventBus = new Vue();
-import currencyFilter from './filters/currency';
-import dateTransfer from './filters/date';
-import 'aos/dist/aos.css';
-import store from './store';
 
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);
 
 Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
-
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
-Vue.use(VueAwesomeSwiper)
-
+Vue.use(VueAwesomeSwiper);
 
 Vue.component('Loading', Loading);
 Vue.component('vue-flipcard', VueFlipcard);

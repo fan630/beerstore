@@ -25,7 +25,7 @@
             <div class="form-row">
                 <div class="col-md-5">
                     <img :src="product.imageUrl" class="rounded" alt=""
-                    style="height:90%; width:80%" 
+                    style="height:90%; width:80%"
                     />
                 </div>
                 <div class="col-md-6 text-md-left text-center">
@@ -82,7 +82,7 @@
             <h3 class="text-left" v-if="this.relatedProduct.length > 2">相關產品</h3>
             <h3 class="text-left" v-else>沒有相關產品</h3>
             <hr>
-        </div>      
+        </div>
         <div class="container-fluid my-3">
             <div class="row">
                 <div class="offset-md-1 col-md-10">
@@ -116,65 +116,65 @@ import { mapGetters, mapActions } from 'vuex';
 import GoTop from '../../components/Gotop.vue';
 
 export default {
-    name: 'SingleProduct',
-    components: {
-        GoTop,
+  name: 'SingleProduct',
+  components: {
+    GoTop,
+  },
+  data() {
+    return {
+      product: {},
+      productId: '',
+      selected: '請選購商品數量',
+      isFavorite: false,
+    };
+  },
+  computed: {
+    ...mapGetters(['favorites', 'products', 'cart', 'isLoading']),
+    relatedProduct() {
+      return this.products.filter((item) => item.category === this.product.category);
     },
-    data(){
-        return {
-            product: {},
-            productId: '',
-            selected: '請選購商品數量',
-            isFavorite: false
+  },
+  methods: {
+    ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite', 'getProducts', 'getCart']),
+    getProduct(productId) {
+      const api = `https://vue-course-api.hexschool.io/api/fan630/product/${productId}`;
+      this.$http.get(api).then((response) => {
+        if (response.data.success) {
+          this.product = response.data.product;
+          this.$set(this.product, 'buyNum', 1);
+          this.$set(this.product, 'is_favorite', false);
+          this.favorites.forEach((item) => {
+            if (this.productId === item.id) {
+              this.product.is_favorite = true;
+            }
+          });
         }
-    }, 
-    computed: {
-        ...mapGetters(['favorites','products','cart', 'isLoading']),
-        relatedProduct(){
-            return this.products.filter(item => item.category === this.product.category)
-        }
+      });
     },
-    methods:{
-        ...mapActions(['getFavorite', 'addtoFavorite', 'removeFavorite' ,'getProducts','getCart']),
-        getProduct(productId) {
-            const api = `https://vue-course-api.hexschool.io/api/fan630/product/${productId}`;
-            this.$http.get(api).then((response) => {
-                if(response.data.success){
-                    this.product = response.data.product;
-                    this.$set(this.product, 'buyNum', 1);
-                    this.$set(this.product, 'is_favorite', false)
-                    this.favorites.forEach((item) => {
-                        if (this.productId === item.id) {
-                            this.product.is_favorite = true;
-                        }
-                    });
-                }
-            });
-        },
-        addtoCart(id, qty = 1) {
-            this.$store.dispatch('addtoCart', { id, qty });
-            setTimeout(() => {
-                this.$router.push('/cart');
-            }, 1500);
-        },
-        addtoFavorite(product){
-            this.product.is_favorite = true;
-            this.$store.dispatch('addtoFavorite',  product);
-        },
-        removeFavorite(product) {
-            this.$store.dispatch('removeFavorite', product);
-            this.product.is_favorite = false;
-        },
+    addtoCart(id, qty = 1) {
+      this.$store.dispatch('addtoCart', { id, qty });
+      setTimeout(() => {
+        this.$router.push('/cart');
+      }, 1500);
     },
-    created(){
-        this.productId = this.$route.params.productId
-        this.getProduct(this.productId);
-    }
+    addtoFavorite(product) {
+      this.product.is_favorite = true;
+      this.$store.dispatch('addtoFavorite', product);
+    },
+    removeFavorite(product) {
+      this.$store.dispatch('removeFavorite', product);
+      this.product.is_favorite = false;
+    },
+  },
+  created() {
+    this.productId = this.$route.params.productId;
+    this.getProduct(this.productId);
+  },
 };
 </script>
 
 <style lang="scss" scoped>
     .form-row > .col {
-        padding: 0 1px; 
+        padding: 0 1px;
     }
 </style>

@@ -123,7 +123,8 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="col-md-10 d-flex">
                             <div class="py-3 flex-grow-1 bd-highlight">
-                                <router-link to="/coupon" class="btn btn-secondary" href="#" role="button">
+                                <router-link to="/coupon"
+                                    class="btn btn-secondary" href="#" role="button">
                                     立即領取Coupon
                                 </router-link>
                             </div>
@@ -141,7 +142,8 @@
                             <swiper class="swiper" :options="swiperOption" ref="mySwiper">
                                 <swiper-slide v-for="item in products" :key="item.id">
                                     <div class="card" @click="getSingleProductBtn(item.id)">
-                                        <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
+                                        <div class="u-item-img bg-cover"
+                                            :style="{backgroundImage: `url(${item.imageUrl})`}">
                                             <a class="u-item-cover"
                                         >
                                                 <div class="u-item-btn">See more</div>
@@ -163,7 +165,9 @@
             <div class="form-row justify-content-center align-items-center">
                 <div class="col-md-10">
                     <div class="subscribe bg-cover">
-                        <div class="subscribe-item d-flex justify-content-center align-items-center flex-column my-3">
+                        <div
+                            class="subscribe-item d-flex justify-content-center align-items-center
+                                  flex-column my-3">
                             <div class="col-md-2">
                                 <h3>Subscribe</h3>
                             </div>
@@ -189,70 +193,70 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import GoTop from '../../components/Gotop.vue';
 
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
+
+import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css';
 
 export default {
-    name: 'Home',
-    components: {
-        GoTop,
-        swiper,
-        swiperSlide
-    },
-    data(){
-        return{
-            swiperOption: {
-                slidesPerView: 3,
-                // slidesPerColumn: 2,
-                spaceBetween: 30,
-                slidesPerGroup: 3,
-                loop: true,
-                autoplay: {
-                    delay: 3500,
-                    disableOnInteraction: false
-                },
-                on:{
-                    click:function(){
-                        this.getSingleProductBtn(productId)
-                    }
-                }, 
-                breakpoints: {
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    }
-                },
-                loopFillGroupWithBlank: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                }
-            }
-        }
-    },
-    computed: {
-        ...mapGetters(['products','cart', 'isLoading']),
-        swiper() {
-          return this.$refs.mySwiper.swiper;
-      }
-    },
-    methods: {
-        ...mapActions(['getProducts','getCart']),
-        getSingleProductBtn(productId) {
-            this.$router.push({ path: `/shop/${productId}` });
+  name: 'Home',
+  components: {
+    GoTop,
+    swiper,
+    swiperSlide
+  },
+    data() {
+        return {
+    swiperOption: {
+        slidesPerView: 3,
+        // slidesPerColumn: 2,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false
         },
+        on: {
+          click: function() {
+            this.getSingleProductBtn(productId);
+          },
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+        },
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      },
+    };
+  },
+  computed: {
+    ...mapGetters(['products', 'cart', 'isLoading']),
+    swiper() {
+      return this.$refs.mySwiper.swiper;
     },
-    created(){
-        this.getProducts()
+  },
+  methods: {
+    ...mapActions(['getProducts', 'getCart']),
+    getSingleProductBtn(productId) {
+      this.$router.push({ path: `/shop/${productId}` });
     },
+  },
+  created() {
+    this.getProducts();
+  },
 };
 
 </script>
@@ -262,7 +266,7 @@ export default {
 
     .bd-highlight{
         background-color: $gray-700;
-        border-radius: 5px; 
+        border-radius: 5px;
     }
 
     .innerbox {
@@ -330,4 +334,3 @@ export default {
         transform: translate3d(0,0,0);
     }
 </style>
-

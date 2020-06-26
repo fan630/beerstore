@@ -7,33 +7,33 @@ export default {
         // isFavorite: false
     },
     actions: {
-        updateFavorite(context, status) {
-            context.commit('ISFAVORITE', status);
-        },
-        getFavorite(context) {
-            const favoriteData = JSON.parse(localStorage.getItem('favoriteData')) || [];
-            context.commit('FAVORITES', favoriteData);
-            context.commit('FAVORITES_LENGTH', favoriteData.length);
-            context.dispatch('getProducts')
-        },
-        addtoFavorite(context, product) {
-            const favoriteData = {
-                id: product.id,
-                title: product.title,
-            };
-            context.commit('PUSH_FAVORITE', favoriteData);
-            // context.commit('ISFAVORITE', true);
-            localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
-            context.dispatch('getFavorite');
-            new Vue().$bus.$emit('message:push', '已加入我的最愛', 'success');
-        },
-        removeFavorite(context, product) {
-            context.commit('REMOVE_FAVORITE', product);
-            // context.commit('ISFAVORITE', false);
-            localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
-            context.dispatch('getFavorite');
-            new Vue().$bus.$emit('message:push', '已刪除我的最愛', 'danger');
-        },
+    updateFavorite(context, status) {
+        context.commit('ISFAVORITE', status);
+    },
+    getFavorite(context) {
+    const favoriteData = JSON.parse(localStorage.getItem('favoriteData')) || [];
+      context.commit('FAVORITES', favoriteData);
+      context.commit('FAVORITES_LENGTH', favoriteData.length);
+      context.dispatch('getProducts');
+    },
+    addtoFavorite(context, product) {
+      const favoriteData = {
+        id: product.id,
+        title: product.title,
+    };
+      context.commit('PUSH_FAVORITE', favoriteData);
+    // context.commit('ISFAVORITE', true);
+      localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
+      context.dispatch('getFavorite');
+      new Vue().$bus.$emit('message:push', '已加入我的最愛', 'success');
+    },
+    removeFavorite(context, product) {
+      context.commit('REMOVE_FAVORITE', product);
+      // context.commit('ISFAVORITE', false);
+      localStorage.setItem('favoriteData', JSON.stringify(context.state.favorites));
+      context.dispatch('getFavorite');
+      new Vue().$bus.$emit('message:push', '已刪除我的最愛', 'danger');
+    },
     },
     mutations: {
         FAVORITES(state, payload) {
