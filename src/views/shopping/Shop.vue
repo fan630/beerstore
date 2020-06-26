@@ -88,7 +88,7 @@
                 <!--商品內容-->
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col col-6 mb-4" v-for="product in filterProducts" :key="product.id">
+                        <div class="col mb-4" v-for="product in filterProducts" :key="product.id">
                             <div class="card border-0 shadow h-100">
                                 <div class="u-item-img bg-cover" :style="{backgroundImage: `url(${product.imageUrl})`}">
                                     <!-- <span class="heart" @click="addtoFavorite(product)"  v-if="status.isFavorite !== product.id">
@@ -106,7 +106,7 @@
                                         {{product.category}}
                                     </span>
                                     <div class="card-title text-center h5 mr-4">
-                                        <a class="text-dark">{{product.title}}</a>
+                                        <span class="text-dark h4">{{product.title}}</span>
                                     </div>
                                     <!--<p class="card-text text-left">{{product.content}}</p>-->
                                     <div class="d-flex justify-content-between">
@@ -169,8 +169,6 @@ export default {
       },
       show: 'all',
       selected: '請選購商品數量',
-      isFavoriteList: [], 
-      isFavoriteLists: []
     };    
   },
   computed: {
@@ -235,11 +233,6 @@ export default {
         right: 1%;
         color:red;
         font-size: 16px;
-    }
-    @media (max-width:767px){
-        .btn-group label{
-            font-size:14px;
-        }
     }
     .routerLink{
         color:white;

@@ -22,10 +22,10 @@
                     <li class="breadcrumb-item active" aria-current="page">{{product.title}}</li>
                 </ol>
             </nav>
-            <div class="row">
-                <div class="offset-md-1 col-md-5">
-                    <img :src="product.imageUrl" class="img-fluid rounded" alt=""
-                    style="height:80%; width:80%" 
+            <div class="form-row">
+                <div class="col-md-5">
+                    <img :src="product.imageUrl" class="rounded" alt=""
+                    style="height:90%; width:80%" 
                     />
                 </div>
                 <div class="col-md-6 text-md-left text-center">
@@ -46,7 +46,7 @@
                         <del class="h6 text-muted">
                             {{product.origin_price? `原價${product.origin_price}元` : '' }}
                         </del>
-                        <div class="h5">特價{{product.price}}元</div>
+                        <span>特價{{product.price}}元</span>
                     </div>
 
                         <select class="form-control mt-3" v-model="product.buyNum">
@@ -56,25 +56,27 @@
                             </option>
                         </select>
 
-                        <div class="h4 text-right mt-3 mb-5">
+                        <div class="h5 text-right mt-3 mb-4">
                             小計
                             <strong>{{ product.buyNum * product.price }}</strong>元
                         </div>
-                        <button type="button" class="btn btn-primary text-white my-3"
-                            @click="addtoCart(product.id, product.buyNum)">
-                            <i class="fas fa-cart-plus"></i>
-                            加入購物車
-                        </button>
-                        <button type="button" class="btn btn-info text-white my-3 ml-1"
-                            @click="addtoFavorite(product)" v-if="product.is_favorite == false">
-                            <i class="fas fa-heart"></i>
-                            加入我的最愛
-                        </button>
-                        <button type="button" class="btn btn-danger my-3 ml-1"
-                            @click="removeFavorite(product)" v-else>
-                            <i class="fas fa-heart"></i>
-                            取消我的最愛
-                        </button>
+                        <div class="btn-group mb-5" role="group" aria-label="">
+                            <button type="button" class="btn btn-primary text-white"
+                                @click="addtoCart(product.id, product.buyNum)">
+                                <i class="fas fa-cart-plus"></i>
+                                加入購物車
+                            </button>
+                            <button type="button" class="btn btn-info text-white"
+                                @click="addtoFavorite(product)" v-if="product.is_favorite == false">
+                                <i class="fas fa-heart"></i>
+                                加入我的最愛
+                            </button>
+                            <button type="button" class="btn btn-danger"
+                                @click="removeFavorite(product)" v-else>
+                                <i class="fas fa-heart"></i>
+                                取消我的最愛
+                            </button>
+                        </div>
                 </div>
             </div>
             <h3 class="text-left" v-if="this.relatedProduct.length > 2">相關產品</h3>

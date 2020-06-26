@@ -249,4 +249,9 @@ p{
     text-decoration: none;
 }
 
+@media (max-width:767px){
+    *{
+        font-size:0.95rem;
+    }
+}
 
