@@ -38,7 +38,8 @@
                             <i class="fa fa-shopping-cart text-white fa-2x" aria-hidden="true"></i>
                             <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
+                            <div class="dropdown-menu dropdown-menu-right p-3"
+                                style="min-width: 300px"
                             data-offset="400">
                             <h6 class="text-gray">{{cart.carts.length ? '已選擇商品': '您目前未選擇商品'}}</h6>
                             <table class="table table-sm text-black">
@@ -47,11 +48,13 @@
                                     <td class="align-middle text-center">
                                     <a href="#" class="text-muted"
                                         @click.prevent="removeCartItem(item.id)">
-                                        <i class="fas fa-trash-alt text-black" aria-hidden="true"></i>
+                                        <i class="fas fa-trash-alt text-black"></i>
                                     </a>
                                     </td>
                                     <td class="align-middle">{{ item.product.title }}</td>
-                                    <td class="align-middle">{{ item.qty }}{{item.product.unit}}</td>
+                                    <td class="align-middle">
+                                            {{ item.qty }}{{item.product.unit}}
+                                    </td>
                                     <td class="align-middle text-right">{{item.total}}</td>
                                 </tr>
                                 </tbody>
@@ -63,14 +66,15 @@
                             </router-link>
                             </div>
                         </div>
-                        <!--我的最愛-->  
+                        <!--我的最愛-->
                         <div class="dropdown ml-1">
                             <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                                 data-flip="false">
                             <i class="fas fa-heart text-white fa-2x" aria-hidden="true"></i>
                             <span class="badge badge-pill badge-danger">{{favorites.length}}</span>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
+                            <div class="dropdown-menu dropdown-menu-right p-3"
+                                style="min-width: 300px"
                             data-offset="400">
                             <h6 class="text-gray">{{favorites.length ? '已選擇商品': '您目前沒有喜歡的商品'}}</h6>
                             <table class="table table-sm text-black">
@@ -79,14 +83,16 @@
                                     <td class="align-middle text-center">
                                         <a href="#" class="text-muted"
                                             @click.prevent="removeFavorite(item)">
-                                            <i class="far fa-heart text-black" aria-hidden="true"></i>
+                                            <i class="far fa-heart text-black"></i>
                                         </a>
                                     </td>
                                     <td class="align-middle">
                                         {{ item.title }}
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-sm text-white" @click="addtoCart(item, item.id)">
+                                        <button type="button"
+                                            class="btn btn-primary btn-sm text-white"
+                                            @click="addtoCart(item, item.id)">
                                             一鍵下訂
                                         </button>
                                     </td>
@@ -106,7 +112,9 @@
                         id="navbarNavAltMarkup"
                     >
                     <!--桌機版導覽列-->
-                    <div class="navbar-nav ml-auto d-none d-md-block order-last">
+                    <div
+                        class="navbar-nav ml-auto d-none d-md-inline-block order-last
+                                align-content-stretch flex-wrap">
                         <router-link to="/about" class="nav-link h-link">
                                 About
                         </router-link>
@@ -119,7 +127,7 @@
                         <router-link to="/my_order" class="nav-link h-link">
                                 Orders
                         </router-link>
-                        <router-link to="/login" class="nav-link">
+                        <router-link to="/login" class="nav-link admin">
                             <i class="fas fa-cog"></i>
                         </router-link>
                     </div>
@@ -159,22 +167,20 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Nav',
   computed: {
-    ...mapGetters(['favorites','cart', 'isLoading']),
+    ...mapGetters(['favorites', 'cart', 'isLoading']),
   },
   methods: {
-    ...mapActions(['getFavorite','removeFavorite','getCart']),
-    
+    ...mapActions(['getFavorite', 'removeFavorite', 'getCart']),
     removeCartItem(id) {
       this.$store.dispatch('removeCartItem', id);
     },
-
     removeFavorite(favorite) {
-        this.$store.dispatch('removeFavorite', favorite);
+      this.$store.dispatch('removeFavorite', favorite);
     },
 
     addtoCart(item, id, qty = 1) {
-        this.$store.dispatch('addtoCart', { id, qty });
-        this.removeFavorite(item)
+      this.$store.dispatch('addtoCart', { id, qty });
+      this.removeFavorite(item);
     },
   },
   created() {
