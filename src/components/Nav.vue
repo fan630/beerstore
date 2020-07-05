@@ -113,8 +113,8 @@
                     >
                     <!--桌機版導覽列-->
                     <div
-                        class="navbar-nav ml-auto d-none d-md-inline-block order-last
-                                align-content-stretch flex-wrap">
+                        class="navbar-nav  ml-auto d-none d-md-inline-block order-last
+                                flex-nowrap">
                         <router-link to="/about" class="nav-link h-link">
                                 About
                         </router-link>

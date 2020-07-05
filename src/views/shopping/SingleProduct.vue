@@ -94,7 +94,8 @@
                                     style="height:250px"
                                     :style="{backgroundImage: `url(${item.imageUrl})`}"
                                     >
-                                    <a class="u-item-cover" @click="getProduct(item.id)"
+                                    <a class="u-item-cover"
+                                    @click="getProduct(item.id); scrollToTop()"
                                 >
                                         <div class="u-item-btn">See more</div>
                                     </a>
@@ -126,6 +127,7 @@ export default {
       productId: '',
       selected: '請選購商品數量',
       isFavorite: false,
+      fullWidth: 0,
     };
   },
   computed: {
@@ -165,10 +167,24 @@ export default {
       this.$store.dispatch('removeFavorite', product);
       this.product.is_favorite = false;
     },
+    scrollToTop() {
+      if (this.fullWidth <= 500) {
+        setTimeout(() => {
+          window.scrollTo(0, 400);
+        }, 1800);
+      }
+    },
   },
   created() {
     this.productId = this.$route.params.productId;
     this.getProduct(this.productId);
+  },
+  mounted() {
+    const vm = this;
+    vm.fullWidth = window.innerWidth;
+    window.onresize = () => {
+      vm.fullWidth = window.innerWidth;
+    };
   },
 };
 </script>
