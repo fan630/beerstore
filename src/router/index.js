@@ -1,28 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-// components
-import Dashboard from '../components/Dashboard.vue';
-import Login from '../components/Login.vue';
-import Index from '../components/Index.vue';
-
-// views
-// shopping
-import About from '../views/shopping/About.vue';
-import Coupon from '../views/shopping/Coupon.vue';
-import Shop from '../views/shopping/Shop.vue';
-import SingleProduct from '../views/shopping/SingleProduct.vue';
-import Cart from '../views/shopping/Cart.vue';
-import CheckOut from '../views/shopping/CheckOut.vue';
-import CheckOutPay from '../views/shopping/CheckOutPay.vue';
-import MyOrder from '../views/shopping/MyOrder.vue';
-import Home from '../views/shopping/Home.vue';
-
-// admin
-import Products from '../views/admin/Products.vue';
-import CouponManage from '../views/admin/CouponManage.vue';
-import Orders from '../views/admin/Orders.vue';
-
 Vue.use(VueRouter);
 const routes = [
   {
@@ -32,103 +10,90 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    component: Index,
+    component: () => import('../components/Index.vue'),
     children: [
       {
         path: 'about',
         name: 'About',
-        component: About,
+        component: () => import('../views/shopping/About.vue'),
       },
       {
         path: '',
         name: 'Home',
-        component: Home,
+        component: () => import('../views/shopping/Home.vue'),
       },
       {
         path: 'shop',
         name: 'Shop',
-        component: Shop,
+        component: () => import('../views/shopping/Shop.vue'),
       },
       {
         path: 'shop/:productId',
         name: 'SingleProduct',
-        component: SingleProduct,
+        component: () => import('../views/shopping/SingleProduct.vue'),
       },
       {
         path: 'my_order',
         name: 'MyOrder',
-        component: MyOrder,
+        component: () => import('../views/shopping/MyOrder.vue'),
       },
       {
         path: 'coupon',
         name: 'Coupon',
-        component: Coupon,
+        component: () => import('../views/shopping/Coupon.vue'),
       },
       {
         path: 'cart',
         name: 'Cart',
-        component: Cart,
+        component: () => import('../views/shopping/Cart.vue'),
       },
       {
         path: 'checkout',
         name: 'CheckOut',
-        component: CheckOut,
+        component: () => import('../views/shopping/CheckOut.vue'),
       },
       {
         path: 'checkout_pay/:orderId',
         name: 'CheckOutPay',
-        component: CheckOutPay,
+        component: () => import('../views/shopping/CheckOutPay.vue'),
       },
     ],
   },
   {
     path: '/admin',
     name: 'Dashboard',
-    component: Dashboard,
+    component: () => import('../components/Dashboard.vue'),
     children: [
       {
         path: 'products',
         name: 'Products',
-        component: Products,
-        // meta: { requiresAuth: true }
+        component: () => import('../views/admin/Products.vue'),
+        meta: { requiresAuth: true },
       },
       {
         path: 'orders',
         name: 'Orders',
-        component: Orders,
-        // meta: { requiresAuth: true }
+        component: () => import('../views/admin/Orders.vue'),
+        meta: { requiresAuth: true },
       },
       {
         path: 'coupon',
         name: 'CouponManage',
-        component: CouponManage,
-        // meta: { requiresAuth: true }
+        component: () => import('../views/admin/CouponManage.vue'),
+        meta: { requiresAuth: true },
       },
-      // 可以在這邊新增訂單列表和優惠券
     ],
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: About,
   },
   {
     path: '/login',
     name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: Login,
+    component: () => import('../components/Login.vue'),
   },
 ];
 
 const router = new VueRouter({
   linkActiveClass: 'active',
   // mode: 'history',
-  // base: process.env.BASE_URL,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;

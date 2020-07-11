@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/_functions";
-@import "./helpers/_variables";
+@import "./helpers/variables";
 @import "~bootstrap/scss/bootstrap";
 // @import "./base/_base";
-@import "./dashboard"; 
-@import "./_style";
+@import "../scss/dashboard"; 
+@import "../scss/style";

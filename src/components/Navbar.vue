@@ -27,6 +27,7 @@
 <script>
 export default {
   name: 'Navbar',
+  data() {},
   methods: {
     signout() {
       const api = 'https://vue-course-api.hexschool.io/logout';

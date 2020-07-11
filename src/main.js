@@ -96,7 +96,6 @@ router.beforeEach((to, from, next) => {
       if (response.data.success) {
         next();
       } else {
-        console.log('驗證錯誤, 請重新登入');
         next({
           path: '/login',
         });

@@ -25,5 +25,11 @@ export default {
     Navbar,
     AlertMessage,
   },
+  data() {
+    return {
+
+    };
+  },
 };
+
 </script>

@@ -5,11 +5,11 @@
                     flex-column justify-content-center text-left">
             <div class="container bg-transparented">
                 <h1 class="display-4">釀‧哲學</h1>
-                <p>
+                <h5>
                     最天然的不過濾，不滅菌，不添加非天然香料
                     堅持手工釀造，堅持小批量生產，堅持自然發酵
                     自有配方，自有設備，自有釀酒師，自有酵母農場
-                </p>
+                </h5>
             </div>
         </div>
         <div class="container">
@@ -21,69 +21,29 @@
                             :class="{'active': show === 'all'}"
                             @click="checkList('all')"
                         >
-                            <span>所有商品</span>
+                            <span>All Products</span>
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'beer'}"
                             @click="checkList('beer')"
                         >
-                            <i class="fas fa-beer mr-1">
-                            </i>
                             Beer
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'acc'}"
                             @click="checkList('acc')"
                         >
-                            公仔
+                            Doll
                         </a>
                         <a  class="list-group-item list-group-item-action"
                             :class="{'active': show === 'other'}"
                             @click="checkList('other')"
                         >
-                            其餘商品
+                            Others
                         </a>
                     </div>
                 </div>
                 <!--標題列-->
-                <!-- <div class="col-md-12 my-3 sticky-top">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link"
-                            :class="{'active': show === 'all'}"
-                            @click="checkList('all')"
-                        >
-                                <span>所有商品</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link"
-                                :class="{'active': show === 'beer'}"
-                                @click="checkList('beer')"
-                            >
-                                <i class="fas fa-beer mr-1">
-                                </i>
-                                Beer
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link"
-                                :class="{'active': show === 'acc'}"
-                                @click="checkList('acc')"
-                            >
-                                公仔
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link"
-                                :class="{'active': show === 'other'}"
-                                @click="checkList('other')"
-                            >
-                                其餘商品
-                            </a>
-                        </li>
-                    </ul>
-                </div> -->
                 <!--商品內容-->
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
@@ -102,7 +62,6 @@
                                     <div class="card-title text-center h5 mr-4">
                                         <span class="text-dark h4">{{product.title}}</span>
                                     </div>
-                                    <!--<p class="card-text text-left">{{product.content}}</p>-->
                                     <div class="d-flex justify-content-between">
                                         <!--顯示原價和特價-->
                                         <del class="h6 text-muted">
@@ -151,7 +110,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import GoTop from '../../components/Gotop.vue';
+import GoTop from '../../components/GoTop.vue';
 
 export default {
   name: 'Shop',
@@ -175,7 +134,7 @@ export default {
         case this.show === 'beer':
           return this.products.filter((item) => item.category === '啤酒');
         case this.show === 'acc':
-          return this.products.filter((item) => item.category === '公仔');
+          return this.produfcts.filter((item) => item.category === '公仔');
         case this.show === 'other':
           return this.products.filter((item) => (item.category !== '公仔' && item.category !== '啤酒'));
         default:

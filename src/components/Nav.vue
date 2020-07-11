@@ -166,6 +166,11 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Nav',
+  data() {
+    return {
+
+    };
+  },
   computed: {
     ...mapGetters(['favorites', 'cart', 'isLoading']),
   },

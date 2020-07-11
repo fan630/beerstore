@@ -50,7 +50,12 @@
                                         <td class="align-middle text-right">{{item.qty}}</td>
                                         <td class="align-middle text-right">
                                             <ul>
-                                                <li class="text-muted" v-if="item.product.origin_price"><del>原價:{{item.product.origin_price}}</del></li>
+                                                <li class="text-muted"
+                                                    v-if="item.product.origin_price">
+                                                    <del>
+                                                        原價:{{item.product.origin_price}}
+                                                    </del>
+                                                </li>
                                                 <li class="red">特價:{{item.product.price}}</li>
                                             </ul>
                                         </td>
@@ -63,7 +68,6 @@
                                         <tr v-if="cart.total">
                                             <td colspan="5" class="text-right">合計</td>
                                             <td class="text-right">${{ cart.total }}
-                                                <!-- {{Math.round((cart.final_total / cart.total)/ cart.total * 10000)*10}} -->
                                             </td>
                                         </tr>
                                         <tr v-if="cart.final_total !== cart.total">
@@ -79,7 +83,9 @@
                                     </tfoot>
                             </table>
                             <div>
-                                <router-link to="/coupon" class="routerLink font-weight-bolder h5">✦ 還沒有優惠碼? 來玩玩吧!!</router-link>
+                                <router-link to="/coupon" class="routerLink font-weight-bolder h5">
+                                ✦ 還沒有優惠碼? 來玩玩吧!!
+                                </router-link>
                             </div>
                             <div class="input-group my-3">
                                 <input type="text" class="form-control"
@@ -98,7 +104,7 @@
                   </div>
             </div>
         </div>
-        <router-link to="/checkout" 
+        <router-link to="/checkout"
             class="btn btn-primary text-white my-3 routerLink"
             href="#" role="button" v-if="itemList">前往結帳
         </router-link>
@@ -114,15 +120,14 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
-import { eventBus } from "../../main";
+import { eventBus } from '../../main';
 
 export default {
   name: 'Cart',
   data() {
     return {
-        couponCode: '',
+      couponCode: '',
     };
   },
   computed: {
@@ -148,16 +153,16 @@ export default {
   created() {
     this.getCart();
     eventBus.$on('getCouponed', (couponNumber) => {
-         this.couponCode = couponNumber;
-         if(this.cart.carts.length){
-             this.$bus.$emit('message:push', '優惠碼已填入, 請點選輸入優惠碼', 'success');
-         }else{
-             this.$bus.$emit('message:push', '請先選購商品', 'warning');
-         }  
+      this.couponCode = couponNumber;
+      if (this.cart.carts.length) {
+        this.$bus.$emit('message:push', '優惠碼已填入, 請點選輸入優惠碼', 'success');
+      } else {
+        this.$bus.$emit('message:push', '請先選購商品', 'warning');
+      }
     });
   },
   beforeDestroy() {
-      eventBus.$off('getCouponed')
+    eventBus.$off('getCouponed');
   },
 };
 </script>

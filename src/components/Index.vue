@@ -14,6 +14,11 @@ import Footer from './Footer.vue';
 
 export default {
   name: 'Index',
+  data() {
+    return {
+
+    };
+  },
   components: {
     Nav,
     AlertMessage,

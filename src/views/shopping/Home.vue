@@ -195,9 +195,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
-import GoTop from '../../components/Gotop.vue';
-
-
+import GoTop from '../../components/GoTop.vue';
 import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css';
 
 export default {
@@ -205,22 +203,21 @@ export default {
   components: {
     GoTop,
     swiper,
-    swiperSlide
+    swiperSlide,
   },
-    data() {
-        return {
-    swiperOption: {
+  data() {
+    return {
+      swiperOption: {
         slidesPerView: 3,
-        // slidesPerColumn: 2,
         spaceBetween: 30,
         slidesPerGroup: 3,
         loop: true,
         autoplay: {
           delay: 3500,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         },
         on: {
-          click: function() {
+          click(productId) {
             this.getSingleProductBtn(productId);
           },
         },

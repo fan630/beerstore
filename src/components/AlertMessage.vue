@@ -17,11 +17,6 @@ export default {
   data() {
     return {
       messages: [
-        //   {
-        //       message: '信息內容',
-        //       status:'danger',
-        //       timestamp: 123
-        //   }
       ],
     };
   },

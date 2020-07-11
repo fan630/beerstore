@@ -32,6 +32,11 @@
 <script>
 export default {
   name: 'Page',
+  data() {
+    return {
+
+    };
+  },
   props: {
     pagination: Object,
   },

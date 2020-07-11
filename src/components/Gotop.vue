@@ -12,6 +12,11 @@ import $ from 'jquery';
 
 export default {
   name: 'GoTop',
+  data() {
+    return {
+
+    };
+  },
   methods: {
     goTop() {
       $('html,body').animate({ scrollTop: 0 }, 'slow');
