@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
      <div class="container">
-         <h2 class="my-3">訂單列表</h2>
+         <h2 class="my-3">All Orders</h2>
          <div class="row">
              <div class="col-md-12">
                  <div class="table-responsive">

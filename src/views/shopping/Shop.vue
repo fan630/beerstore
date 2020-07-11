@@ -48,54 +48,41 @@
                 <div class="col-md-10">
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col mb-4" v-for="product in filterProducts" :key="product.id">
-                            <div class="card border-0 shadow h-100">
-                                <div class="u-item-img bg-cover"
-                                    :style="{backgroundImage: `url(${product.imageUrl})`}">
-                                </div>
-                                <div class="card-body">
-                                    <span class="badge float-left"
-                                        :class=
-                                        "[product.category == '啤酒'?'badge-info' : 'badge-warning']"
-                                        >
-                                        {{product.category}}
-                                    </span>
-                                    <div class="card-title text-center h5 mr-4">
-                                        <span class="text-dark h4">{{product.title}}</span>
+                            <div class="card h-100">
+                                <router-link :to="`/shop/${product.id}`"
+                                    class="routerLink">
+                                    <div class="u-item-img bg-cover"
+                                        :style="{backgroundImage: `url(${product.imageUrl})`}">
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <!--顯示原價和特價-->
-                                        <del class="h6 text-muted">
-                                            {{product.origin_price?`原價${product.origin_price}元`:''}}
-                                        </del>
-                                        <div class="h6 text-danger">特價{{product.price}}元</div>
+                                    <div class="card-body">
+                                        <span class="badge"
+                                            :class=
+                                            "[product.category == '啤酒'?
+                                            'badge-info' : 'badge-warning']"
+                                            >
+                                            {{product.category}}
+                                        </span>
+                                        <div class="card-title">
+                                            <span class="text-dark h5">
+                                                {{product.title}}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <del class="h6 text-muted">
+                                                {{product.origin_price?
+                                                    `原價${product.origin_price}元`:''}}
+                                            </del>
+                                            <div class="h6 text-danger">特價{{product.price}}元</div>
+                                        </div>
                                     </div>
-                                </div>
+                                </router-link>
                                 <div class="card-footer d-flex">
-                                    <div class="btn-group btn-group-toggle btn-block">
-                                        <label class="btn btn-secondary active">
-                                                <i class="fas fa-spinner fa-spin"
-                                                    v-if="status.loadingItem === product.id">
-                                                </i>
-                                           <router-link :to="`/shop/${product.id}`"
-                                                class="routerLink">
-                                                查看更多
-                                            </router-link>
-                                        </label>
-                                        <label class="btn btn-primary text-white"
-                                            @click="addtoCart(product.id)">
-                                            <i class="fas fa-cart-plus"></i>
-                                            <span> 購物車</span>
-                                        </label>
-                                    </div>
-                                    <!-- <button type="button"
+                                    <button type="button"
                                         class="btn btn-primary btn-block ml-auto text-white"
                                             @click="addtoCart(product.id)">
-                                            <i class="fas fa-spinner fa-spin"
-                                                v-if="status.loadingItem === item.id">
-                                            </i>
                                             <i class="fas fa-cart-plus"></i>
                                             購物車
-                                    </button> -->
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +121,7 @@ export default {
         case this.show === 'beer':
           return this.products.filter((item) => item.category === '啤酒');
         case this.show === 'acc':
-          return this.produfcts.filter((item) => item.category === '公仔');
+          return this.products.filter((item) => item.category === '公仔');
         case this.show === 'other':
           return this.products.filter((item) => (item.category !== '公仔' && item.category !== '啤酒'));
         default:
@@ -184,6 +171,18 @@ export default {
     .routerLink{
         color:white;
         text-decoration:none;
+    }
+    .card:hover{
+        transform: scale(1.05);
+        box-shadow: 5px 5px 5px #212529;
+    }
+    .card-body{
+        position: relative;
+        height: 115px;
+    }
+    .badge{
+        position: absolute;
+        left:20px;
     }
 
 </style>
