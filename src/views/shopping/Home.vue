@@ -61,6 +61,17 @@
         </header>
         <!--四欄式-->
         <div class="container-fluid">
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-10 d-flex">
+                            <div class="py-3 flex-grow-1 bd-highlight">
+                                What we have?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-10">
                     <div class="row mt-3">
@@ -71,7 +82,7 @@
                                     style="background-image:url(https://images.unsplash.com/photo-1507310951869-fe0941df4dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)"
                                     >
                                         <div class="overlay">
-                                            <h2>所有品項</h2>
+                                            <h2>All items</h2>
                                     </div>
                                 </div>
                             </router-link>
@@ -83,7 +94,7 @@
                                     style="background-image:url(https://images.unsplash.com/photo-1556720072-94ce7d90544c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"
                                     >
                                         <div class="overlay">
-                                            <h2>啤酒</h2>
+                                            <h2>Beer</h2>
                                     </div>
                                 </div>
                             </router-link>
@@ -95,7 +106,7 @@
                                     style="background-image:url(https://images.unsplash.com/photo-1559762817-7506931c90d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)"
                                     >
                                         <div class="overlay">
-                                            <h2>公仔</h2>
+                                            <h2>Dolls</h2>
                                     </div>
                                 </div>
                             </router-link>
@@ -107,7 +118,7 @@
                                     style="background-image:url(https://images.unsplash.com/photo-1569879973648-3181113d2d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=947&q=80)"
                                     >
                                         <div class="overlay">
-                                            <h2>其餘商品</h2>
+                                            <h2>Others Item</h2>
                                     </div>
                                 </div>
                             </router-link>
@@ -125,7 +136,7 @@
                             <div class="py-3 flex-grow-1 bd-highlight">
                                 <router-link to="/coupon"
                                     class="btn btn-secondary" href="#" role="button">
-                                    立即領取Coupon
+                                    Get your own Coupon
                                 </router-link>
                             </div>
                         </div>

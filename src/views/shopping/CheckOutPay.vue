@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="container my-4">
         <div class="row text-center justify-content-center">
               <div class="col-md-8 mb-3 md-mb-0">
@@ -137,6 +138,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'CheckOutPay',
@@ -148,27 +150,31 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(['isLoading']),
+  },
   methods: {
+    ...mapActions(['updateLoading']),
     getOrder() {
       const api = `https://vue-course-api.hexschool.io/api/fan630/order/${this.orderId}`;
-      this.isLoading = true;
+      this.$store.dispatch('updateLoading', true);
       this.$http.get(api).then((response) => {
         if (response.data.success) {
           this.order = response.data.order;
         } else {
           this.$bus.$emit('message:push', response.data.message, 'warning');
         }
-        this.isLoading = false;
+        this.$store.dispatch('updateLoading', false);
       });
     },
     payOrder() {
       const api = `https://vue-course-api.hexschool.io/api/fan630/pay/${this.orderId}`;
-      this.isLoading = true;
+      this.$store.dispatch('updateLoading', true);
       this.$http.post(api).then((response) => {
         if (response.data.success) {
           this.getOrder();
         }
-        this.isLoading = false;
+        this.$store.dispatch('updateLoading', false);
       });
     },
     backtocustomer() {

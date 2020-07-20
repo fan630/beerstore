@@ -78,7 +78,6 @@
                         <div class="form-group">
                             <label for="customFile">或 上傳圖片
                                 <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
-                                <!-- <i class="fa fa-refresh fa-spin fa-3x fa-fw" ></i> -->
                             </label>
                             <input type="file" id="customFile" class="form-control"
                                 ref="files" @change="uploadFile">
@@ -99,64 +98,100 @@
                         </div>
 
                         <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="category">分類</label>
-                            <input type="text" class="form-control"
-                            id="category"
-                            v-model="tempProduct.category"
-                            placeholder="請輸入分類">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="price">單位</label>
-                            <input type="unit" class="form-control"
-                            id="unit"
-                            v-model="tempProduct.unit"
-                            placeholder="請輸入單位">
-                        </div>
+                          <div class="form-group col-md-6">
+                              <label for="category">分類</label>
+                              <input type="text" class="form-control"
+                              id="category"
+                              v-model="tempProduct.category"
+                              placeholder="請輸入分類">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="price">單位</label>
+                              <input type="unit" class="form-control"
+                              id="unit"
+                              v-model="tempProduct.unit"
+                              placeholder="請輸入單位">
+                          </div>
                         </div>
 
                         <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label for="origin_price">原價</label>
-                            <input type="number" class="form-control"
-                              id="origin_price"
-                              v-model="tempProduct.origin_price"
-                              placeholder="請輸入原價">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="price">售價</label>
-                            <input type="number" class="form-control"
-                              id="price"
-                              v-model="tempProduct.price"
-                              placeholder="請輸入售價">
-                        </div>
+                          <div class="form-group col-md-6">
+                          <label for="origin_price">原價</label>
+                              <input type="number" class="form-control"
+                                id="origin_price"
+                                v-model="tempProduct.origin_price"
+                                placeholder="請輸入原價">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="price">售價</label>
+                              <input type="number" class="form-control"
+                                id="price"
+                                v-model="tempProduct.price"
+                                placeholder="請輸入售價">
+                          </div>
                         </div>
                         <hr>
 
                         <div class="form-group">
-                        <label for="description">產品描述</label>
-                        <textarea type="text" class="form-control"
-                            id="description"
-                            v-model="tempProduct.description"
-                            placeholder="請輸入產品描述"></textarea>
+                          <label for="description">產品描述</label>
+                          <textarea type="text" class="form-control"
+                              id="description"
+                              v-model="tempProduct.description"
+                              placeholder="請輸入產品描述"></textarea>
+                          </div>
+                        <div class="form-group">
+                          <label for="content">說明內容</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.content"
+                              placeholder="請輸入產品說明內容">
+                          </textarea>
                         </div>
                         <div class="form-group">
-                        <label for="content">說明內容</label>
-                        <textarea type="text" class="form-control" id="content"
-                            v-model="tempProduct.content"
-                            placeholder="請輸入產品說明內容"></textarea>
+                          <label for="content">產品細節</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.details"
+                              placeholder="請輸入產品細節">
+                          </textarea>
                         </div>
                         <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                            v-model="tempProduct.is_enabled"
-                            :true-value="1"
-                            :false-value="0"
-                            id="is_enabled">
-                            <label class="form-check-label" for="is_enabled">
-                            是否啟用
-                            </label>
+                          <label for="content">常見問題</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.FAQ"
+                              placeholder="請輸入常見問題">
+                          </textarea>
                         </div>
+                        <div class="form-group">
+                          <label for="content">常見回答</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.answer"
+                              placeholder="請輸入常見問題回答">
+                          </textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="content">新增圖片1</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.imageUrlOne"
+                              placeholder="請新增圖片">
+                          </textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="content">新增圖片2</label>
+                          <textarea type="text" class="form-control" id="content"
+                              v-model="tempProduct.imageUrlTwo"
+                              placeholder="請新增圖片">
+                          </textarea>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox"
+                              v-model="tempProduct.is_enabled"
+                              :true-value="1"
+                              :false-value="0"
+                              id="is_enabled">
+                              <label class="form-check-label" for="is_enabled">
+                              是否啟用
+                              </label>
+                          </div>
                         </div>
                     </div>
                     </div>
@@ -220,6 +255,11 @@ export default {
     openModal(isNew, item) {
       if (isNew) {
         this.tempProduct = {};
+        this.$set(this.tempProduct, 'details', '');
+        this.$set(this.tempProduct, 'FAQ', '');
+        this.$set(this.tempProduct, 'answer', '');
+        this.$set(this.tempProduct, 'imageUrlOne', '');
+        this.$set(this.tempProduct, 'imageUrlTwo', '');
         this.isNew = true;
       } else {
         // 因為物件傳參考的特性會是一樣, 所以用這個方法淺複製
@@ -234,7 +274,6 @@ export default {
 
       if (!this.isNew) {
         api = `https://vue-course-api.hexschool.io/api/fan630/admin/product/${this.tempProduct.id}`;
-        // console.log(this.tempProduct.id)
         httpMethods = 'put';
       }
 
@@ -245,7 +284,6 @@ export default {
         } else {
           $('#productModal').modal('hide');
           this.getProducts();
-          console.log('新增失敗');
         }
       });
     },

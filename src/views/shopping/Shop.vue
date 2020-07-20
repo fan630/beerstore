@@ -81,7 +81,7 @@
                                         class="btn btn-primary btn-block ml-auto text-white"
                                             @click="addtoCart(product.id)">
                                             <i class="fas fa-cart-plus"></i>
-                                            購物車
+                                            加入購物車
                                     </button>
                                 </div>
                             </div>

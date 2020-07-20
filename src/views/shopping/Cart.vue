@@ -27,7 +27,7 @@
                                         >小計</th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="cart.carts.length">
+                                <tbody v-if="itemList">
                                     <tr v-for="item in cart.carts" :key="item.id"
                                         >
                                         <td class="align-middle text-center">

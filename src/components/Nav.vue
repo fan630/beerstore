@@ -36,7 +36,11 @@
                             <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                                 data-flip="false">
                             <i class="fa fa-shopping-cart text-white fa-2x" aria-hidden="true"></i>
-                            <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
+                            <span
+                                :class="[cart.carts.length > 0 ?
+                                'badge badge-pill badge-danger' : 'none']">
+                                {{cart.carts.length}}
+                            </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right p-3"
                                 style="min-width: 300px"
@@ -59,9 +63,14 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <router-link to="/cart">
+                            <router-link to="/shop" v-if="cart.carts.length == 0">
+                                <button class="btn btn-outline-primary btn-block text-white">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i> 逛逛商店
+                                </button>
+                            </router-link>
+                            <router-link to="/cart" v-else>
                                 <button class="btn btn-primary btn-block text-white">
-                                    <i class="fa fa-cart-plus" aria-hidden="true"></i> 結帳去
+                                    <i class="fas fa-money-bill" aria-hidden="true"></i> 結帳去
                                 </button>
                             </router-link>
                             </div>
@@ -71,7 +80,11 @@
                             <button class="btn btn-sm btn-cart" data-toggle="dropdown"
                                 data-flip="false">
                             <i class="fas fa-heart text-white fa-2x" aria-hidden="true"></i>
-                            <span class="badge badge-pill badge-danger">{{favorites.length}}</span>
+                            <span
+                                :class="[favorites.length > 0 ?
+                                'badge badge-pill badge-danger' : 'none']">
+                                {{favorites.length}}
+                            </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right p-3"
                                 style="min-width: 300px"
@@ -230,5 +243,8 @@ export default {
     .dropdown-menu{
         top:121%;
         background-color:$gray-700;
+    }
+    .none{
+        display:none;
     }
 </style>

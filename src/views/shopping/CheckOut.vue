@@ -75,9 +75,10 @@
                         訂購人資訊
                     </div>
                     <hr>
+                    <div class="text-right">*為必填欄位</div>
                     <div class="form-row text-left">
                         <div class="form-group col-md-4">
-                            <label for="#name">姓名</label>
+                            <label for="#name">*姓名</label>
                                 <input
                                     type="name"
                                     class="form-control"
@@ -88,7 +89,7 @@
                                 >
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="#email">Email</label>
+                            <label for="#email">*Email</label>
                              <ValidationProvider rules="email"
                                   immediate v-slot="{ errors }"
                                 >
@@ -100,11 +101,13 @@
                                     v-model="form.user.email"
                                     required
                                 >
-                                <span>{{ errors[0]}}</span>
+                                <span v-show="form.user.email.length > 0"
+                                  class="text-danger"
+                                  >{{ errors[0]}}</span>
                             </ValidationProvider>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="#tel">聯繫方式</label>
+                            <label for="#tel">*聯繫方式</label>
                               <ValidationProvider rules="min:10|max:10"
                                 immediate v-slot="{ errors }"
                               >
@@ -116,12 +119,15 @@
                                   v-model="form.user.tel"
                                   required
                               >
-                              <span>{{ errors[0] }}</span>
+                              <span v-show="form.user.tel.length > 0"
+                                class="text-danger">
+                                {{ errors[0] }}
+                              </span>
                             </ValidationProvider>
                         </div>
                     </div>
                     <div class="form-group  text-left">
-                        <label for="inputAddress">地址</label>
+                        <label for="inputAddress">*地址</label>
                         <input
                             type="text"
                             class="form-control"
@@ -174,19 +180,19 @@ export default {
     ...mapGetters(['cart', 'isLoading']),
   },
   methods: {
-    ...mapActions(['getCart']),
+    ...mapActions(['getCart', 'updateLoading']),
     removeCartItem(id) {
       this.$store.dispatch('removeCartItem', id);
     },
     createOrder() {
       const api = 'https://vue-course-api.hexschool.io/api/fan630/order';
       const order = this.form;
-      this.isLoading = true;
+      this.$store.dispatch('updateLoading', true);
       this.$http.post(api, { data: order }).then((response) => {
         this.$bus.$emit('message:push', response.data.message, 'warning');
         this.$router.push(`/checkout_pay/${response.data.orderId}`);
         this.getCart();
-        this.isLoading = false;
+        this.$store.dispatch('updateLoading', false);
       });
     },
   },
